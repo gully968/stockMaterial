@@ -12,7 +12,7 @@ import { MatTableDataSource } from '@angular/material';
 export class ProveedoresComponent implements OnInit {
 
   listaprov: Observable<Proveedores[]>;
-
+  
   constructor(public ps: ProveedoresService) { }
 
   ngOnInit() {

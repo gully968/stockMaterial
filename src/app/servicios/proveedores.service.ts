@@ -23,7 +23,21 @@ export class ProveedoresService {
       })
     });
   }
+  /* Lista todos los proveedores */
   listaProveedores() {
-    return this.proveedoresObs ;
+    return this.afs.collection('proveedores').valueChanges();
+  }
+  /* Lista el filtrado de proveedores parametros */
+  filterData(customfilters) {
+    return new Promise((resolve, reject) => {
+      if (customfilters.criteria == '') {
+        reject();
+      }
+      if (customfilters.filtervalue == '') {
+        reject();
+      }
+      resolve(this.afs.collection('proveedores', ref =>
+        ref.where(customfilters.field, customfilters.criteria, customfilters.filtervalue)).valueChanges());
+    })
   }
 }
