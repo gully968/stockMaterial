@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ProveedoresService } from '../../servicios/proveedores.service.ts';
+import { Observable } from 'rxjs/Observable';
+import { ProveedoresService } from '../../servicios/proveedores.service';
+import { Proveedores } from '../../clases/proveedores';
+import { MatTableDataSource } from '@angular/material';
+
 @Component({
   selector: 'app-proveedores',
   templateUrl: './proveedores.component.html',
@@ -7,11 +11,14 @@ import { ProveedoresService } from '../../servicios/proveedores.service.ts';
 })
 export class ProveedoresComponent implements OnInit {
 
-  constructor(private provserv: ProveedoresService) { }
+  listaprov: Observable<Proveedores[]>;
+
+  constructor(public ps: ProveedoresService) { }
 
   ngOnInit() {
-    this.listaprov = this.provserv.listaProveedores();
+    dataSource = new MatTableDataSource(listaprov);
+    displayedColumns = ['id', 'nombre', 'direccion', 'telefono'];
+    this.listaprov = this.ps.listaProveedores();
     console.log(this.listaprov);
-  }
-
+   }
 }
