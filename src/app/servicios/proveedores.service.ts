@@ -17,7 +17,11 @@ export class ProveedoresService {
   constructor(private afs: AngularFirestore) { }
 
   addProveedor(ProveData) {
-    this.afs.collection('proveedores').add(ProveData);
+    if (ProveData) {
+      this.afs.collection('proveedores').add(ProveData);
+    } else {
+      console.log('No es posible agregar porque el registro se encuentra vacio');
+    }
   }
 
   getProveedores() {
