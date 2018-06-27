@@ -1,32 +1,63 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<!--The content below is only a placeholder and can be replaced.-->
+<div>
+    <mat-form-field>
+      <input matInput placeholder="Código" [(ngModel)]="proveedoresDetalle.codigo">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Nombre" [(ngModel)]="proveedoresDetalle.nombre">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Dirección" [(ngModel)]="proveedoresDetalle.direccion">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Teléfono" [(ngModel)]="proveedoresDetalle.telefono">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="C.U.I.T." [(ngModel)]="proveedoresDetalle.cuit">
+    </mat-form-field>
+    <button mat-raised-button (click)="addProveedor()" color="primary">Agregar</button>
+</div>
+<div class="example-container mat-elevation-z8">
+    <mat-table #table [dataSource]="dataSource">
+    
+        <ng-container matColumnDef="codigo">
+            <mat-header-cell *matHeaderCellDef> Código </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.codigo}} </mat-cell>
+        </ng-container>
+        
+        <ng-container matColumnDef="nombre">
+            <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.nombre}} </mat-cell>
+        </ng-container>
+        
+        <ng-container matColumnDef="direccion">
+            <mat-header-cell *matHeaderCellDef> Direccion </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.direccion}} </mat-cell>
+        </ng-container>
 
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-  
-    <!-- Position Column -->
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef> ID </th>
-      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-    </ng-container>
-  
-    <!-- Name Column -->
-    <ng-container matColumnDef="nombre">
-      <th mat-header-cell *matHeaderCellDef> Nombre </th>
-      <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
-    </ng-container>
-  
-    <!-- Weight Column -->
-    <ng-container matColumnDef="direccion">
-      <th mat-header-cell *matHeaderCellDef> Dirección </th>
-      <td mat-cell *matCellDef="let element"> {{element.direccion}} </td>
-    </ng-container>
-  
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="telefono">
-      <th mat-header-cell *matHeaderCellDef> Teléfono </th>
-      <td mat-cell *matCellDef="let element"> {{element.telefono}} </td>
-    </ng-container>
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+        <ng-container matColumnDef="telefono">
+            <mat-header-cell *matHeaderCellDef> Teléfono </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.telefono}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="cuit">
+            <mat-header-cell *matHeaderCellDef> CUIT </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.cuit}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="buttons">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let group" (click)="$event.stopPropagation()">
+                <button mat-button (click)="eliminarProveedor(group)">
+                    Eliminar
+                </button>
+            </mat-cell>
+        </ng-container>
+        
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        
+    </mat-table>
+</div>
+    

@@ -2,8 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 /* Angular Material y Animations */
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCheckboxModule, MatCard } from '@angular/material';
+import { MatButtonModule, 
+         MatCheckboxModule, 
+         MatCard,
+         MatInputModule,
+         MatTableModule } from '@angular/material';
 import { MatMenuModule } from '@angular/material/menu';
+import { FormsModule } from '@angular/forms';
 import 'hammerjs';
 /* Firebase */
 import { AngularFireModule } from 'angularfire2';
@@ -31,12 +36,15 @@ import { ProveedoresService } from './servicios/proveedores.service';
     BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
+    MatInputModule,
     MatMenuModule,
+    MatTableModule,
     AppRoutingModule,
     /* Angular Firestore */
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
+    FormsModule,
     AngularFirestoreModule
   ],
   providers: [

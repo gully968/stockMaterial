@@ -9,35 +9,23 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 @Injectable()
 
 export class ProveedoresService {
+  
   proveedoresCol: AngularFirestoreCollection<Proveedores>;
   proveedoresDoc: AngularFirestoreDocument<Proveedores>;
   proveedoresObs: Observable<Proveedores[]>;
 
-  constructor(public afs: AngularFirestore) { 
-    this.proveedoresCol = this.afs.collection('proveedores');
-    this.proveedoresObs = this.proveedoresCol.snapshotChanges().map(changes => {
-      return changes.map(a => {
-        const data = a.payload.doc.data() as Proveedores;
-        data.id = a.payload.doc.id;
-        return data;
-      })
-    });
+  constructor(private afs: AngularFirestore) { }
+
+  addProveedor(ProveData) {
+    this.afs.collection('proveedores').add(ProveData);
   }
-  /* Lista todos los proveedores */
-  listaProveedores() {
-    return this.afs.collection('proveedores').valueChanges();
+
+  getProveedores() {
+    return this.afs.collection('proveedores').snapshotChanges();
   }
-  /* Lista el filtrado de proveedores parametros */
-  filterData(customfilters) {
-    return new Promise((resolve, reject) => {
-      if (customfilters.criteria == '') {
-        reject();
-      }
-      if (customfilters.filtervalue == '') {
-        reject();
-      }
-      resolve(this.afs.collection('proveedores', ref =>
-        ref.where(customfilters.field, customfilters.criteria, customfilters.filtervalue)).valueChanges());
-    })
+
+  delProveedor(proveedor: Proveedores) {
+    this.proveedoresDoc = this.afs.doc(`proveedores/${proveedor.id}`);
+    this.proveedoresDoc.delete();
   }
 }
