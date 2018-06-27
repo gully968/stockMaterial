@@ -8,6 +8,7 @@ import { MatButtonModule,
          MatInputModule,
          MatTableModule } from '@angular/material';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 import 'hammerjs';
 /* Firebase */
@@ -39,6 +40,7 @@ import { ProveedoresService } from './servicios/proveedores.service';
     MatInputModule,
     MatMenuModule,
     MatTableModule,
+    MatDialogModule,
     AppRoutingModule,
     /* Angular Firestore */
     AngularFireAuthModule,

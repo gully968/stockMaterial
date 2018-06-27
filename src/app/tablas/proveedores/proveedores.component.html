@@ -1,4 +1,4 @@
-<!--The content below is only a placeholder and can be replaced.-->
+<!-- Form para alta de proveedor inline arriba de la lista -->
 <div>
     <mat-form-field>
       <input matInput placeholder="Código" [(ngModel)]="proveedoresDetalle.codigo">
@@ -19,32 +19,32 @@
 </div>
 <div class="example-container mat-elevation-z8">
     <mat-table #table [dataSource]="dataSource">
-    
+        <!-- Código de proveedor -->
         <ng-container matColumnDef="codigo">
             <mat-header-cell *matHeaderCellDef> Código </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.codigo}} </mat-cell>
         </ng-container>
-        
+        <!-- Nombre o razon social -->
         <ng-container matColumnDef="nombre">
             <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.nombre}} </mat-cell>
         </ng-container>
-        
+        <!-- Dirección postal -->
         <ng-container matColumnDef="direccion">
             <mat-header-cell *matHeaderCellDef> Direccion </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.direccion}} </mat-cell>
         </ng-container>
-
+        <!-- Teléfono -->
         <ng-container matColumnDef="telefono">
             <mat-header-cell *matHeaderCellDef> Teléfono </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.telefono}} </mat-cell>
         </ng-container>
-
+        <!-- CUIT -->
         <ng-container matColumnDef="cuit">
             <mat-header-cell *matHeaderCellDef> CUIT </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.cuit}} </mat-cell>
         </ng-container>
-
+        <!-- Botones para eliminar y modificar -->
         <ng-container matColumnDef="buttons">
             <mat-header-cell *matHeaderCellDef></mat-header-cell>
             <mat-cell *matCellDef="let group" (click)="$event.stopPropagation()">
@@ -53,11 +53,8 @@
                 </button>
             </mat-cell>
         </ng-container>
-        
-
+        <!-- Arreglo displayedColums contiene las columnas que se ven en la lista -->
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-        
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>  
     </mat-table>
 </div>
-    

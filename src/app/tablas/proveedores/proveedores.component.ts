@@ -1,7 +1,12 @@
 import { Component } from '@angular/core';
 import { DataSource } from '@angular/cdk/collections';
 import { ProveedoresService } from '../../servicios/proveedores.service';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
+/* export interface DialogData {
+  animal: string;
+  name: string;
+} */
 
 @Component({
   selector: 'app-proveedores',
@@ -20,17 +25,22 @@ export class ProveedoresComponent {
   displayedColumns = ['codigo', 'nombre', 'direccion', 'telefono', 'cuit', 'buttons'];
   dataSource = new ProvDataSource(this.ps);
 
-  constructor(public ps: ProveedoresService ) { }
+  constructor(public ps: ProveedoresService/* , public dialogo: MatDialog */ ) { }
 
   addProveedor(){
-    this.ps.addProveedor(this.proveedoresDetalle);
-    this.proveedoresDetalle = {
-      codigo: '',
-      nombre: '',
-      direccion: '',
-      telefono: '',
-      cuit: ''
-    };
+    if (this.proveedoresDetalle.codigo.length !== 0 && 
+        this.proveedoresDetalle.nombre.length !== 0 &&
+        this.proveedoresDetalle.direccion.length !== 0
+      ) {
+        this.ps.addProveedor(this.proveedoresDetalle);
+        this.proveedoresDetalle = {
+          codigo: '',
+          nombre: '',
+          direccion: '',
+          telefono: '',
+          cuit: ''
+        };
+      }
   }
 
   eliminarProveedor(proveedor){
@@ -43,6 +53,17 @@ export class ProveedoresComponent {
     return;
   }
 
+  /* openDialog(): void {
+    const dialogRef = this.dialogo.open(DialogOverviewExampleDialog, {
+      width: '250px',
+      data: {name: this.name, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  } */
 }
 
 export class ProvDataSource extends DataSource<any> {

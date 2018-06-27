@@ -9,7 +9,7 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 @Injectable()
 
 export class ProveedoresService {
-  
+
   proveedoresCol: AngularFirestoreCollection<Proveedores>;
   proveedoresDoc: AngularFirestoreDocument<Proveedores>;
   proveedoresObs: Observable<Proveedores[]>;
@@ -17,11 +17,7 @@ export class ProveedoresService {
   constructor(private afs: AngularFirestore) { }
 
   addProveedor(ProveData) {
-    if (ProveData) {
-      this.afs.collection('proveedores').add(ProveData);
-    } else {
-      console.log('No es posible agregar porque el registro se encuentra vacio');
-    }
+    this.afs.collection('proveedores').add(ProveData);
   }
 
   getProveedores() {
