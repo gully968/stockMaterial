@@ -24,11 +24,11 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ProveedoresComponent } from './tablas/proveedores/proveedores.component';
+import { ClientesComponent } from './tablas/clientes/clientes.component';
 import { ConfirmBoxComponent } from './confirm-box.component';
 /* Servicios */
 import { ProveedoresService } from './servicios/proveedores.service';
-import { ClientesComponent } from './tablas/clientes/clientes.component';
-
+import { ClientesService } from './servicios/clientes.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +62,8 @@ import { ClientesComponent } from './tablas/clientes/clientes.component';
     ConfirmBoxComponent
   ],
   providers: [
-    ProveedoresService
+    ProveedoresService,
+    ClientesService
   ],
   bootstrap: [AppComponent]
 })
