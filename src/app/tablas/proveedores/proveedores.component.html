@@ -15,7 +15,7 @@
     <mat-form-field>
       <input matInput placeholder="C.U.I.T." [(ngModel)]="proveedoresDetalle.cuit">
     </mat-form-field>
-    <button mat-raised-button (click)="addProveedor()" color="primary">Agregar</button>
+    <button mat-raised-button (click)="addProveedor()" color="primary" style="margin-left: 10px;">Agregar</button>
 </div>
 <div class="example-container mat-elevation-z8">
     <mat-table #table [dataSource]="dataSource">
@@ -27,7 +27,12 @@
         <!-- Nombre o razon social -->
         <ng-container matColumnDef="nombre">
             <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.nombre}} </mat-cell>
+            <mat-cell *matCellDef="let element"> <!-- {{element.nombre}}  -->
+                <mat-form-field floatLabel="never">
+                    <input matInput placeholder="Name" [value]="element.nombre" [(ngModel)]="element.nombre" onchange="editarProveedor(this.value)">
+                </mat-form-field>
+            </mat-cell>
+            
         </ng-container>
         <!-- Dirección postal -->
         <ng-container matColumnDef="direccion">
@@ -48,9 +53,9 @@
         <ng-container matColumnDef="buttons">
             <mat-header-cell *matHeaderCellDef></mat-header-cell>
             <mat-cell *matCellDef="let group" (click)="$event.stopPropagation()">
-                <button mat-button (click)="eliminarProveedor(group)">
-                    Eliminar
-                </button>
+                <button mat-raised-button color="warn" (click)="eliminarProveedor(group)">Eliminar</button>
+                <button mat-raised-button (click)="editarProveedor(group)">Editar</button>
+                
             </mat-cell>
         </ng-container>
         <!-- Arreglo displayedColums contiene las columnas que se ven en la lista -->

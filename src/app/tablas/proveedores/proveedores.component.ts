@@ -1,19 +1,19 @@
 import { Component } from '@angular/core';
 import { DataSource } from '@angular/cdk/collections';
 import { ProveedoresService } from '../../servicios/proveedores.service';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-
-/* export interface DialogData {
-  animal: string;
-  name: string;
-} */
+import { MatDialog, MatDialogRef } from '@angular/material';
+import { ConfirmBoxComponent } from '../../confirm-box.component';
 
 @Component({
   selector: 'app-proveedores',
   templateUrl: './proveedores.component.html',
   styleUrls: ['./proveedores.component.css']
 })
+
+
 export class ProveedoresComponent {
+
+  dialogRef: MatDialogRef<ConfirmBoxComponent>;
 
   proveedoresDetalle = {
     codigo: '',
@@ -25,7 +25,7 @@ export class ProveedoresComponent {
   displayedColumns = ['codigo', 'nombre', 'direccion', 'telefono', 'cuit', 'buttons'];
   dataSource = new ProvDataSource(this.ps);
 
-  constructor(public ps: ProveedoresService/* , public dialogo: MatDialog */ ) { }
+  constructor(public ps: ProveedoresService , public dialogo: MatDialog) { }
 
   addProveedor(){
     if (this.proveedoresDetalle.codigo.length !== 0 && 
@@ -43,27 +43,28 @@ export class ProveedoresComponent {
       }
   }
 
-  eliminarProveedor(proveedor){
-
-    const response = confirm('Está seguro de eliminar?');
-
-    if (response) {
-      this.ps.delProveedor(proveedor);
-    }
-    return;
+  eliminarProveedor(proveedor) {
+    this.dialogRef = this.dialogo.open(ConfirmBoxComponent, { 
+      disableClose: false,
+      width: '50%',
+      data: {}
+    });
+    this.dialogRef.componentInstance.confirmMessage = 'Está seguro que desea eliminar el proveedor: ' + proveedor.nombre;
+    this.dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        /* Si desea eliminarlo */
+        console.log('Registro eliminado')
+        this.ps.delProveedor(proveedor);
+      } else {
+        console.log('Si se presiona cancelar el result es ', result)
+      }
+      this.dialogRef = null;
+    });
   }
 
-  /* openDialog(): void {
-    const dialogRef = this.dialogo.open(DialogOverviewExampleDialog, {
-      width: '250px',
-      data: {name: this.name, animal: this.animal}
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.animal = result;
-    });
-  } */
+  editarProveedor(valor){
+    alert(valor);
+  }
 }
 
 export class ProvDataSource extends DataSource<any> {
