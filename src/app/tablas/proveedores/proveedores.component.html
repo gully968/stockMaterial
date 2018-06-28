@@ -29,7 +29,7 @@
             <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
             <mat-cell *matCellDef="let element"> <!-- {{element.nombre}}  -->
                 <mat-form-field floatLabel="never">
-                    <input matInput placeholder="Name" [value]="element.nombre" [(ngModel)]="element.nombre" (change)="editarProveedor(element.nombre)" >
+                    <input matInput placeholder="Name" [value]="element.nombre" [(ngModel)]="element.nombre" (change)="cambioaEditar(element.nombre)" >
                 </mat-form-field>
             </mat-cell>
             
@@ -54,7 +54,7 @@
             <mat-header-cell *matHeaderCellDef></mat-header-cell>
             <mat-cell *matCellDef="let group" (click)="$event.stopPropagation()">
                 <button mat-raised-button color="warn" (click)="eliminarProveedor(group)">Eliminar</button>
-                <button mat-raised-button (click)="editarProveedor(group)">Editar</button>
+                <button mat-raised-button (click)="editarProveedor(group)" *ngIf="esEdicion">Modificar</button>
                 
             </mat-cell>
         </ng-container>

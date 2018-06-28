@@ -24,6 +24,7 @@ export class ProveedoresComponent {
   };
   displayedColumns = ['codigo', 'nombre', 'direccion', 'telefono', 'cuit', 'buttons'];
   dataSource = new ProvDataSource(this.ps);
+  esEdicion = false;
 
   constructor(public ps: ProveedoresService , public dialogo: MatDialog) { }
 
@@ -62,8 +63,15 @@ export class ProveedoresComponent {
     });
   }
 
+  cambioaEditar(dato:any){
+    this.esEdicion = true;
+    console.log(dato);
+  }
   editarProveedor(valor){
-    alert(valor);
+
+    if (this.esEdicion){
+      alert(valor.nombre);
+    } 
   }
 }
 
