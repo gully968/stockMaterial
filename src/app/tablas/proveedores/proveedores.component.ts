@@ -63,14 +63,16 @@ export class ProveedoresComponent {
     });
   }
 
-  cambioaEditar(dato:any){
+  cambioaEditar(){
     this.esEdicion = true;
-    console.log(dato);
+    console.log('Cambio a Edicion True!');
   }
   editarProveedor(valor){
 
     if (this.esEdicion){
-      alert(valor.nombre);
+      console.log('Presiona editar y oculta botom poniendo en false esEdicion', this.esEdicion);
+      this.ps.modificaProveedor(valor);
+      this.esEdicion = false;
     } 
   }
 }

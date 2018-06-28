@@ -2,14 +2,14 @@
     <main>
         <mat-card style="background-color: lightblue;">
             <span style="font-family: Arial; font-size: 20px;">
-                InventarioAPP
+                <i class="fab fa-servicestack fa-3x"></i> InventarioAPP
             </span>
-            <button mat-button [matMenuTriggerFor]="menu">Configurar</button>
+            <button mat-button [matMenuTriggerFor]="menu"><i class="fas fa-cog fa-2x"></i> Configurar</button>
               <mat-menu #menu="matMenu">
-                  <button mat-menu-item routerLink="/tabla-proveedores"app-routing.module.ts>Tabla Proveedores</button>
-                  <button mat-menu-item>Tabla Clientes</button>
-                  <button mat-menu-item>Tabla Productos</button>
-                  <button mat-menu-item>Tabla Rubros</button>
+                  <button mat-menu-item routerLink="/tabla-proveedores"app-routing.module.ts><i class="fas fa-people-carry"></i> Tabla Proveedores</button>
+                  <button mat-menu-item><i class="fas fa-hand-holding-usd"></i> Tabla Clientes</button>
+                  <button mat-menu-item><i class="fab fa-product-hunt"></i> Tabla Productos</button>
+                  <button mat-menu-item><i class="far fa-folder-open"></i> Tabla Rubros</button>
               </mat-menu>
         </mat-card>
     </main>

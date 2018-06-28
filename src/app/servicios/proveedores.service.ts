@@ -28,4 +28,10 @@ export class ProveedoresService {
     this.proveedoresDoc = this.afs.doc(`proveedores/${proveedor.id}`);
     this.proveedoresDoc.delete();
   }
+
+  modificaProveedor(proveedor: Proveedores){
+    this.proveedoresDoc = this.afs.doc(`proveedores/${proveedor.id}`);
+    this.proveedoresDoc.update(proveedor);
+    console.log('Lo estoy modificando aca!');
+  }
 }

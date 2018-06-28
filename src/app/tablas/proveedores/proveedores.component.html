@@ -17,6 +17,7 @@
     </mat-form-field>
     <button mat-raised-button (click)="addProveedor()" color="primary" style="margin-left: 10px;">Agregar</button>
 </div>
+<!-- Tabla de despliegue de datos con posibilidad de editar -->
 <div class="example-container mat-elevation-z8">
     <mat-table #table [dataSource]="dataSource">
         <!-- Código de proveedor -->
@@ -27,34 +28,45 @@
         <!-- Nombre o razon social -->
         <ng-container matColumnDef="nombre">
             <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
-            <mat-cell *matCellDef="let element"> <!-- {{element.nombre}}  -->
+            <mat-cell *matCellDef="let element">
                 <mat-form-field floatLabel="never">
-                    <input matInput placeholder="Name" [value]="element.nombre" [(ngModel)]="element.nombre" (change)="cambioaEditar(element.nombre)" >
+                    <input matInput placeholder="Nombre" [value]="element.nombre" [(ngModel)]="element.nombre" (change)="cambioaEditar()" >
                 </mat-form-field>
             </mat-cell>
-            
         </ng-container>
         <!-- Dirección postal -->
         <ng-container matColumnDef="direccion">
             <mat-header-cell *matHeaderCellDef> Direccion </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.direccion}} </mat-cell>
+            <mat-cell *matCellDef="let element"> 
+                <mat-form-field floatLabel="never">
+                    <input matInput placeholder="Dirección" [value]="element.direccion" [(ngModel)]="element.direccion" (change)="cambioaEditar()" >
+                </mat-form-field>
+            </mat-cell>
         </ng-container>
         <!-- Teléfono -->
         <ng-container matColumnDef="telefono">
             <mat-header-cell *matHeaderCellDef> Teléfono </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.telefono}} </mat-cell>
+            <mat-cell *matCellDef="let element"> 
+                <mat-form-field floatLabel="never">
+                    <input matInput placeholder="Teléfono" [value]="element.telefono" [(ngModel)]="element.telefono" (change)="cambioaEditar()" >
+                </mat-form-field>
+            </mat-cell>
         </ng-container>
         <!-- CUIT -->
         <ng-container matColumnDef="cuit">
             <mat-header-cell *matHeaderCellDef> CUIT </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.cuit}} </mat-cell>
+            <mat-cell *matCellDef="let element"> 
+                <mat-form-field floatLabel="never">
+                    <input matInput placeholder="CUIT" [value]="element.cuit" [(ngModel)]="element.cuit" (change)="cambioaEditar()" >
+                </mat-form-field>
+            </mat-cell>
         </ng-container>
         <!-- Botones para eliminar y modificar -->
         <ng-container matColumnDef="buttons">
             <mat-header-cell *matHeaderCellDef></mat-header-cell>
             <mat-cell *matCellDef="let group" (click)="$event.stopPropagation()">
-                <button mat-raised-button color="warn" (click)="eliminarProveedor(group)">Eliminar</button>
-                <button mat-raised-button (click)="editarProveedor(group)" *ngIf="esEdicion">Modificar</button>
+                <button mat-raised-button color="warn" (click)="eliminarProveedor(group)"><i class="far fa-trash-alt"></i> Eliminar</button>
+                <button mat-raised-button (click)="editarProveedor(group)" *ngIf="esEdicion"><i class="fas fa-pen-alt"></i> Modificar</button>
                 
             </mat-cell>
         </ng-container>

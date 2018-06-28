@@ -27,13 +27,15 @@ import { ProveedoresComponent } from './tablas/proveedores/proveedores.component
 import { ConfirmBoxComponent } from './confirm-box.component';
 /* Servicios */
 import { ProveedoresService } from './servicios/proveedores.service';
+import { ClientesComponent } from './tablas/clientes/clientes.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MatCard,
     ProveedoresComponent,
-    ConfirmBoxComponent
+    ConfirmBoxComponent,
+    ClientesComponent
      ],
 
   imports: [
