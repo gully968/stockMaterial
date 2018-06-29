@@ -7,7 +7,8 @@ import { MatButtonModule,
          MatCheckboxModule,
          MatCard,
          MatInputModule,
-         MatTableModule } from '@angular/material';
+         MatTableModule,
+         MatSortModule } from '@angular/material';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
 import { FormsModule } from '@angular/forms';
@@ -24,18 +25,24 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ProveedoresComponent } from './tablas/proveedores/proveedores.component';
+import { RubrosComponent } from './tablas/rubros/rubros.component';
 import { ClientesComponent } from './tablas/clientes/clientes.component';
+import { ListadoRubrosComponent } from './listados/listado-rubros/listado-rubros.component';
 import { ConfirmBoxComponent } from './confirm-box.component';
 /* Servicios */
 import { ProveedoresService } from './servicios/proveedores.service';
 import { ClientesService } from './servicios/clientes.service';
+import { RubrosService } from './servicios/rubros.service';
+import { firestore } from 'firebase';
 @NgModule({
   declarations: [
     AppComponent,
     MatCard,
     ProveedoresComponent,
     ConfirmBoxComponent,
-    ClientesComponent
+    ClientesComponent,
+    RubrosComponent,
+    ListadoRubrosComponent
      ],
 
   imports: [
@@ -48,6 +55,7 @@ import { ClientesService } from './servicios/clientes.service';
     MatMenuModule,
     MatTableModule,
     MatDialogModule,
+    MatSortModule,
     /* Routings */
     AppRoutingModule,
     /* Angular Firestore */
@@ -55,7 +63,7 @@ import { ClientesService } from './servicios/clientes.service';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     FormsModule,
-    AngularFirestoreModule
+    AngularFirestoreModule.enablePersistence()
   ],
   
   entryComponents: [
@@ -63,7 +71,8 @@ import { ClientesService } from './servicios/clientes.service';
   ],
   providers: [
     ProveedoresService,
-    ClientesService
+    ClientesService,
+    RubrosService
   ],
   bootstrap: [AppComponent]
 })

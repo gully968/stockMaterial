@@ -1,0 +1,19 @@
+.mat-column-codigo {
+  flex: 0 0 100px !important;
+  white-space: unset !important;
+}
+.mat-column-nombre {
+    flex: 0 0 700px !important;
+    white-space: unset !important;
+}
+.mat-form-field {
+    flex: 0 0 700px !important;
+    white-space: unset !important;
+}
+table {
+    width: 100%;
+  }
+  
+  th.mat-sort-header-sorted {
+    color: black;
+  }

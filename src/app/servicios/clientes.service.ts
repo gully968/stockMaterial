@@ -23,12 +23,12 @@ export class ClientesService {
   }
 
   delCliente(cliente: Clientes){
-    this.clientesDoc = this.afs.doc('clientes/${cliente.id}');
+    this.clientesDoc = this.afs.doc(`clientes/${cliente.id}`);
     this.clientesDoc.delete();
   }
 
   modificaCliente(cliente: Clientes){
-    this.clientesDoc = this.afs.doc('clientes/${cliente.id}');
+    this.clientesDoc = this.afs.doc(`clientes/${cliente.id}`);
     this.clientesDoc.update(cliente);
   }
 }

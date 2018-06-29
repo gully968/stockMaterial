@@ -1,0 +1,43 @@
+<!-- Form para alta de cliente inline arriba de la lista -->
+<div>
+    <h3>Tabla Rubros</h3>
+</div>
+<div>
+  <mat-form-field>
+    <input matInput placeholder="Código" [(ngModel)]="rubrosDetalle.codigo">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Nombre" [(ngModel)]="rubrosDetalle.nombre">
+  </mat-form-field>
+  <button mat-raised-button (click)="addRubro()" color="primary" style="margin-left: 10px;">Agregar</button>
+</div>
+<!-- Tabla de despliegue de datos con posibilidad de editar -->
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource" matSort>
+      <!-- Código de cliente -->
+      <ng-container matColumnDef="codigo">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Código </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.codigo}} </mat-cell>
+      </ng-container>
+      <!-- Nombre o razon social -->
+      <ng-container matColumnDef="nombre">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+              <mat-form-field floatLabel="never">
+                  <input matInput placeholder="Nombre" [value]="element.nombre" [(ngModel)]="element.nombre" (change)="cambioaEditar()" >
+              </mat-form-field>
+          </mat-cell>
+      </ng-container>
+      <!-- Botones para eliminar y modificar -->
+      <ng-container matColumnDef="buttons">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let group" (click)="$event.stopPropagation()">
+              <button mat-raised-button color="warn" (click)="eliminarRubro(group)"><i class="far fa-trash-alt"></i> Eliminar</button>
+              <button mat-raised-button (click)="editarRubro(group)" *ngIf="esEdicion"><i class="fas fa-pen-alt"></i> Modificar</button>
+          </mat-cell>
+      </ng-container>
+      <!-- Arreglo displayedColums contiene las columnas que se ven en la lista -->
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>  
+  </mat-table>
+</div>

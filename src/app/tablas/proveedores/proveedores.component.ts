@@ -54,10 +54,7 @@ export class ProveedoresComponent {
     this.dialogRef.afterClosed().subscribe(result => {
       if(result) {
         /* Si desea eliminarlo */
-        console.log('Registro eliminado')
         this.ps.delProveedor(proveedor);
-      } else {
-        console.log('Si se presiona cancelar el result es ', result)
       }
       this.dialogRef = null;
     });
@@ -65,15 +62,13 @@ export class ProveedoresComponent {
 
   cambioaEditar(){
     this.esEdicion = true;
-    console.log('Cambio a Edicion True!');
   }
   editarProveedor(valor){
 
     if (this.esEdicion){
-      console.log('Presiona editar y oculta botom poniendo en false esEdicion', this.esEdicion);
       this.ps.modificaProveedor(valor);
       this.esEdicion = false;
-    } 
+    }
   }
 }
 

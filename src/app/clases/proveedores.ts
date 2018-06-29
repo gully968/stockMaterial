@@ -1,5 +1,5 @@
 export class Proveedores {
-    id:string;
+    id: string;
     codigo: string;
     nombre: string;
     direccion: string;
