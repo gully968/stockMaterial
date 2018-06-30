@@ -1,5 +1,12 @@
 # StockMaterial Version 1.0
 
+## Dependencias:
+
+    Se utilizó Angular CLI + Angular Material + Font Awesome + AngularFire2
+
+    La base de datos es firebase 
+
+## Observaciones:
 Este es un sistema de inventario basico para uso en pequeños comercios.  Se encuentra actualmente en desarrollo. Actualmente los modulos incluidos son:
 
 
@@ -22,7 +29,7 @@ A realizar:
     Modulos de Actualizacion de precios global
     Modulos de accesorios.
 
-    
+
 Este proyecto fue generado mediante [Angular CLI](https://github.com/angular/angular-cli) version 6.0.7.
 
 ## Desarrollo de servidor
