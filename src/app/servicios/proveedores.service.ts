@@ -33,4 +33,14 @@ export class ProveedoresService {
     this.proveedoresDoc = this.afs.doc(`proveedores/${proveedor.id}`);
     this.proveedoresDoc.update(proveedor);
   }
+  getProveedoresObservable(){
+    this.proveedoresObs = this.afs.collection('proveedores').snapshotChanges().map(changes =>{
+      return changes.map(a => {
+        const data = a.payload.doc.data() as Proveedores;
+        data.id = a.payload.doc.id;
+        return data;
+      });
+    });
+    return this.proveedoresObs;
+  }
 }

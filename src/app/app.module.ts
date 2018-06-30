@@ -31,10 +31,14 @@ import { ProveedoresComponent } from './tablas/proveedores/proveedores.component
 import { RubrosComponent } from './tablas/rubros/rubros.component';
 import { ClientesComponent } from './tablas/clientes/clientes.component';
 import { ListadoRubrosComponent } from './listados/listado-rubros/listado-rubros.component';
+import { ListadoClientesComponent } from './listados/listado-clientes/listado-clientes.component';
+import { ListadoProveedoresComponent } from './listados/listado-proveedores/listado-proveedores.component';
+import { ProductosComponent } from './tablas/productos/productos.component';
 import { ConfirmBoxComponent } from './confirm-box.component';
 /* Servicios */
 import { ProveedoresService } from './servicios/proveedores.service';
 import { ClientesService } from './servicios/clientes.service';
+import { ProductosService } from './servicios/productos.service';
 import { RubrosService } from './servicios/rubros.service';
 import { firestore } from 'firebase';
 @NgModule({
@@ -45,7 +49,10 @@ import { firestore } from 'firebase';
     ConfirmBoxComponent,
     ClientesComponent,
     RubrosComponent,
-    ListadoRubrosComponent
+    ListadoRubrosComponent,
+    ListadoClientesComponent,
+    ListadoProveedoresComponent,
+    ProductosComponent
      ],
 
   imports: [
@@ -76,6 +83,7 @@ import { firestore } from 'firebase';
   providers: [
     ProveedoresService,
     ClientesService,
+    ProductosService,
     RubrosService
   ],
   bootstrap: [AppComponent]

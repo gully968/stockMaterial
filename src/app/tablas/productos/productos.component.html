@@ -1,0 +1,106 @@
+<div>
+    <h3>Tabla Productos</h3>
+</div>
+<div>
+  <mat-form-field>
+    <input matInput placeholder="Código" [(ngModel)]="productosDetalle.codigo">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Nombre" [(ngModel)]="productosDetalle.nombre">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Rubro" [(ngModel)]="productosDetalle.rubro">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Valor Compra" [(ngModel)]="productosDetalle.precioCompra">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Valor Venta" [(ngModel)]="productosDetalle.precioVenta">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Minimo" [(ngModel)]="productosDetalle.cantidadMinima">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Stock" [(ngModel)]="productosDetalle.cantidadActual">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Observaciones" [(ngModel)]="productosDetalle.observaciones">
+  </mat-form-field>
+  <button mat-raised-button (click)="addProducto()" color="primary" style="margin-left: 10px;">Agregar</button>
+</div>
+<!-- Tabla de despliegue de datos con posibilidad de editar -->
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="codigo">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Código </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.codigo}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="nombre">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+              <mat-form-field floatLabel="never">
+                  <input matInput placeholder="Nombre" [value]="element.nombre" [(ngModel)]="element.nombre" (change)="cambioaEditar()" >
+              </mat-form-field>
+          </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="rubro">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Rubro </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <mat-form-field floatLabel="never">
+                    <input matInput placeholder="Rubro" [value]="element.rubro" [(ngModel)]="element.rubro" (change)="cambioaEditar()" >
+                </mat-form-field>
+            </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="precioCompra">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Precio Compra </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <mat-form-field floatLabel="never">
+                    <input matInput placeholder="Precio Compra" [value]="element.precioCompra" [(ngModel)]="element.precioCompra" (change)="cambioaEditar()" >
+                </mat-form-field>
+            </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="precioVenta">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Precio Venta </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <mat-form-field floatLabel="never">
+                    <input matInput placeholder="Precio Venta" [value]="element.precioVenta" [(ngModel)]="element.precioVenta" (change)="cambioaEditar()" >
+                </mat-form-field>
+            </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="cantidadMinima">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Cant. Minima </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <mat-form-field floatLabel="never">
+                    <input matInput placeholder="Minimo" [value]="element.cantidadMinima" [(ngModel)]="element.cantidadMinima" (change)="cambioaEditar()" >
+                </mat-form-field>
+            </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="cantidadActual">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Cant. Actual </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <mat-form-field floatLabel="never">
+                    <input matInput placeholder="Minimo" [value]="element.cantidadActual" [(ngModel)]="element.cantidadActual" (change)="cambioaEditar()" >
+                </mat-form-field>
+            </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="observaciones">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Notas </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <mat-form-field floatLabel="never">
+                    <input matInput placeholder="Minimo" [value]="element.observaciones" [(ngModel)]="element.observaciones" (change)="cambioaEditar()" >
+                </mat-form-field>
+            </mat-cell>
+      </ng-container>
+      <!-- Botones para eliminar y modificar -->
+      <ng-container matColumnDef="buttons">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let group" (click)="$event.stopPropagation()">
+              <button mat-raised-button color="warn" (click)="eliminarProducto(group)"><i class="far fa-trash-alt"></i> Eliminar</button>
+              <button mat-raised-button (click)="editarProducto(group)" *ngIf="esEdicion"><i class="fas fa-pen-alt"></i> Modificar</button>
+          </mat-cell>
+      </ng-container>
+      <!-- Arreglo displayedColums contiene las columnas que se ven en la lista -->
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>  
+  </mat-table>
+</div>

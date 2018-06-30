@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { DataSource } from '@angular/cdk/collections';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { ConfirmBoxComponent } from '../../confirm-box.component';
@@ -18,7 +18,7 @@ export class RubrosComponent {
     nombre: ''
   }
 
-  displayedColumns = [ 'codigo', 'nombre', 'buttons']
+  displayedColumns = [ 'codigo', 'nombre', 'buttons'];
   dataSource = new RubrosDataSource(this.rs);
 
   esEdicion = false;
@@ -68,7 +68,7 @@ export class RubrosDataSource extends DataSource<any>{
   constructor(private rs: RubrosService) {
     super();
   }
-  
+
   connect() {
     return this.rs.getRubro().map(actions => {
     return actions.map(a => {

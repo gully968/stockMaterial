@@ -8,12 +8,15 @@
               <mat-menu #menutablas="matMenu">
                   <button mat-menu-item routerLink="/tabla-proveedores"><i class="fas fa-people-carry"></i> Tabla Proveedores</button>
                   <button mat-menu-item routerLink="/tabla-clientes"><i class="fas fa-hand-holding-usd"></i> Tabla Clientes</button>
-                  <button mat-menu-item><i class="fab fa-product-hunt"></i> Tabla Productos</button>
+                  <button mat-menu-item routerLink="/tabla-productos"><i class="fab fa-product-hunt"></i> Tabla Productos</button>
                   <button mat-menu-item routerLink="/tabla-rubros"><i class="far fa-folder-open"></i> Tabla Rubros</button>
               </mat-menu>
               <button mat-button [matMenuTriggerFor]="menulistados"><i class="fas fa-search-plus fa-2x"></i> Listados</button>
               <mat-menu #menulistados="matMenu">
-                  <button mat-menu-item routerLink="/listado-rubros"> Listado de Rubros</button>
+                <button mat-menu-item routerLink="/listado-proveedores"> Listado de Proveedores</button>  
+                <button mat-menu-item routerLink="/listado-clientes"> Listado de Clientes</button>  
+                <button mat-menu-item routerLink="/listado-rubros"> Listado de Rubros</button>
+
               </mat-menu>
         </mat-card>
     </main>

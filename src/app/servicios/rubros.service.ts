@@ -12,7 +12,6 @@ export class RubrosService {
   rubrosCol: AngularFirestoreCollection<Rubros>;
   rubrosDoc: AngularFirestoreDocument<Rubros>;
   rubrosObs: Observable<Rubros[]>;
-  rubrosArr: Rubros[];
 
   constructor(private afs: AngularFirestore) { }
 
@@ -42,7 +41,6 @@ export class RubrosService {
         return data;
       });
     });
-    console.log(this.rubrosObs)
     return this.rubrosObs;
   }
 }

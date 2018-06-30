@@ -1,34 +1,33 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatSort, PageEvent } from '@angular/material';
-import { RubrosService } from '../../servicios/rubros.service';
-import { Rubros } from '../../clases/rubros';
+import { ClientesService } from '../../servicios/clientes.service';
+import { Clientes } from '../../clases/clientes';
 import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
 
 @Component({
-  selector: 'app-listado-rubros',
-  templateUrl: './listado-rubros.component.html',
-  styleUrls: ['./listado-rubros.component.css']
+  selector: 'app-listado-clientes',
+  templateUrl: './listado-clientes.component.html',
+  styleUrls: ['./listado-clientes.component.css']
 })
-export class ListadoRubrosComponent implements AfterViewInit {
+export class ListadoClientesComponent implements AfterViewInit {
 
-  displayedColumns = ['codigo', 'nombre'];
-  dataSource = new MatTableDataSource<Rubros>();
+  displayedColumns = ['codigo', 'nombre', 'direccion', 'telefono', 'cuit'];
+  dataSource = new MatTableDataSource<Clientes>();
 
   length = 100;
   pageSize = 5;
   pageSizeOptions: number[] = [5, 10, 25, 100];
-
   pageEvent: PageEvent;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(public rs: RubrosService) {}
+  constructor(public cs: ClientesService) { }
 
-  ngAfterViewInit() {
-    this.rs.getRubrosObservable().subscribe(data => {
+  ngAfterViewInit(){
+    this.cs.getClientesObservable().subscribe(data => {
       this.dataSource.data = data;
-    });
+    })
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }

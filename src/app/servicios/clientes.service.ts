@@ -31,4 +31,15 @@ export class ClientesService {
     this.clientesDoc = this.afs.doc(`clientes/${cliente.id}`);
     this.clientesDoc.update(cliente);
   }
+
+  getClientesObservable(){
+    this.clientesObs = this.afs.collection('clientes').snapshotChanges().map(changes => {
+      return changes.map(a => {
+        const data = a.payload.doc.data() as Clientes;
+        data.id = a.payload.doc.id;
+        return data;
+      });
+    });
+    return this.clientesObs;
+  }
 }

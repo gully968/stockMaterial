@@ -4,14 +4,20 @@ import { AppComponent } from './app.component';
 /* MODULOS PARA ROUTING */
 import { ProveedoresComponent } from './tablas/proveedores/proveedores.component';
 import { ClientesComponent } from './tablas/clientes/clientes.component';
+import { ProductosComponent } from './tablas/productos/productos.component';
 import { RubrosComponent } from './tablas/rubros/rubros.component';
 import { ListadoRubrosComponent } from './listados/listado-rubros/listado-rubros.component';
+import { ListadoClientesComponent } from './listados/listado-clientes/listado-clientes.component';
+import { ListadoProveedoresComponent } from './listados/listado-proveedores/listado-proveedores.component';
 
 const routes: Routes = [
   { path: 'tabla-proveedores', component: ProveedoresComponent },
   { path: 'tabla-clientes', component: ClientesComponent },
+  { path: 'tabla-productos', component: ProductosComponent },
   { path: 'tabla-rubros', component: RubrosComponent},
   { path: 'listado-rubros', component: ListadoRubrosComponent },
+  { path: 'listado-clientes', component: ListadoClientesComponent },
+  { path: 'listado-proveedores', component: ListadoProveedoresComponent },
   { path: 'inicio', component: AppComponent}
 ];
 
