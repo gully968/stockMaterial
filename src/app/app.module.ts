@@ -10,6 +10,7 @@ import { MatButtonModule,
          MatTableModule,
          MatPaginatorModule,
          MatSelectModule,
+         MatTabsModule,
          MatSortModule } from '@angular/material';
 import { } from '@angular/cdk';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -69,6 +70,7 @@ import { ListadoProductosComponent } from './listados/listado-productos/listado-
     MatSortModule,
     MatPaginatorModule,
     MatSelectModule,
+    MatTabsModule,
     /* Routings */
     AppRoutingModule,
     /* Angular Firestore */

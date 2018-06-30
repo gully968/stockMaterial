@@ -1,16 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { DataSource } from '@angular/cdk/collections';
-import { MatDialog, MatDialogRef } from '@angular/material';
+import { MatDialog, MatDialogRef, MatTableDataSource } from '@angular/material';
 import { ConfirmBoxComponent } from '../../confirm-box.component';
 import { RubrosService } from '../../servicios/rubros.service';
 import { ProductosService } from '../../servicios/productos.service';
+import { Rubros } from '../../clases/rubros';
 
 @Component({
   selector: 'app-productos',
   templateUrl: './productos.component.html',
   styleUrls: ['./productos.component.css']
 })
-export class ProductosComponent {
+export class ProductosComponent implements AfterViewInit {
 
   dialogRef: MatDialogRef<ConfirmBoxComponent>;
 
@@ -37,15 +38,23 @@ export class ProductosComponent {
     'buttons'];
 
   dataSource = new ProductosDataSource(this.ps);
+  dataRubros = [];
+
   esEdicion = false;
 
   constructor(public ps: ProductosService, public dialogo: MatDialog, public rubser: RubrosService) { }
-  
-  listaRubros = this.rubser.getRubrosObservable().subscribe();
+  ngAfterViewInit(){
+    this.rubser.getRubrosObservable().subscribe(data => { 
+      this.dataRubros = data;
+      console.log(this.dataRubros)
+    })
+
+  }
 
   addProducto(){
     if (this.productosDetalle.codigo.length !== 0 &&
-        this.productosDetalle.nombre.length !== 0)
+        this.productosDetalle.nombre.length !== 0 &&
+        this.productosDetalle.rubro.length !== 0)
         {
           this.ps.addProducto(this.productosDetalle);
           this.productosDetalle = {
@@ -78,7 +87,6 @@ export class ProductosComponent {
 
   cambioaEditar(){
     this.esEdicion = true;
-
     }
 
   editarProducto(valor) {
