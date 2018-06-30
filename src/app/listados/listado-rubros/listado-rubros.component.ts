@@ -1,32 +1,43 @@
-import { Component } from '@angular/core';
-import { MatTableDataSource } from '@angular/material';
+import { Component, ViewChild } from '@angular/core';
+import { MatTableDataSource, MatPaginator, MatSort, PageEvent } from '@angular/material';
 import { RubrosService } from '../../servicios/rubros.service';
 import { Rubros } from '../../clases/rubros';
+import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
+
 @Component({
   selector: 'app-listado-rubros',
   templateUrl: './listado-rubros.component.html',
   styleUrls: ['./listado-rubros.component.css']
 })
-export class ListadoRubrosComponent {
-  /* displayedColumns = ['codigo', 'nombre']; */
-  /* dataSource = new MatTableDataSource(ELEMENT_DATA); */
-  /* this.CountryService.GetCountries()
-    .subscribe(countries => {
-        this.myGridOptions.rowData = countries as CountryData[]
-    }) */
-  elementos = JSON.stringify(this.rs.getRubro());
+export class ListadoRubrosComponent implements AfterViewInit {
 
+  displayedColumns = ['codigo', 'nombre'];
+  dataSource = new MatTableDataSource<Rubros>();
 
-  /* applyFilter(filterValue: string) {
-    filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+  length = 100;
+  pageSize = 5;
+  pageSizeOptions: number[] = [5, 10, 25, 100];
+
+  pageEvent: PageEvent;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
+  constructor(public rs: RubrosService) {}
+
+  ngAfterViewInit() {
+    this.rs.getRubrosObservable().subscribe(data => {
+      this.dataSource.data = data;
+      console.log(this.dataSource.data);
+    });
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); 
+    filterValue = filterValue.toLowerCase();
     this.dataSource.filter = filterValue;
   }
-   */constructor(public rs: RubrosService) { 
-    console.log(this.elementos);
-  }
 
-
+ 
 }
-
-

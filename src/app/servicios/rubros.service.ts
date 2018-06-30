@@ -33,16 +33,16 @@ export class RubrosService {
     this.rubrosDoc.update(rubro);
   }
 
-  getRubroArray(){
+  getRubrosObservable(){
 
-    /* this.accountsObservable.subscribe(accounts => {
-      this.accountsArray = accounts; */
-    return this.afs.collection('rubros').snapshotChanges().map((rubros) => {
-      return rubros.map(a => {
+    this.rubrosObs = this.afs.collection('rubros').snapshotChanges().map(changes => {
+      return changes.map(a => {
         const data = a.payload.doc.data() as Rubros;
-        const id = a.payload.doc.id;
-        return { id, ...data }
-      })
+        data.id = a.payload.doc.id;
+        return data;
+      });
     });
+    console.log(this.rubrosObs)
+    return this.rubrosObs;
   }
 }

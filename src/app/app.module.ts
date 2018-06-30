@@ -8,7 +8,10 @@ import { MatButtonModule,
          MatCard,
          MatInputModule,
          MatTableModule,
+         MatPaginatorModule,
+         MatSelectModule,
          MatSortModule } from '@angular/material';
+import { } from '@angular/cdk';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
 import { FormsModule } from '@angular/forms';
@@ -47,7 +50,6 @@ import { firestore } from 'firebase';
 
   imports: [
     BrowserModule,
-    /* Material y Animations */
     BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
@@ -56,6 +58,8 @@ import { firestore } from 'firebase';
     MatTableModule,
     MatDialogModule,
     MatSortModule,
+    MatPaginatorModule,
+    MatSelectModule,
     /* Routings */
     AppRoutingModule,
     /* Angular Firestore */
