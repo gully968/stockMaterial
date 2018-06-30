@@ -40,6 +40,8 @@ export class ProductosComponent {
   esEdicion = false;
 
   constructor(public ps: ProductosService, public dialogo: MatDialog, public rubser: RubrosService) { }
+  
+  listaRubros = this.rubser.getRubrosObservable().subscribe();
 
   addProducto(){
     if (this.productosDetalle.codigo.length !== 0 &&
@@ -76,6 +78,7 @@ export class ProductosComponent {
 
   cambioaEditar(){
     this.esEdicion = true;
+
     }
 
   editarProducto(valor) {
