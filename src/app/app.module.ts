@@ -41,6 +41,7 @@ import { ClientesService } from './servicios/clientes.service';
 import { ProductosService } from './servicios/productos.service';
 import { RubrosService } from './servicios/rubros.service';
 import { firestore } from 'firebase';
+import { ListadoProductosComponent } from './listados/listado-productos/listado-productos.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +53,8 @@ import { firestore } from 'firebase';
     ListadoRubrosComponent,
     ListadoClientesComponent,
     ListadoProveedoresComponent,
-    ProductosComponent
+    ProductosComponent,
+    ListadoProductosComponent
      ],
 
   imports: [
