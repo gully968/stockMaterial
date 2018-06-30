@@ -1,27 +1,35 @@
-# StockMaterial
+# StockMaterial Version 1.0
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.7.
+Este es un sistema de inventario basico para uso en pequeños comercios.  Se encuentra actualmente en desarrollo. Actualmente los modulos incluidos son:
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+29-06-2018 
+Tablas de Clientes, Proveedores, Productos y Rubros
+    En estos se dan altas, bajas y modificaciones respectivas.
 
-## Code scaffolding
+Listados de Clientes, Proveedores, Rubros
+    En estos se consultan en pantalla (por ahora no tiene posibilidad de pasar a pdf pero la tendra a futuro)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+    Productos:
 
-## Build
+        Se comienza el desarrollo y de hecho se pueden agregar productos pero falta dar forma a la vista para poder
+        mostrar los datos de forma mas adecuada.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+A realizar:         
+    Modulos de ingreso y salida de productos
+    Modulos de Listas de precio con busquedas
+    Modulos de impresion y envio de listas por email
+    Modulos de Actualizacion de precios global
+    Modulos de accesorios.
 
-## Running unit tests
+    
+Este proyecto fue generado mediante [Angular CLI](https://github.com/angular/angular-cli) version 6.0.7.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Desarrollo de servidor
 
-## Running end-to-end tests
+Correr `ng serve` para hacer deploy del servidor luego desde un navegador ir a la dirección local: `http://localhost:4200/`. 
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Para mas ayuda sobre Angular CLI:
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+ `ng help` 
+ [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
