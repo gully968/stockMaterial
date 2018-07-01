@@ -9,13 +9,13 @@
       </mat-form-field>
     </div>
     <!-- Tabla de clientes -->
-    <mat-table #table [dataSource]="dataSource">
+    <mat-table #table [dataSource]="dataSource" matSort class="mat-elevation-z8">
       <ng-container matColumnDef="codigo">
-        <mat-header-cell *matHeaderCellDef> Código   </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Código   </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.codigo}} </mat-cell>
       </ng-container>
       <ng-container matColumnDef="nombre">
-        <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.nombre}} </mat-cell>
       </ng-container>
       <ng-container matColumnDef="direccion">

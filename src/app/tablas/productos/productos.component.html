@@ -83,7 +83,7 @@
             <mat-header-cell *matHeaderCellDef mat-sort-header> Cant. Minima </mat-header-cell>
             <mat-cell *matCellDef="let element">
                 <mat-form-field floatLabel="never">
-                    <input matInput placeholder="Minimo" [value]="element.cantidadMinima" [(ngModel)]="element.cantidadMinima" (change)="cambioaEditar()" >
+                    <input matInput placeholder="Stock Minimo" [value]="element.cantidadMinima" [(ngModel)]="element.cantidadMinima" (change)="cambioaEditar()" >
                 </mat-form-field>
             </mat-cell>
       </ng-container>
@@ -91,7 +91,7 @@
             <mat-header-cell *matHeaderCellDef mat-sort-header> Cant. Actual </mat-header-cell>
             <mat-cell *matCellDef="let element">
                 <mat-form-field floatLabel="never">
-                    <input matInput placeholder="Minimo" [value]="element.cantidadActual" [(ngModel)]="element.cantidadActual" (change)="cambioaEditar()" >
+                    <input matInput placeholder="Stock Actual" [value]="element.cantidadActual" [(ngModel)]="element.cantidadActual" (change)="cambioaEditar()" >
                 </mat-form-field>
             </mat-cell>
       </ng-container>
@@ -99,7 +99,7 @@
             <mat-header-cell *matHeaderCellDef mat-sort-header> Notas </mat-header-cell>
             <mat-cell *matCellDef="let element">
                 <mat-form-field floatLabel="never">
-                    <input matInput placeholder="Minimo" [value]="element.observaciones" [(ngModel)]="element.observaciones" (change)="cambioaEditar()" >
+                    <input matInput placeholder="Observaciones" [value]="element.observaciones" [(ngModel)]="element.observaciones" (change)="cambioaEditar()" >
                 </mat-form-field>
             </mat-cell>
       </ng-container>
