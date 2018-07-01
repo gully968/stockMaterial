@@ -35,6 +35,8 @@ import { ListadoRubrosComponent } from './listados/listado-rubros/listado-rubros
 import { ListadoClientesComponent } from './listados/listado-clientes/listado-clientes.component';
 import { ListadoProveedoresComponent } from './listados/listado-proveedores/listado-proveedores.component';
 import { ProductosComponent } from './tablas/productos/productos.component';
+import { ListadoProductosComponent } from './listados/listado-productos/listado-productos.component';
+import { ListadoPreciosComponent } from './listados/listado-precios/listado-precios.component';
 import { ConfirmBoxComponent } from './confirm-box.component';
 /* Servicios */
 import { ProveedoresService } from './servicios/proveedores.service';
@@ -42,7 +44,6 @@ import { ClientesService } from './servicios/clientes.service';
 import { ProductosService } from './servicios/productos.service';
 import { RubrosService } from './servicios/rubros.service';
 import { firestore } from 'firebase';
-import { ListadoProductosComponent } from './listados/listado-productos/listado-productos.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +56,8 @@ import { ListadoProductosComponent } from './listados/listado-productos/listado-
     ListadoClientesComponent,
     ListadoProveedoresComponent,
     ProductosComponent,
-    ListadoProductosComponent
+    ListadoProductosComponent,
+    ListadoPreciosComponent
      ],
 
   imports: [
