@@ -12,7 +12,7 @@ import { MatButtonModule,
          MatSelectModule,
          MatTabsModule,
          MatSortModule } from '@angular/material';
-import { } from '@angular/cdk';
+/* import { } from '@angular/cdk'; */
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
 import { FormsModule } from '@angular/forms';
@@ -37,13 +37,16 @@ import { ListadoProveedoresComponent } from './listados/listado-proveedores/list
 import { ProductosComponent } from './tablas/productos/productos.component';
 import { ListadoProductosComponent } from './listados/listado-productos/listado-productos.component';
 import { ListadoPreciosComponent } from './listados/listado-precios/listado-precios.component';
+import { IngresosComponent } from './ingresos/ingresos.component';
 import { ConfirmBoxComponent } from './confirm-box.component';
+
 /* Servicios */
 import { ProveedoresService } from './servicios/proveedores.service';
 import { ClientesService } from './servicios/clientes.service';
 import { ProductosService } from './servicios/productos.service';
 import { RubrosService } from './servicios/rubros.service';
-import { firestore } from 'firebase';
+import { IngresosService } from './servicios/ingresos.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +60,8 @@ import { firestore } from 'firebase';
     ListadoProveedoresComponent,
     ProductosComponent,
     ListadoProductosComponent,
-    ListadoPreciosComponent
+    ListadoPreciosComponent,
+    IngresosComponent
      ],
 
   imports: [
@@ -82,7 +86,6 @@ import { firestore } from 'firebase';
     FormsModule,
     AngularFirestoreModule.enablePersistence()
   ],
-  
   entryComponents: [
     ConfirmBoxComponent
   ],
@@ -90,7 +93,8 @@ import { firestore } from 'firebase';
     ProveedoresService,
     ClientesService,
     ProductosService,
-    RubrosService
+    RubrosService,
+    IngresosService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,13 +1,13 @@
 <h3>Tabla de Productos</h3>
 <mat-tab-group>
     <mat-tab label="Datos Básicos">
-        <mat-form-field>
+        <mat-form-field style="width:100px !important">
           <input matInput placeholder="Código" [(ngModel)]="productosDetalle.codigo">
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field style="width:500px !important">
           <input matInput placeholder="Nombre" [(ngModel)]="productosDetalle.nombre">
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field style="width:350px !important">
             <mat-select placeholder="Rubro" [(ngModel)]="productosDetalle.rubro">
                 <mat-option *ngFor="let item of dataRubros" [value]="item.nombre">
                     {{item.nombre}}
@@ -17,18 +17,18 @@
     </mat-tab>
     <mat-tab label="Precios">
         <mat-form-field>
-          <input matInput placeholder="Valor Compra" [(ngModel)]="productosDetalle.precioCompra">
+          <input matInput type="number" placeholder="Valor Compra" [(ngModel)]="productosDetalle.precioCompra">
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Valor Venta" [(ngModel)]="productosDetalle.precioVenta">
+          <input matInput type="number" placeholder="Valor Venta" [(ngModel)]="productosDetalle.precioVenta">
         </mat-form-field>
     </mat-tab>
     <mat-tab label="Cantidades">
         <mat-form-field>
-          <input matInput placeholder="Minimo" [(ngModel)]="productosDetalle.cantidadMinima">
+          <input matInput type="number" placeholder="Minimo" [(ngModel)]="productosDetalle.cantidadMinima">
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Stock" [(ngModel)]="productosDetalle.cantidadActual">
+          <input matInput type="number" placeholder="Stock" [(ngModel)]="productosDetalle.cantidadActual">
         </mat-form-field>
     </mat-tab>
     <mat-tab label="Notas / Alta">
@@ -37,15 +37,15 @@
         </mat-form-field>
     </mat-tab>
 </mat-tab-group>
-<div>
+<div style="margin-top: 15px !important; margin-bottom: 15px !important;">
     <button mat-raised-button (click)="addProducto()" color="primary" style="margin-left: 10px;">Agregar</button> <br>
 </div>
 <!-- Tabla de despliegue de datos con posibilidad de editar -->
 <div class="example-container mat-elevation-z8">
   <mat-table #table [dataSource]="dataSource" matSort>
-      <ng-container matColumnDef="codigo">
+      <ng-container matColumnDef="codigo" >
           <mat-header-cell *matHeaderCellDef mat-sort-header> Código </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.codigo}} </mat-cell>
+          <mat-cell *matCellDef="let element"> {{element.codigo | number:'3.0-0' }} </mat-cell>
       </ng-container>
       <ng-container matColumnDef="nombre">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>

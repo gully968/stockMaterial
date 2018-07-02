@@ -46,7 +46,7 @@ export class ProductosComponent implements AfterViewInit {
   ngAfterViewInit(){
     this.rubser.getRubrosObservable().subscribe(data => { 
       this.dataRubros = data;
-      console.log(this.dataRubros)
+
     })
 
   }

@@ -3,11 +3,10 @@
   </div>
   <div class="example-container mat-elevation-z8">
     <div class="example-header">
-      <mat-form-field>
+      <mat-form-field style="width:400px !important; margin-left: 40px !important;">
         <mat-label><i class="fab fa-searchengin"> Buscar</i></mat-label>
         <input matInput (keyup)="applyFilter($event.target.value)">
       </mat-form-field>
-      
     </div>
     <!-- Tabla de clientes -->
     <mat-table #table [dataSource]="dataSource" matSort class="mat-elevation-z8">
@@ -37,7 +36,7 @@
       </ng-container>
       <ng-container matColumnDef="cantidadActual">
           <mat-header-cell *matHeaderCellDef> Stock Actual </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.cantidadActual}} </mat-cell>
+          <mat-cell *matCellDef="let element" >{{element.cantidadActual}}</mat-cell>
       </ng-container>
       <ng-container matColumnDef="observaciones">
           <mat-header-cell *matHeaderCellDef> Notas </mat-header-cell>

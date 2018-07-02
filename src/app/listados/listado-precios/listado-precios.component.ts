@@ -26,15 +26,16 @@ export class ListadoPreciosComponent implements AfterViewInit {
   ngAfterViewInit(){
     this.ps.getProductosObservable().subscribe(data => {
       this.dataSource.data = data ;
-    })
-      this.dataSource.paginator = this.paginator;
+   })
+    this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); 
     filterValue = filterValue.toLowerCase();
     this.dataSource.filter = filterValue;
-  }
+   }
+
 
   imprimirPDF(){
     // Landscape export, 2×4 inches
@@ -72,5 +73,4 @@ export class ListadoPreciosComponent implements AfterViewInit {
     }
     doc.save('prueba.pdf');
   }
-
 }

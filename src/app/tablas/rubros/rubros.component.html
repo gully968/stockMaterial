@@ -6,10 +6,12 @@
   <mat-form-field>
     <input matInput placeholder="Código" [(ngModel)]="rubrosDetalle.codigo">
   </mat-form-field>
-  <mat-form-field>
+  <mat-form-field style="width:500px !important">
     <input matInput placeholder="Nombre" [(ngModel)]="rubrosDetalle.nombre">
   </mat-form-field>
-  <button mat-raised-button (click)="addRubro()" color="primary" style="margin-left: 10px;">Agregar</button>
+</div>
+<div style="margin-top: 15px !important; margin-bottom: 15px !important;">
+    <button mat-raised-button (click)="addRubro()" color="primary" style="margin-left: 10px;">Agregar</button>
 </div>
 <!-- Tabla de despliegue de datos con posibilidad de editar -->
 <div class="example-container mat-elevation-z8">

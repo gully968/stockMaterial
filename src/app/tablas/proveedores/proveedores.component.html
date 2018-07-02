@@ -3,21 +3,23 @@
     <h3>Tabla Proveedores</h3>
 </div>
 <div>
-    <mat-form-field>
+    <mat-form-field style="width:60px !important">
       <input matInput placeholder="Código" [(ngModel)]="proveedoresDetalle.codigo">
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field style="width:200px !important">
       <input matInput placeholder="Nombre" [(ngModel)]="proveedoresDetalle.nombre">
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field style="width:200px !important">
       <input matInput placeholder="Dirección" [(ngModel)]="proveedoresDetalle.direccion">
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field style="width:100px !important">
       <input matInput placeholder="Teléfono" [(ngModel)]="proveedoresDetalle.telefono">
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field style="width:100px !important">
       <input matInput placeholder="C.U.I.T." [(ngModel)]="proveedoresDetalle.cuit">
     </mat-form-field>
+</div>
+<div style="margin-top: 15px !important; margin-bottom: 15px !important;">
     <button mat-raised-button (click)="addProveedor()" color="primary" style="margin-left: 10px;">Agregar</button>
 </div>
 <!-- Tabla de despliegue de datos con posibilidad de editar -->
