@@ -4,7 +4,6 @@ import { MatDialog, MatDialogRef, MatTableDataSource } from '@angular/material';
 import { ConfirmBoxComponent } from '../../confirm-box.component';
 import { RubrosService } from '../../servicios/rubros.service';
 import { ProductosService } from '../../servicios/productos.service';
-import { Rubros } from '../../clases/rubros';
 
 @Component({
   selector: 'app-productos',
@@ -46,7 +45,6 @@ export class ProductosComponent implements AfterViewInit {
   ngAfterViewInit(){
     this.rubser.getRubrosObservable().subscribe(data => { 
       this.dataRubros = data;
-
     })
 
   }

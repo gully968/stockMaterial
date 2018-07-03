@@ -11,7 +11,14 @@ import { MatButtonModule,
          MatPaginatorModule,
          MatSelectModule,
          MatTabsModule,
-         MatSortModule } from '@angular/material';
+         MatDividerModule,
+         MatSortModule,
+         MatNativeDateModule } from '@angular/material';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+
+
+
 /* import { } from '@angular/cdk'; */
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
@@ -37,7 +44,7 @@ import { ListadoProveedoresComponent } from './listados/listado-proveedores/list
 import { ProductosComponent } from './tablas/productos/productos.component';
 import { ListadoProductosComponent } from './listados/listado-productos/listado-productos.component';
 import { ListadoPreciosComponent } from './listados/listado-precios/listado-precios.component';
-import { IngresosComponent } from './ingresos/ingresos.component';
+import { IngresosComponent, DialogoComponent } from './ingresos/ingresos.component';
 import { ConfirmBoxComponent } from './confirm-box.component';
 
 /* Servicios */
@@ -61,7 +68,8 @@ import { IngresosService } from './servicios/ingresos.service';
     ProductosComponent,
     ListadoProductosComponent,
     ListadoPreciosComponent,
-    IngresosComponent
+    IngresosComponent,
+    DialogoComponent
      ],
 
   imports: [
@@ -77,6 +85,10 @@ import { IngresosService } from './servicios/ingresos.service';
     MatPaginatorModule,
     MatSelectModule,
     MatTabsModule,
+    MatDividerModule,
+    MatIconModule,
+    MatDatepickerModule,
+    MatNativeDateModule ,
     /* Routings */
     AppRoutingModule,
     /* Angular Firestore */
@@ -87,7 +99,8 @@ import { IngresosService } from './servicios/ingresos.service';
     AngularFirestoreModule.enablePersistence()
   ],
   entryComponents: [
-    ConfirmBoxComponent
+    ConfirmBoxComponent,
+    DialogoComponent
   ],
   providers: [
     ProveedoresService,
