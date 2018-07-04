@@ -1,8 +1,8 @@
-import { Component, Inject, AfterViewInit } from '@angular/core';
+import { Component, Inject, AfterViewInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { ProveedoresService } from '../servicios/proveedores.service';
 import { ProductosService } from '../servicios/productos.service';
 import { IngresosService } from '../servicios/ingresos.service';
-import { Proveedores } from '../clases/proveedores';
+import { MovimientosDetalle } from '../clases/movimientos-detalle';
 import { DataSource } from '@angular/cdk/collections';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Form } from '@angular/forms';
@@ -15,32 +15,26 @@ import { Form } from '@angular/forms';
 })
 export class IngresosComponent implements AfterViewInit {
 
-  cantidad: 0;
-  precioCompra: 0;
   dataProveedores = [];
   dataProductos = [];
-  ingresoDetalle = {
+  dataItems = [];
+
+  movimientos = {
     tipoMovimiento: 'Ingreso',
     fecha: '',
-    referencia: '',
-    producto: '',
-    rubro: '',
     proveedor: '',
-    cantidadEntrada: '',
-    precioEntrada: '',
-    observaciones: ''
-  }
-  constructor(public provserv: ProveedoresService, 
+    referencia: '',
+    observaciones: '',
+  };
+
+  constructor(public provserv: ProveedoresService,
               public prodserv: ProductosService,
               public dialogo: MatDialog) { }
 
   ngAfterViewInit(){
-    this.provserv.getProveedoresObservable().subscribe(data => { 
+    this.provserv.getProveedoresObservable().subscribe(data => {
       this.dataProveedores = data;
     });
-    
-    console.log(this.dataProductos);
-    console.log(this.dataProveedores);
   }
 
   openDialog(): void {
@@ -51,10 +45,8 @@ export class IngresosComponent implements AfterViewInit {
 
 
     dialogRef.afterClosed().subscribe(result => {
-      this.dataProductos = result;
-      console.log(this.dataProductos);
-      console.log(this.cantidad);
-      console.log(this.precioCompra);
+      this.dataItems = result;
+      console.log('Data items:', this.dataItems)
     });
   }
 }
@@ -65,18 +57,29 @@ export class IngresosComponent implements AfterViewInit {
 })
 export class DialogoComponent implements AfterViewInit {
 
+  movimientosDetalle = {
+    referencia: '',
+    producto: '',
+    cantidadEntrada: 0,
+    precioEntrada: 0
+  };
+
   constructor(
     public dialogRef: MatDialogRef<DialogoComponent>, public prodserv: ProductosService,
-    
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+    @Inject(MAT_DIALOG_DATA) public data: MovimientosDetalle) {}
+
+    @Output () emitEvent: EventEmitter<any> = new EventEmitter<any>();
+
     dataProductos = [];
+
     ngAfterViewInit(){
       this.prodserv.getProductosObservable().subscribe(data => {
         this.dataProductos = data;
       });
     }
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
 
+    onNoClick(): void {
+    this.dialogRef.close();
+    }
 }

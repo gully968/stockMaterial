@@ -1,21 +1,24 @@
-<h1 mat-dialog-title>Agrega Producto</h1>
-<div mat-dialog-content>
-    <p>Pro favor seleccione el nombre del producto,  cantidad y precio a continuación pulse Agregar.</p>
-    <mat-form-field style="width: 450px !important;">
-        <mat-select placeholder="Producto" >
-            <mat-option *ngFor="let item of dataProductos" [value]="item.nombre">
-                {{item.nombre}}
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
-    <mat-form-field>
-        <input matInput placeholder="Cantidad" name="cantidad" [(ngModel)]="cantidad">
-    </mat-form-field>
-    <mat-form-field>
-        <input matInput placeholder="Precio" name="precioCompra" [(ngModel)]="precioCompra">
-    </mat-form-field>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Cancelar</button>
-  <button mat-button [mat-dialog-close]="dataProductos" cdkFocusInitial>Agregar</button>
-</div>
+    <h1 mat-dialog-title>Agrega Producto</h1>
+    <div mat-dialog-content>
+        <p>Pro favor seleccione el nombre del producto,  cantidad y precio a continuación pulse Agregar.</p>
+        <mat-form-field style="width: 450px !important;">
+            <mat-select #producto placeholder="Producto" name="producto" [(ngModel)]="movimientosDetalle.producto">
+                <mat-option *ngFor="let item of dataProductos" [value]="item.nombre">
+                    {{item.nombre}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <input  matInput placeholder="Cantidad" name="cantidad" [(ngModel)]="movimientosDetalle.cantidadEntrada">
+        </mat-form-field>
+        <mat-form-field>
+            <input  matInput placeholder="Precio" name="precioCompra" [(ngModel)]="movimientosDetalle.precioEntrada">
+        </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancelar</button>
+    <button mat-button [mat-dialog-close]="movimientosDetalle" cdkFocusInitial>Agregar</button>
+    </div>
+    <div>
+        {{movimientosDetalle.producto}} -- {{movimientosDetalle.cantidadEntrada}} -- {{movimientosDetalle.precioEntrada}}
+    </div>

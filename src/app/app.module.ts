@@ -45,6 +45,7 @@ import { ProductosComponent } from './tablas/productos/productos.component';
 import { ListadoProductosComponent } from './listados/listado-productos/listado-productos.component';
 import { ListadoPreciosComponent } from './listados/listado-precios/listado-precios.component';
 import { IngresosComponent, DialogoComponent } from './ingresos/ingresos.component';
+import { DetalleIngresoComponent } from './ingresos/detalle-ingreso.component';
 import { ConfirmBoxComponent } from './confirm-box.component';
 
 /* Servicios */
@@ -69,7 +70,8 @@ import { IngresosService } from './servicios/ingresos.service';
     ListadoProductosComponent,
     ListadoPreciosComponent,
     IngresosComponent,
-    DialogoComponent
+    DialogoComponent,
+    DetalleIngresoComponent
      ],
 
   imports: [
