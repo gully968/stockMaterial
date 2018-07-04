@@ -44,8 +44,8 @@ import { ListadoProveedoresComponent } from './listados/listado-proveedores/list
 import { ProductosComponent } from './tablas/productos/productos.component';
 import { ListadoProductosComponent } from './listados/listado-productos/listado-productos.component';
 import { ListadoPreciosComponent } from './listados/listado-precios/listado-precios.component';
-import { IngresosComponent, DialogoComponent } from './ingresos/ingresos.component';
-import { DetalleIngresoComponent } from './ingresos/detalle-ingreso.component';
+import { IngresosComponent } from './ingresos/ingresos.component';
+import { IngresosDetalleComponent } from './ingresos/ingresos-detalle/ingresos-detalle.component';
 import { ConfirmBoxComponent } from './confirm-box.component';
 
 /* Servicios */
@@ -54,7 +54,6 @@ import { ClientesService } from './servicios/clientes.service';
 import { ProductosService } from './servicios/productos.service';
 import { RubrosService } from './servicios/rubros.service';
 import { IngresosService } from './servicios/ingresos.service';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,9 +69,8 @@ import { IngresosService } from './servicios/ingresos.service';
     ListadoProductosComponent,
     ListadoPreciosComponent,
     IngresosComponent,
-    DialogoComponent,
-    DetalleIngresoComponent
-     ],
+    IngresosDetalleComponent
+    ],
 
   imports: [
     BrowserModule,
@@ -101,8 +99,7 @@ import { IngresosService } from './servicios/ingresos.service';
     AngularFirestoreModule.enablePersistence()
   ],
   entryComponents: [
-    ConfirmBoxComponent,
-    DialogoComponent
+    ConfirmBoxComponent
   ],
   providers: [
     ProveedoresService,

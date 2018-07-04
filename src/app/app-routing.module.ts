@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'listado-productos', component: ListadoProductosComponent },
   { path: 'listado-rubros', component: ListadoRubrosComponent },
   { path: 'listado-precios', component: ListadoPreciosComponent},
-  { path: 'ingresos', component: IngresosComponent },
+  { path: 'ingresos', component: IngresosComponent},
   { path: 'inicio', component: AppComponent}
 ];
 
