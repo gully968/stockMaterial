@@ -1,3 +1,57 @@
-<h3>Ingresos Principal</h3>
-<hr>
-<app-ingresos-detalle></app-ingresos-detalle>
+<mat-card>
+    <h3>Ingresos Principal</h3>
+</mat-card>
+<form >
+    <mat-card>
+        <!-- Fecha del movimiento -->
+        <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Fecha" name="fecha" [(ngModel)]="regMovimiento.fecha" >
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <!-- Proveedor Nombre -->
+        <mat-form-field>
+            <mat-select placeholder="Proveedor" name="proveedor" [(ngModel)]="regMovimiento.proveedor">
+                <mat-option *ngFor="let item of datosProveedor" [value]="item.nombre">
+                    {{item.nombre}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <!-- Referencia Input texto -->
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Referencia" name="referencia" [(ngModel)]="regMovimiento.referencia"  >
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <textarea matInput placeholder="Observaciones" name="observaciones" [(ngModel)]="regMovimiento.observaciones" ></textarea>
+        </mat-form-field>
+    </mat-card>
+    <mat-card>
+        <mat-form-field>
+            <mat-select placeholder="Producto" name="producto" [(ngModel)]="regMovimientoDetalle.producto">
+                <mat-option *ngFor="let item of datosProducto" [value]="item.nombre">
+                    {{item.nombre}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <input matInput type="number" placeholder="Cantidad" name="cantidadEntrada" [(ngModel)]="regMovimientoDetalle.cantidadEntrada">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <input matInput type="number" placeholder="Precio Compra" name="precioEntrada" [(ngModel)]="regMovimientoDetalle.precioEntrada">
+        </mat-form-field>
+    </mat-card>
+</form>    
+
+<app-ingresos-detalle 
+
+    [movimientoDetalleReferencia] = "regMovimiento.referencia"
+    [movimientoDetalleProducto] = "regMovimientoDetalle.producto"
+    [movimientoDetalleCantidadEntrada] = "regMovimientoDetalle.cantidadEntrada"
+    [movimientoDetallePrecioEntrada] = "regMovimientoDetalle.precioEntrada"
+
+    [movimientoFecha] = "regMovimiento.fecha"
+    [movimientoProveedor] = "regMovimiento.proveedor"
+    [movimientoReferencia] = "regMovimiento.referencia"
+    [movimientoObservaciones] = "regMovimiento.observaciones"
+>
+</app-ingresos-detalle>
