@@ -3,10 +3,23 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
+
 export class IngresosService {
 
-  constructor() { }
+  constructor(public afs: AngularFirestore) { 
+
+  }
+
+  agregaEncabezado(data){
+    this.afs.collection('movEncabezado').add(data);
+  }
+  agregaDetalle(data){
+    this.afs.collection('movDetalle').add(data);
+  }
+  /* Muestra solamente los productos de un comprobante especifico */
+  muestraDetalle(ref) {
+    return this.afs.collection('movDetalle', funcion => funcion.where('referencia', '==', ref)).valueChanges();
+  }
+  
 }

@@ -2,7 +2,7 @@
     <h3>Ingresos Principal</h3>
 </mat-card>
 <form >
-    <mat-card>
+    <mat-card *ngIf="!confirmaEnc">
         <!-- Fecha del movimiento -->
         <mat-form-field>
             <input matInput [matDatepicker]="picker" placeholder="Fecha" name="fecha" [(ngModel)]="regMovimiento.fecha" >
@@ -25,6 +25,20 @@
             <textarea matInput placeholder="Observaciones" name="observaciones" [(ngModel)]="regMovimiento.observaciones" ></textarea>
         </mat-form-field>
     </mat-card>
+    <mat-card *ngIf="confirmaEnc">
+        <!-- Cuando confirma encabezado aparece el readonly este con los datos de encabezado -->
+        <p>Fecha: {{regMovimiento.fecha}} </p>
+        <p>Comprobante: {{regMovimiento.referencia}} </p>
+        <p>Proveedor: {{regMovimiento.proveedor}} </p>
+        <p>Observaciones: {{regMovimiento.observaciones}} </p>
+        <button mat-raised-button color="primary" (click)="editarEncabezado()">Editar Encabezado</button>
+    </mat-card>
+    <mat-card *ngIf="!confirmaEnc">
+        <button mat-raised-button color="primary" (click)="confirmarEncabezado( regMovimiento.fecha,
+                                                                                regMovimiento.referencia,
+                                                                                regMovimiento.proveedor,
+                                                                                regMovimiento.observaciones)">Confirmar Encabezado</button>
+    </mat-card>
     <mat-card>
         <mat-form-field>
             <mat-select placeholder="Producto" name="producto" [(ngModel)]="regMovimientoDetalle.producto">
@@ -39,19 +53,11 @@
         <mat-form-field class="example-full-width">
             <input matInput type="number" placeholder="Precio Compra" name="precioEntrada" [(ngModel)]="regMovimientoDetalle.precioEntrada">
         </mat-form-field>
+        <button mat-raised-button color="primary" (click)="agregarItem( regMovimiento.referencia, 
+                                                                        regMovimientoDetalle.producto, 
+                                                                        regMovimientoDetalle.cantidadEntrada, 
+                                                                        regMovimientoDetalle.precioEntrada)">Agregar Item</button>
     </mat-card>
 </form>    
 
-<app-ingresos-detalle 
-
-    [movimientoDetalleReferencia] = "regMovimiento.referencia"
-    [movimientoDetalleProducto] = "regMovimientoDetalle.producto"
-    [movimientoDetalleCantidadEntrada] = "regMovimientoDetalle.cantidadEntrada"
-    [movimientoDetallePrecioEntrada] = "regMovimientoDetalle.precioEntrada"
-
-    [movimientoFecha] = "regMovimiento.fecha"
-    [movimientoProveedor] = "regMovimiento.proveedor"
-    [movimientoReferencia] = "regMovimiento.referencia"
-    [movimientoObservaciones] = "regMovimiento.observaciones"
->
-</app-ingresos-detalle>
+<app-ingresos-detalle></app-ingresos-detalle>

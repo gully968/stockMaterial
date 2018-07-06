@@ -12,6 +12,25 @@ import { MovimientosDetalle } from '../clases/movimientos-detalle';
 })
 export class IngresosComponent implements OnInit {
 
+  item: Movimientos = {
+    tipoMovimiento: '',
+    fecha: '',
+    referencia: '',
+    proveedor: '',
+    cliente: '',
+    observaciones: '',
+    totalFactura: 0,
+    totalItems: 0
+  };
+
+  itemdetalle: MovimientosDetalle = {
+    referencia: '',
+    producto: '',
+    cantidadEntrada: 0,
+    cantidadSalida: 0,
+    precioEntrada: 0
+  };
+
   datosProveedor = [];      /* Creo el array para poner los datos del proveedor luego lo lleno en ngOnInit */
   datosProducto = [];       /* Creo el array para poner los datos de los productos luego etc.etc... */
 
@@ -20,6 +39,7 @@ export class IngresosComponent implements OnInit {
 
   referenciaString = '';
 
+  confirmaEnc = false;
   /* En el constructor llamo a los servicios para realizar las diferentes operaciones */
   constructor(public ingserv: IngresosService, public provserv: ProveedoresService, public prodserv: ProductosService) { }
 
@@ -33,6 +53,30 @@ export class IngresosComponent implements OnInit {
       this.datosProducto = dataprod;
     });
   };
+  confirmarEncabezado(fec, ref, prov, obs) {
 
-  
+    this.confirmaEnc = true;
+    this.item.fecha = fec;
+    this.item.referencia = ref;
+    this.item.tipoMovimiento = 'Ingreso';
+    this.item.proveedor = prov;
+    this.item.observaciones = obs;
+
+    this.ingserv.agregaEncabezado(this.item);
+  }
+  editarEncabezado(){
+    this.confirmaEnc = false;
+  }
+
+  agregarItem(ref, prod, cant, prec){
+    this.itemdetalle.referencia = ref;
+    this.itemdetalle.producto = prod;
+    this.itemdetalle.cantidadEntrada = cant;
+    this.itemdetalle.precioEntrada = prec;
+
+    this.ingserv.agregaDetalle(this.itemdetalle);
+    this.regMovimientoDetalle = MovimientosDetalle;
+    console.log(ref, prod, cant, prec);
+    
+  }
 }
