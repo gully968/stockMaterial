@@ -12,15 +12,19 @@ import { MovimientosDetalle } from '../../clases/movimientos-detalle';
 })
 export class IngresosDetalleComponent implements OnInit {
 
-  private movDetalle: Observable<MovimientosDetalle>;
+  private movDetalle: any;
 
   constructor(public ingserv: IngresosService) { }
 
   ngOnInit(
-  ) { 
-    this.movDetalle = this.ingserv.muestraDetalle(ref);
+  ) {
+    
    }
 
-  
+  mostrarDetalle(refDetalle){
+    /* graba en variable observable los detalles segun la referencia pasada */
+
+    this.movDetalle = this.ingserv.muestraDetalle(refDetalle).subscribe();
+  }
 
 }
