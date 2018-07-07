@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { Movimientos } from '../clases/movimientos';
 import 'rxjs/add/operator/map';
 import { MovimientosDetalle } from '../clases/movimientos-detalle';
+import { Productos } from '../clases/productos';
 
 @Injectable()
 
@@ -14,6 +15,7 @@ export class IngresosService {
   movimientosDoc: AngularFirestoreDocument<Movimientos>;
   movDetalle: Observable<MovimientosDetalle[]>;
   movDetalleDoc: AngularFirestoreDocument<MovimientosDetalle>;
+  productoDoc: AngularFirestoreDocument<Productos>;
 
   constructor(public afs: AngularFirestore) { 
     this.movimientosCol = this.afs.collection('movEncabezado');
@@ -34,6 +36,8 @@ export class IngresosService {
   agregaDetalle(data){
     /* En este caso solamente agrego y el indice lo pone firestore */
     this.afs.collection('movDetalle').add(data);
+    this.modificaProducto(data);
+    console.log('data de agregadetalle:',data);
   }
   getDetalleObservable(){
     this.movDetalle = this.afs.collection('movDetalle').snapshotChanges().map(changes => {
@@ -50,5 +54,13 @@ export class IngresosService {
     console.log(this.afs.doc(`movDetalle/${item.id}`));
     this.movDetalleDoc = this.afs.doc(`movDetalle/${item.id}`);
     this.movDetalleDoc.delete();
+  }
+  modificaProducto(data){
+    const cantidadEntrada = data.cantidadEntrada;
+    console.log('Cantidad Ingreso:', cantidadEntrada);
+    this.productoDoc = this.afs.doc(`productos/${data.producto}`);
+    const stockActual = this.afs.doc(`productos/${data.cantidadActual}`);
+    console.log('Stock Actual:', stockActual);
+    
   }
 }

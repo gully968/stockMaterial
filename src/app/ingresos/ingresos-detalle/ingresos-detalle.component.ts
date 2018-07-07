@@ -18,8 +18,8 @@ export class IngresosDetalleComponent implements AfterViewInit, OnChanges {
   dataSource = new MatTableDataSource<MovimientosDetalle>();
 
   length = 100;
-  pageSize = 5;
-  pageSizeOptions: number[] = [5, 10, 25, 100];
+  pageSize = 4;
+  pageSizeOptions: number[] = [4, 10, 25, 100];
   pageEvent: PageEvent;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -47,5 +47,5 @@ export class IngresosDetalleComponent implements AfterViewInit, OnChanges {
   eliminarItem(item){
     this.ingserv.eliminaDetalle(item);
   }
-}
+
 }

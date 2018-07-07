@@ -84,4 +84,8 @@ export class IngresosComponent implements OnInit {
     this.regMovimientoDetalle.precioEntrada = 0;
 
   }
+
+  modificaProducto(itemProducto){
+    
+  }
 }

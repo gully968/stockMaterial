@@ -53,10 +53,11 @@
         <mat-form-field class="example-full-width">
             <input matInput type="number" placeholder="Precio Compra" name="precioEntrada" [(ngModel)]="regMovimientoDetalle.precioEntrada">
         </mat-form-field>
+       
         <button mat-raised-button color="primary" (click)="agregarItem( regMovimiento.referencia, 
                                                                         regMovimientoDetalle.producto, 
                                                                         regMovimientoDetalle.cantidadEntrada, 
-                                                                        regMovimientoDetalle.precioEntrada)">Agregar Item</button>
+                                                                        regMovimientoDetalle.precioEntrada)">{{cActual}} Agregar Item</button>
     </mat-card>
 </form>    
 
