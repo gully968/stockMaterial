@@ -1,0 +1,31 @@
+<p>{{referencia}}</p>
+
+<mat-table #table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+    <ng-container matColumnDef="referencia">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>#Referencia</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.referencia}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="producto">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Producto</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.producto}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="cantidadEntrada">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Cantidad Entrada</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.cantidadEntrada}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="precioEntrada">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Precio Entrada</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.precioEntrada}} </mat-cell>
+    </ng-container>
+    
+    <ng-container matColumnDef="buttons">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let group" (click)="$event.stopPropagation()">
+                <button mat-raised-button color="warn" (click)="eliminarItem(group)"><i class="far fa-trash-alt"></i> Eliminar</button>
+            </mat-cell>
+        </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+    <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="pageEvent = $event"></mat-paginator>
+</mat-table>

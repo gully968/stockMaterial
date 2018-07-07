@@ -1,4 +1,5 @@
 export class MovimientosDetalle {
+    id: string;
     referencia: string;
     producto: string;
     cantidadEntrada: number;

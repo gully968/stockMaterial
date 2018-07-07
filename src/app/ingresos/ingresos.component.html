@@ -27,10 +27,10 @@
     </mat-card>
     <mat-card *ngIf="confirmaEnc">
         <!-- Cuando confirma encabezado aparece el readonly este con los datos de encabezado -->
-        <p>Fecha: {{regMovimiento.fecha}} </p>
-        <p>Comprobante: {{regMovimiento.referencia}} </p>
-        <p>Proveedor: {{regMovimiento.proveedor}} </p>
-        <p>Observaciones: {{regMovimiento.observaciones}} </p>
+        <p>Fecha: {{item.fecha}} </p>
+        <p>Comprobante: {{item.referencia}} </p>
+        <p>Proveedor: {{item.proveedor}} </p>
+        <p>Observaciones: {{item.observaciones}} </p>
         <button mat-raised-button color="primary" (click)="editarEncabezado()">Editar Encabezado</button>
     </mat-card>
     <mat-card *ngIf="!confirmaEnc">
@@ -40,7 +40,7 @@
                                                                                 regMovimiento.observaciones)">Confirmar Encabezado</button>
     </mat-card>
     <mat-card>
-        <mat-form-field>
+        <mat-form-field style="width: 350px !important;">
             <mat-select placeholder="Producto" name="producto" [(ngModel)]="regMovimientoDetalle.producto">
                 <mat-option *ngFor="let item of datosProducto" [value]="item.nombre">
                     {{item.nombre}}
@@ -60,4 +60,6 @@
     </mat-card>
 </form>    
 
-<app-ingresos-detalle></app-ingresos-detalle>
+<app-ingresos-detalle [referencia] = "regMovimiento.referencia">
+
+</app-ingresos-detalle>

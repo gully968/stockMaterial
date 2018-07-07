@@ -34,8 +34,8 @@ export class IngresosComponent implements OnInit {
   datosProveedor = [];      /* Creo el array para poner los datos del proveedor luego lo lleno en ngOnInit */
   datosProducto = [];       /* Creo el array para poner los datos de los productos luego etc.etc... */
 
-  regMovimiento = Movimientos;                /* MODELO DE DATOS PARA ENCABEZADO DE MOVIMIENTO */
-  regMovimientoDetalle = MovimientosDetalle;  /* MODELO DE DATOS DEL DETALLE DEL MOVIMIENTO REFERENCIA CAMPO LINK */
+  regMovimiento = this.item;                /* MODELO DE DATOS PARA ENCABEZADO DE MOVIMIENTO */
+  regMovimientoDetalle = this.itemdetalle;  /* MODELO DE DATOS DEL DETALLE DEL MOVIMIENTO REFERENCIA CAMPO LINK */
 
   referenciaString = '';
 
@@ -55,8 +55,11 @@ export class IngresosComponent implements OnInit {
   };
   confirmarEncabezado(fec, ref, prov, obs) {
 
+    const fecBien = new Date(fec);
+    const dia = fecBien.getDate(), mes=fecBien.getMonth()+1, anio = fecBien.getFullYear();
+
     this.confirmaEnc = true;
-    this.item.fecha = fec;
+    this.item.fecha = dia.toString() + '/' + mes.toString() + '/' + anio.toString();
     this.item.referencia = ref;
     this.item.tipoMovimiento = 'Ingreso';
     this.item.proveedor = prov;
@@ -75,8 +78,10 @@ export class IngresosComponent implements OnInit {
     this.itemdetalle.precioEntrada = prec;
 
     this.ingserv.agregaDetalle(this.itemdetalle);
-    this.regMovimientoDetalle = MovimientosDetalle;
-    console.log(ref, prod, cant, prec);
-    
+
+    this.regMovimientoDetalle.producto = '';
+    this.regMovimientoDetalle.cantidadEntrada = 0;
+    this.regMovimientoDetalle.precioEntrada = 0;
+
   }
 }

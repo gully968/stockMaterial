@@ -1,7 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, ViewChild, Input } from '@angular/core';
 import { IngresosService } from '../../servicios/ingresos.service';
-import { Observable } from 'rxjs/Observable';
+import { MatTableDataSource, MatPaginator, MatSort, PageEvent } from '@angular/material';
 import { MovimientosDetalle } from '../../clases/movimientos-detalle';
+import { AfterViewInit, OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
+
 /* import { MovimientosDetalle } from '../../clases/movimientos-detalle'; */
 /* import { Movimientos } from '../../clases/movimientos'; */
 
@@ -10,21 +12,40 @@ import { MovimientosDetalle } from '../../clases/movimientos-detalle';
   templateUrl: './ingresos-detalle.component.html',
   styleUrls: ['./ingresos-detalle.component.css']
 })
-export class IngresosDetalleComponent implements OnInit {
+export class IngresosDetalleComponent implements AfterViewInit, OnChanges {
 
-  private movDetalle: any;
+  displayedColumns = [ 'referencia','producto', 'cantidadEntrada', 'precioEntrada', 'buttons']
+  dataSource = new MatTableDataSource<MovimientosDetalle>();
+
+  length = 100;
+  pageSize = 5;
+  pageSizeOptions: number[] = [5, 10, 25, 100];
+  pageEvent: PageEvent;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
+  @Input () referencia: string;
 
   constructor(public ingserv: IngresosService) { }
 
-  ngOnInit(
-  ) {
-    
-   }
-
-  mostrarDetalle(refDetalle){
-    /* graba en variable observable los detalles segun la referencia pasada */
-
-    this.movDetalle = this.ingserv.muestraDetalle(refDetalle).subscribe();
+  ngAfterViewInit(){
+    this.ingserv.getDetalleObservable().subscribe(data => {
+      this.dataSource.data = data;
+    })
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
-
+  ngOnChanges() {
+    this.applyFilter(this.referencia);
+  }
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim();
+    filterValue = filterValue.toLowerCase();
+    this.dataSource.filter = filterValue;
+  }
+  eliminarItem(item){
+    this.ingserv.eliminaDetalle(item);
+  }
+}
 }
