@@ -12,10 +12,11 @@ export class ProductosService {
   productosDoc: AngularFirestoreDocument<Productos>;
   productosObs: Observable<Productos[]>;
 
+
   constructor(private afs: AngularFirestore) { }
 
   addProducto(proData) {
-    this.afs.collection('productos').add(proData);
+    this.afs.doc(`productos/${proData.nombre}`).set(proData);
   }
 
   getProductos() {
@@ -42,4 +43,12 @@ export class ProductosService {
     });
     return this.productosObs;
   }
+  getProducto(item) {
+    this.productosCol = this.afs.collection('productos', ref=> ref.where('nombre', '==', item));
+    return this.productosCol;
+  }
+
+ 
+
+  /* Ag */
 }

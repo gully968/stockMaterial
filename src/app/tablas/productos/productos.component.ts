@@ -103,10 +103,10 @@ export class ProductosDataSource extends DataSource<any>{
 
   connect() {
     return this.ps.getProductos().map(actions => {
-    return actions.map(a => {
-      const data = a.payload.doc.data();
-      const id = a.payload.doc.id;
-      return { id, ...data}
+      return actions.map(a => {
+        const data = a.payload.doc.data();
+        const id = a.payload.doc.id;
+        return { id, ...data}
       });
     });
   }

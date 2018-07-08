@@ -4,7 +4,9 @@ import { ProveedoresService } from '../servicios/proveedores.service';
 import { ProductosService } from '../servicios/productos.service';
 import { Movimientos } from '../clases/movimientos';
 import { MovimientosDetalle } from '../clases/movimientos-detalle';
-
+import { AngularFirestore } from 'angularfire2/firestore';
+import { Productos } from '../clases/productos';
+import { firestore } from 'firebase';
 @Component({
   selector: 'app-ingresos',
   templateUrl: './ingresos.component.html',
@@ -24,6 +26,7 @@ export class IngresosComponent implements OnInit {
   };
 
   itemdetalle: MovimientosDetalle = {
+    id: '',
     referencia: '',
     producto: '',
     cantidadEntrada: 0,
@@ -40,8 +43,12 @@ export class IngresosComponent implements OnInit {
   referenciaString = '';
 
   confirmaEnc = false;
+  public cantiActual = 0;
+  public preciActual = 0;
+
   /* En el constructor llamo a los servicios para realizar las diferentes operaciones */
-  constructor(public ingserv: IngresosService, public provserv: ProveedoresService, public prodserv: ProductosService) { }
+  constructor(public ingserv: IngresosService, public provserv: ProveedoresService, public prodserv: ProductosService,
+              public afs: AngularFirestore) { }
 
   /* El ngOnInit se ejecuta una vez que se despliega o inicia el template (creo) */
   ngOnInit() {
@@ -52,7 +59,8 @@ export class IngresosComponent implements OnInit {
     this.prodserv.getProductosObservable().subscribe(dataprod => {
       this.datosProducto = dataprod;
     });
-  };
+  }
+
   confirmarEncabezado(fec, ref, prov, obs) {
 
     const fecBien = new Date(fec);
@@ -64,28 +72,28 @@ export class IngresosComponent implements OnInit {
     this.item.tipoMovimiento = 'Ingreso';
     this.item.proveedor = prov;
     this.item.observaciones = obs;
-
+    /* Graba registro de encabezado */
     this.ingserv.agregaEncabezado(this.item);
+  
   }
+
   editarEncabezado(){
     this.confirmaEnc = false;
   }
 
   agregarItem(ref, prod, cant, prec){
+
     this.itemdetalle.referencia = ref;
     this.itemdetalle.producto = prod;
     this.itemdetalle.cantidadEntrada = cant;
     this.itemdetalle.precioEntrada = prec;
-
     this.ingserv.agregaDetalle(this.itemdetalle);
-
+  /* Suma la cantidad existente en producto y la entrada */
+    this.ingserv.agregaCantidad(prod, cant);
     this.regMovimientoDetalle.producto = '';
     this.regMovimientoDetalle.cantidadEntrada = 0;
     this.regMovimientoDetalle.precioEntrada = 0;
 
   }
 
-  modificaProducto(itemProducto){
-    
-  }
 }

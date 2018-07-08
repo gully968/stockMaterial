@@ -26,6 +26,7 @@ export class IngresosDetalleComponent implements AfterViewInit, OnChanges {
   @ViewChild(MatSort) sort: MatSort;
 
   @Input () referencia: string;
+  @Input () idProducto: string;
 
   constructor(public ingserv: IngresosService) { }
 

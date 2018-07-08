@@ -43,7 +43,7 @@
         <mat-form-field style="width: 350px !important;">
             <mat-select placeholder="Producto" name="producto" [(ngModel)]="regMovimientoDetalle.producto">
                 <mat-option *ngFor="let item of datosProducto" [value]="item.nombre">
-                    {{item.nombre}}
+                    {{item.nombre}} 
                 </mat-option>
             </mat-select>
         </mat-form-field>
@@ -61,6 +61,6 @@
     </mat-card>
 </form>    
 
-<app-ingresos-detalle [referencia] = "regMovimiento.referencia">
+<app-ingresos-detalle [referencia] = "regMovimiento.referencia" [idProducto]="regMovimientoDetalle.producto" >
 
 </app-ingresos-detalle>

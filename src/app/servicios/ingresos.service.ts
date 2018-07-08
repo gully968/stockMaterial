@@ -37,7 +37,7 @@ export class IngresosService {
     /* En este caso solamente agrego y el indice lo pone firestore */
     this.afs.collection('movDetalle').add(data);
     this.modificaProducto(data);
-    console.log('data de agregadetalle:',data);
+
   }
   getDetalleObservable(){
     this.movDetalle = this.afs.collection('movDetalle').snapshotChanges().map(changes => {
@@ -51,16 +51,24 @@ export class IngresosService {
   }
   eliminaDetalle(item: MovimientosDetalle){
 
-    console.log(this.afs.doc(`movDetalle/${item.id}`));
     this.movDetalleDoc = this.afs.doc(`movDetalle/${item.id}`);
     this.movDetalleDoc.delete();
   }
   modificaProducto(data){
     const cantidadEntrada = data.cantidadEntrada;
-    console.log('Cantidad Ingreso:', cantidadEntrada);
     this.productoDoc = this.afs.doc(`productos/${data.producto}`);
     const stockActual = this.afs.doc(`productos/${data.cantidadActual}`);
-    console.log('Stock Actual:', stockActual);
-    
+  }
+
+  agregaCantidad(id, cant){
+    this.afs.doc(`productos/${id}`).ref.get().then(function(doc) {
+      if (doc.exists) {
+          console.log('Datos:', doc.data());
+      } else {
+          console.log('No hay datos');
+      }
+    }).catch(function(error) {
+        console.log('Error:', error);
+    });
   }
 }
