@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProveedoresService } from '../servicios/proveedores.service';
+import { ClientesService } from '../servicios/clientes.service';
 import { ProductosService } from '../servicios/productos.service';
 import { Movimientos } from '../clases/movimientos';
 import { MovimientosDetalle } from '../clases/movimientos-detalle';
@@ -43,11 +44,11 @@ export class SalidasComponent implements OnInit {
 
   confirmaEnc = false;
 
-  constructor(public salserv: SalidasService, public provserv: ProveedoresService, public prodserv: ProductosService,
+  constructor(public salserv: SalidasService, public cliServ: ClientesService, public prodserv: ProductosService,
     public afs: AngularFirestore) { }
 
   ngOnInit() {
-    this.provserv.getProveedoresObservable().subscribe(dataprov => {
+    this.cliServ.getClientesObservable().subscribe(dataprov => {
       this.datosProveedor = dataprov;
     });
     this.prodserv.getProductosObservable().subscribe(dataprod => {
@@ -63,7 +64,7 @@ export class SalidasComponent implements OnInit {
       this.item.fecha = dia.toString() + '/' + mes.toString() + '/' + anio.toString();
       this.item.referencia = ref;
       this.item.tipoMovimiento = 'Salida';
-      this.item.proveedor = prov;
+      this.item.cliente = prov;
       this.item.observaciones = obs;
       /* Graba registro de encabezado */
       this.salserv.agregaEncabezado(this.item);
@@ -78,7 +79,7 @@ export class SalidasComponent implements OnInit {
 
   blanqueoEncabezado(){
     this.item.fecha = '';
-    this.item.proveedor = '';
+    this.item.cliente = '';
     this.item.referencia = '';
     this.item.observaciones = '';
     this.confirmaEnc = false;

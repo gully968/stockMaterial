@@ -4,9 +4,6 @@ import { MatTableDataSource, MatPaginator, MatSort, PageEvent } from '@angular/m
 import { MovimientosDetalle } from '../../clases/movimientos-detalle';
 import { AfterViewInit, OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 
-/* import { MovimientosDetalle } from '../../clases/movimientos-detalle'; */
-/* import { Movimientos } from '../../clases/movimientos'; */
-
 @Component({
   selector: 'app-ingresos-detalle',
   templateUrl: './ingresos-detalle.component.html',

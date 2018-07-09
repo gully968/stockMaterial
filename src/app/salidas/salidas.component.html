@@ -1,3 +1,67 @@
-<p>
-  salidas works!
-</p>
+<mat-card>
+  <h3>Salida de Mercadería</h3>
+</mat-card>
+<form >
+  <mat-card *ngIf="!confirmaEnc">
+      <!-- Fecha del movimiento -->
+      <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="Fecha" name="fecha" [(ngModel)]="regMovimiento.fecha" >
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <!-- Proveedor Nombre -->
+      <mat-form-field>
+          <mat-select placeholder="Cliente" name="cliente" [(ngModel)]="regMovimiento.cliente">
+              <mat-option *ngFor="let item of datosProveedor" [value]="item.nombre">
+                  {{item.nombre}}
+              </mat-option>
+          </mat-select>
+      </mat-form-field>
+      <!-- Referencia Input texto -->
+      <mat-form-field class="example-full-width">
+          <input matInput placeholder="Referencia" name="referencia" [(ngModel)]="regMovimiento.referencia"  >
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+          <textarea matInput placeholder="Observaciones" name="observaciones" [(ngModel)]="regMovimiento.observaciones" ></textarea>
+      </mat-form-field>
+  </mat-card>
+  <mat-card *ngIf="confirmaEnc">
+      <!-- Cuando confirma encabezado aparece el readonly este con los datos de encabezado -->
+      <p>Fecha: {{item.fecha}} </p>
+      <p>Comprobante: {{item.referencia}} </p>
+      <p>Cliente: {{item.proveedor}} </p>
+      <p>Observaciones: {{item.observaciones}} </p>
+      <button mat-raised-button color="primary" (click)="editarEncabezado()">Editar Encabezado</button>
+      <button mat-raised-button color="primary" (click)="blanqueoEncabezado()">Nuevo Comprobante</button>
+  </mat-card>
+  <mat-card *ngIf="!confirmaEnc">
+      <button mat-raised-button color="primary" (click)="confirmarEncabezado( regMovimiento.fecha,
+                                                                              regMovimiento.referencia,
+                                                                              regMovimiento.cliente,
+                                                                              regMovimiento.observaciones)">Confirmar Encabezado</button>
+  </mat-card>
+  <mat-card>
+      <mat-form-field style="width: 350px !important;">
+          <mat-select placeholder="Producto" name="producto" [(ngModel)]="regMovimientoDetalle.producto">
+              <mat-option *ngFor="let item of datosProducto" [value]="item.nombre">
+                  {{item.nombre}} 
+              </mat-option>
+          </mat-select>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+          <input matInput type="number" placeholder="Cantidad" name="cantidadEntrada" [(ngModel)]="regMovimientoDetalle.cantidadEntrada">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+          <input matInput type="number" placeholder="Precio Compra" name="precioEntrada" [(ngModel)]="regMovimientoDetalle.precioEntrada">
+      </mat-form-field>
+     
+      <button *ngIf="confirmaEnc" mat-raised-button color="primary" (click)="agregarItem( regMovimiento.referencia, 
+                                                                      regMovimientoDetalle.producto, 
+                                                                      regMovimientoDetalle.cantidadEntrada, 
+                                                                      regMovimientoDetalle.precioEntrada)">Agregar Item</button>
+  </mat-card>
+</form>    
+
+<app-ingresos-detalle [referencia] = "regMovimiento.referencia" [idProducto]="regMovimientoDetalle.producto" >
+
+</app-ingresos-detalle>
