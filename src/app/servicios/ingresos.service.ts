@@ -51,7 +51,21 @@ export class IngresosService {
   }
   /* Esto elimina el item de detalle */
   eliminaDetalle(item: MovimientosDetalle){
+    /* Primero hay que reemplazar la cantidad en productos (restar la cantidad de entrada para anularla) */
     this.movDetalleDoc = this.afs.doc(`movDetalle/${item.id}`);
+    const reempCantProd = item.cantidadEntrada;
+    const id = item.producto;
+    this.afs.doc(`productos/${id}`).ref.get().then(function(doc) {
+      if (doc.exists) {
+        const reemplazarCantidad = doc.get('cantidadActual') - reempCantProd;
+        doc.ref.update({cantidadActual: reemplazarCantidad});
+      } else {
+          console.log('No hay datos');
+      }
+    }).catch(function(error) {
+        console.log('Error:', error);
+    });
+    /* Ahora si elimino el doc */
     this.movDetalleDoc.delete();
   }
   /* Modifica la tabla de productos agregando a la cantidad existente la cantidad de ingreso */
@@ -67,7 +81,9 @@ export class IngresosService {
         console.log('Error:', error);
     });
   }
-
+  /* Agrega el precio en el caso que este sea cero no hace nada (hay que revisar posibilidad de historial de precios) 
+     pero por ahora si al ingreso se pone un precio este se cambia en el documento del producto correspondiente 
+  */
   agregaPrecio(id, precio?) {
     if (precio > 0) {
       this.afs.doc(`productos/${id}`).ref.get().then(function(doc) {
