@@ -5,4 +5,5 @@ export class MovimientosDetalle {
     cantidadEntrada: number;
     cantidadSalida: number;
     precioEntrada: number;
+    precioVenta: number;
 }

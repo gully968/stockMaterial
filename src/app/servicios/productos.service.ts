@@ -47,7 +47,6 @@ export class ProductosService {
     this.productosCol = this.afs.collection('productos', ref=> ref.where('nombre', '==', item));
     return this.productosCol;
   }
-
  
 
   /* Ag */

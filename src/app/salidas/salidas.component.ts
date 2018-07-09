@@ -31,7 +31,8 @@ export class SalidasComponent implements OnInit {
     producto: '',
     cantidadEntrada: 0,
     cantidadSalida: 0,
-    precioEntrada: 0
+    precioEntrada: 0,
+    precioVenta: 0
   };
 
   datosProveedor = [];      /* Creo el array para poner los datos del proveedor luego lo lleno en ngOnInit */
@@ -90,6 +91,7 @@ export class SalidasComponent implements OnInit {
     this.itemdetalle.referencia = ref;
     this.itemdetalle.producto = prod;
     this.itemdetalle.cantidadEntrada = cant;
+    this.itemdetalle.precioVenta = this.salserv.getPrecio(prod);
     this.itemdetalle.precioEntrada = prec;
     this.salserv.agregaDetalle(this.itemdetalle);
     /* RESTA la cantidad entrada a la existente en producto y lo reemplaza en la tabla productos */

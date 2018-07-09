@@ -16,6 +16,8 @@ export class SalidasService {
   movDetalle: Observable<MovimientosDetalle[]>;
   movDetalleDoc: AngularFirestoreDocument<MovimientosDetalle>;
   productoDoc: AngularFirestoreDocument<Productos>;
+  productoPrecio: number;
+
   constructor(public afs: AngularFirestore) { 
     this.movimientosCol = this.afs.collection('movEncabezado');
     this.movimientos = this.movimientosCol.snapshotChanges().map(changes => {
@@ -71,6 +73,18 @@ export class SalidasService {
       if (doc.exists) {
         const reemplazarCantidad = doc.get('cantidadActual') - cant;
         doc.ref.update({cantidadActual: reemplazarCantidad});
+      } else {
+          console.log('No hay datos');
+      }
+    }).catch(function(error) {
+        console.log('Error:', error);
+    });
+  }
+  getPrecio(idProducto){
+    this.afs.doc(`productos/${idProducto}`).ref.get().then(function(doc) {
+      if (doc.exists) {
+        const numeroVenta = JSON.parse(doc.get('precioVenta'));
+        return numeroVenta;
       } else {
           console.log('No hay datos');
       }
