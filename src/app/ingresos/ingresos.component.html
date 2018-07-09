@@ -32,6 +32,7 @@
         <p>Proveedor: {{item.proveedor}} </p>
         <p>Observaciones: {{item.observaciones}} </p>
         <button mat-raised-button color="primary" (click)="editarEncabezado()">Editar Encabezado</button>
+        <button mat-raised-button color="primary" (click)="blanqueoEncabezado()">Nuevo Comprobante</button>
     </mat-card>
     <mat-card *ngIf="!confirmaEnc">
         <button mat-raised-button color="primary" (click)="confirmarEncabezado( regMovimiento.fecha,
@@ -54,7 +55,7 @@
             <input matInput type="number" placeholder="Precio Compra" name="precioEntrada" [(ngModel)]="regMovimientoDetalle.precioEntrada">
         </mat-form-field>
        
-        <button mat-raised-button color="primary" (click)="agregarItem( regMovimiento.referencia, 
+        <button *ngIf="confirmaEnc" mat-raised-button color="primary" (click)="agregarItem( regMovimiento.referencia, 
                                                                         regMovimientoDetalle.producto, 
                                                                         regMovimientoDetalle.cantidadEntrada, 
                                                                         regMovimientoDetalle.precioEntrada)">Agregar Item</button>

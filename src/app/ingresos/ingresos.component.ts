@@ -43,9 +43,7 @@ export class IngresosComponent implements OnInit {
   referenciaString = '';
 
   confirmaEnc = false;
-  public cantiActual = 0;
-  public preciActual = 0;
-
+  
   /* En el constructor llamo a los servicios para realizar las diferentes operaciones */
   constructor(public ingserv: IngresosService, public provserv: ProveedoresService, public prodserv: ProductosService,
               public afs: AngularFirestore) { }
@@ -63,6 +61,7 @@ export class IngresosComponent implements OnInit {
 
   confirmarEncabezado(fec, ref, prov, obs) {
     if (fec && ref && prov) {
+      this.confirmaEnc = true;
       const fecBien = new Date(fec);
       const dia = fecBien.getDate(), mes=fecBien.getMonth()+1, anio = fecBien.getFullYear();
       this.confirmaEnc = true;
@@ -74,12 +73,19 @@ export class IngresosComponent implements OnInit {
       /* Graba registro de encabezado */
       this.ingserv.agregaEncabezado(this.item);
     } else {
-      alert ('Debe ingresar los datos basicos y la referencia para confirmar encabezado!')
+      this.confirmaEnc = false;
     }
-  
   }
 
   editarEncabezado(){
+    this.confirmaEnc = false;
+  }
+
+  blanqueoEncabezado(){
+    this.item.fecha = '';
+    this.item.proveedor = '';
+    this.item.referencia = '';
+    this.item.observaciones = '';
     this.confirmaEnc = false;
   }
 
