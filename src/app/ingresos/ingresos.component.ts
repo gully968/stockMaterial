@@ -62,18 +62,20 @@ export class IngresosComponent implements OnInit {
   }
 
   confirmarEncabezado(fec, ref, prov, obs) {
-
-    const fecBien = new Date(fec);
-    const dia = fecBien.getDate(), mes=fecBien.getMonth()+1, anio = fecBien.getFullYear();
-
-    this.confirmaEnc = true;
-    this.item.fecha = dia.toString() + '/' + mes.toString() + '/' + anio.toString();
-    this.item.referencia = ref;
-    this.item.tipoMovimiento = 'Ingreso';
-    this.item.proveedor = prov;
-    this.item.observaciones = obs;
-    /* Graba registro de encabezado */
-    this.ingserv.agregaEncabezado(this.item);
+    if (fec && ref && prov) {
+      const fecBien = new Date(fec);
+      const dia = fecBien.getDate(), mes=fecBien.getMonth()+1, anio = fecBien.getFullYear();
+      this.confirmaEnc = true;
+      this.item.fecha = dia.toString() + '/' + mes.toString() + '/' + anio.toString();
+      this.item.referencia = ref;
+      this.item.tipoMovimiento = 'Ingreso';
+      this.item.proveedor = prov;
+      this.item.observaciones = obs;
+      /* Graba registro de encabezado */
+      this.ingserv.agregaEncabezado(this.item);
+    } else {
+      alert ('Debe ingresar los datos basicos y la referencia para confirmar encabezado!')
+    }
   
   }
 
@@ -88,8 +90,10 @@ export class IngresosComponent implements OnInit {
     this.itemdetalle.cantidadEntrada = cant;
     this.itemdetalle.precioEntrada = prec;
     this.ingserv.agregaDetalle(this.itemdetalle);
-  /* Suma la cantidad existente en producto y la entrada */
+    /* Suma la cantidad existente en producto y la entrada y lo reemplaza en la tabla productos */
     this.ingserv.agregaCantidad(prod, cant);
+    /* En caso que sea 0 el importe de compra es que no desea modificar y lo deja como esta, ver en el servicio */
+    this.ingserv.agregaPrecio(prod, prec);
     this.regMovimientoDetalle.producto = '';
     this.regMovimientoDetalle.cantidadEntrada = 0;
     this.regMovimientoDetalle.precioEntrada = 0;

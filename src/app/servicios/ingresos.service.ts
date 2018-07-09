@@ -9,7 +9,7 @@ import { Productos } from '../clases/productos';
 @Injectable()
 
 export class IngresosService {
-
+  /* Definicion de variables usadas en el servicio */
   movimientos: Observable<Movimientos[]>;
   movimientosCol: AngularFirestoreCollection<Movimientos>;
   movimientosDoc: AngularFirestoreDocument<Movimientos>;
@@ -17,6 +17,7 @@ export class IngresosService {
   movDetalleDoc: AngularFirestoreDocument<MovimientosDetalle>;
   productoDoc: AngularFirestoreDocument<Productos>;
 
+  /* Constructor define los servicios de terceros a usar y las cosas que se tienen que ejecutar al inicio */
   constructor(public afs: AngularFirestore) { 
     this.movimientosCol = this.afs.collection('movEncabezado');
     this.movimientos = this.movimientosCol.snapshotChanges().map(changes => {
@@ -27,18 +28,17 @@ export class IngresosService {
       });
     });
   }
-
+  /* Agrega los datos del encabezado de la referencia a la base de firestore */
   agregaEncabezado(data: Movimientos){
     /* Si existe modifica y si no existe agrega con id = referencia */
     this.afs.doc(`movEncabezado/${data.referencia}`).set(data);
   }
-
+  /* Agrega el detalle en otro doc de firestore aparte */
   agregaDetalle(data){
     /* En este caso solamente agrego y el indice lo pone firestore */
     this.afs.collection('movDetalle').add(data);
-    this.modificaProducto(data);
-
   }
+  /* Esto se usa para obtener los registros del doc detalle de firestore en un observable */
   getDetalleObservable(){
     this.movDetalle = this.afs.collection('movDetalle').snapshotChanges().map(changes => {
       return changes.map(a => {
@@ -49,21 +49,17 @@ export class IngresosService {
     });
     return this.movDetalle;
   }
+  /* Esto elimina el item de detalle */
   eliminaDetalle(item: MovimientosDetalle){
-
     this.movDetalleDoc = this.afs.doc(`movDetalle/${item.id}`);
     this.movDetalleDoc.delete();
   }
-  modificaProducto(data){
-    const cantidadEntrada = data.cantidadEntrada;
-    this.productoDoc = this.afs.doc(`productos/${data.producto}`);
-    const stockActual = this.afs.doc(`productos/${data.cantidadActual}`);
-  }
-
+  /* Modifica la tabla de productos agregando a la cantidad existente la cantidad de ingreso */
   agregaCantidad(id, cant){
     this.afs.doc(`productos/${id}`).ref.get().then(function(doc) {
       if (doc.exists) {
-          console.log('Datos:', doc.data());
+        const reemplazarCantidad = doc.get('cantidadActual') + cant;
+        doc.ref.update({cantidadActual: reemplazarCantidad});
       } else {
           console.log('No hay datos');
       }
@@ -71,4 +67,20 @@ export class IngresosService {
         console.log('Error:', error);
     });
   }
+
+  agregaPrecio(id, precio?) {
+    if (precio > 0) {
+      this.afs.doc(`productos/${id}`).ref.get().then(function(doc) {
+        if (doc.exists) {
+          const reemplazarPrecio = precio;
+          doc.ref.update({precioCompra: precio});
+        }
+      }).catch(function(error){
+        console.log('Error:', error);
+      });
+    } else {
+      console.log('no se modifica el precio porque es cero!');
+    }
+  }
 }
+
