@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { IngresosService } from '../servicios/ingresos.service';
 import { ProveedoresService } from '../servicios/proveedores.service';
 import { ProductosService } from '../servicios/productos.service';
 import { Movimientos } from '../clases/movimientos';
 import { MovimientosDetalle } from '../clases/movimientos-detalle';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { SalidasService } from '../servicios/salidas.service';
+
 @Component({
-  selector: 'app-ingresos',
-  templateUrl: './ingresos.component.html',
-  styleUrls: ['./ingresos.component.css']
+  selector: 'app-salidas',
+  templateUrl: './salidas.component.html',
+  styleUrls: ['./salidas.component.css']
 })
-export class IngresosComponent implements OnInit {
+export class SalidasComponent implements OnInit {
 
   item: Movimientos = {
     tipoMovimiento: '',
@@ -41,14 +42,11 @@ export class IngresosComponent implements OnInit {
   referenciaString = '';
 
   confirmaEnc = false;
-  
-  /* En el constructor llamo a los servicios para realizar las diferentes operaciones */
-  constructor(public ingserv: IngresosService, public provserv: ProveedoresService, public prodserv: ProductosService,
-              public afs: AngularFirestore) { }
 
-  /* El ngOnInit se ejecuta una vez que se despliega o inicia el template (creo) */
+  constructor(public salserv: SalidasService, public provserv: ProveedoresService, public prodserv: ProductosService,
+    public afs: AngularFirestore) { }
+
   ngOnInit() {
-    /* Inicialmente lleno los valores de proveedores en un array previamente declarado (arribeño!) */
     this.provserv.getProveedoresObservable().subscribe(dataprov => {
       this.datosProveedor = dataprov;
     });
@@ -56,7 +54,6 @@ export class IngresosComponent implements OnInit {
       this.datosProducto = dataprod;
     });
   }
-
   confirmarEncabezado(fec, ref, prov, obs) {
     if (fec && ref && prov) {
       this.confirmaEnc = true;
@@ -65,11 +62,11 @@ export class IngresosComponent implements OnInit {
       this.confirmaEnc = true;
       this.item.fecha = dia.toString() + '/' + mes.toString() + '/' + anio.toString();
       this.item.referencia = ref;
-      this.item.tipoMovimiento = 'Ingreso';
+      this.item.tipoMovimiento = 'Salida';
       this.item.proveedor = prov;
       this.item.observaciones = obs;
       /* Graba registro de encabezado */
-      this.ingserv.agregaEncabezado(this.item);
+      this.salserv.agregaEncabezado(this.item);
     } else {
       this.confirmaEnc = false;
     }
@@ -93,15 +90,12 @@ export class IngresosComponent implements OnInit {
     this.itemdetalle.producto = prod;
     this.itemdetalle.cantidadEntrada = cant;
     this.itemdetalle.precioEntrada = prec;
-    this.ingserv.agregaDetalle(this.itemdetalle);
-    /* Suma la cantidad existente en producto y la entrada y lo reemplaza en la tabla productos */
-    this.ingserv.agregaCantidad(prod, cant);
-    /* En caso que sea 0 el importe de compra es que no desea modificar y lo deja como esta, ver en el servicio */
-    this.ingserv.agregaPrecio(prod, prec);
+    this.salserv.agregaDetalle(this.itemdetalle);
+    /* RESTA la cantidad entrada a la existente en producto y lo reemplaza en la tabla productos */
+    this.salserv.agregaCantidad(prod, cant);
     this.regMovimientoDetalle.producto = '';
     this.regMovimientoDetalle.cantidadEntrada = 0;
     this.regMovimientoDetalle.precioEntrada = 0;
 
   }
-
 }

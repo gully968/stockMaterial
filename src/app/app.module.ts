@@ -46,6 +46,8 @@ import { ListadoProductosComponent } from './listados/listado-productos/listado-
 import { ListadoPreciosComponent } from './listados/listado-precios/listado-precios.component';
 import { IngresosComponent } from './ingresos/ingresos.component';
 import { IngresosDetalleComponent } from './ingresos/ingresos-detalle/ingresos-detalle.component';
+import { SalidasComponent } from './salidas/salidas.component';
+import { SalidasDetalleComponent } from './salidas/salidas-detalle/salidas-detalle.component';
 import { ConfirmBoxComponent } from './confirm-box.component';
 
 /* Servicios */
@@ -54,6 +56,7 @@ import { ClientesService } from './servicios/clientes.service';
 import { ProductosService } from './servicios/productos.service';
 import { RubrosService } from './servicios/rubros.service';
 import { IngresosService } from './servicios/ingresos.service';
+import { SalidasService } from './servicios/salidas.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,7 +72,9 @@ import { IngresosService } from './servicios/ingresos.service';
     ListadoProductosComponent,
     ListadoPreciosComponent,
     IngresosComponent,
-    IngresosDetalleComponent
+    IngresosDetalleComponent,
+    SalidasComponent,
+    SalidasDetalleComponent
     ],
 
   imports: [
@@ -106,7 +111,8 @@ import { IngresosService } from './servicios/ingresos.service';
     ClientesService,
     ProductosService,
     RubrosService,
-    IngresosService
+    IngresosService,
+    SalidasService
   ],
   bootstrap: [AppComponent]
 })

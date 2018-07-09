@@ -12,6 +12,7 @@ import { ListadoProveedoresComponent } from './listados/listado-proveedores/list
 import { ListadoProductosComponent } from './listados/listado-productos/listado-productos.component';
 import { ListadoPreciosComponent } from './listados/listado-precios/listado-precios.component';
 import { IngresosComponent } from './ingresos/ingresos.component';
+import { SalidasComponent } from './salidas/salidas.component';
 
 const routes: Routes = [
   { path: 'tabla-proveedores', component: ProveedoresComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'listado-rubros', component: ListadoRubrosComponent },
   { path: 'listado-precios', component: ListadoPreciosComponent},
   { path: 'ingresos', component: IngresosComponent},
+  { path: 'salidas', component:SalidasComponent },
   { path: 'inicio', component: AppComponent}
 ];
 
