@@ -89,21 +89,18 @@ export class SalidasComponent implements OnInit {
   }
 
   agregarItem(ref, prod, cant, prec){
-
-    this.itemdetalle.referencia = ref;
-    this.itemdetalle.producto = prod;
-    this.itemdetalle.cantidadSalida = cant;
-    this.itemdetalle.precioVenta = prec;
-    this.itemdetalle.importe = cant * prec;
-    this.salserv.agregaDetalle(this.itemdetalle);
-    /* RESTA la cantidad entrada a la existente en producto y lo reemplaza en la tabla productos */
-    this.salserv.agregaCantidad(prod, cant);
-    this.regMovimientoDetalle.producto = '';
-    this.regMovimientoDetalle.cantidadSalida = 0;
-    this.regMovimientoDetalle.precioVenta = 0;
-
+      this.itemdetalle.referencia = ref;
+      this.itemdetalle.producto = prod;
+      this.itemdetalle.cantidadSalida = cant;
+      this.itemdetalle.precioVenta = prec;
+      this.itemdetalle.importe = cant * prec;
+      this.salserv.agregaDetalle(this.itemdetalle);
+      /* RESTA la cantidad entrada a la existente en producto y lo reemplaza en la tabla productos */
+      this.salserv.agregaCantidad(prod, cant);
+      this.regMovimientoDetalle.producto = '';
+      this.regMovimientoDetalle.cantidadSalida = 0;
+      this.regMovimientoDetalle.precioVenta = 0;
   }
-
   selectedItem(prod){
     for (let i = 0; i < this.datosProducto.length; i++){
       if (this.datosProducto[i].nombre === prod.value) {

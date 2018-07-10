@@ -80,5 +80,5 @@ export class SalidasService {
         console.log('Error:', error);
     });
   }
-  
+
 }
