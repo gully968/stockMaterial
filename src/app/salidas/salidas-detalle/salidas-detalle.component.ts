@@ -11,7 +11,7 @@ import { AfterViewInit, OnChanges } from '@angular/core/src/metadata/lifecycle_h
 })
 export class SalidasDetalleComponent implements AfterViewInit, OnChanges {
 
-  displayedColumns = [ 'referencia','producto', 'cantidadSalida', 'precioVenta', 'buttons']
+  displayedColumns = [ 'referencia', 'producto', 'cantidadSalida', 'precioVenta', 'importe', 'buttons']
   dataSource = new MatTableDataSource<MovimientosDetalle>();
 
   length = 100;
@@ -24,6 +24,7 @@ export class SalidasDetalleComponent implements AfterViewInit, OnChanges {
 
   @Input () referencia: string;
   @Input () idProducto: string;
+  @Input () precioVenta: number;
 
   constructor(public salserv: SalidasService) { }
 

@@ -30,7 +30,8 @@ export class IngresosComponent implements OnInit {
     cantidadEntrada: 0,
     cantidadSalida: 0,
     precioEntrada: 0,
-    precioVenta: 0
+    precioVenta: 0,
+    importe: 0
   };
 
   datosProveedor = [];      /* Creo el array para poner los datos del proveedor luego lo lleno en ngOnInit */

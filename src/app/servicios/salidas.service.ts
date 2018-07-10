@@ -80,16 +80,5 @@ export class SalidasService {
         console.log('Error:', error);
     });
   }
-  getPrecio(idProducto){
-    this.afs.doc(`productos/${idProducto}`).ref.get().then(function(doc) {
-      if (doc.exists) {
-        const numeroVenta = JSON.parse(doc.get('precioVenta'));
-        return numeroVenta;
-      } else {
-          console.log('No hay datos');
-      }
-    }).catch(function(error) {
-        console.log('Error:', error);
-    });
-  }
+  
 }

@@ -42,8 +42,8 @@
   </mat-card>
   <mat-card>
       <mat-form-field style="width: 350px !important;">
-          <mat-select placeholder="Producto" name="producto" [(ngModel)]="regMovimientoDetalle.producto">
-              <mat-option *ngFor="let item of datosProducto" [value]="item.nombre">
+          <mat-select placeholder="Producto" name="producto" [(ngModel)]="regMovimientoDetalle.producto" (selectionChange)="selectedItem($event)">
+              <mat-option *ngFor="let item of datosProducto" [value]="item.nombre" >
                   {{item.nombre}} 
               </mat-option>
           </mat-select>
@@ -57,7 +57,9 @@
       
       <button *ngIf="confirmaEnc" mat-raised-button color="primary" (click)="agregarItem( regMovimiento.referencia, 
                                                                       regMovimientoDetalle.producto, 
-                                                                      regMovimientoDetalle.cantidadSalida )">Agregar Item</button>
+                                                                      regMovimientoDetalle.cantidadSalida,
+                                                                      regMovimientoDetalle.precioVenta,
+                                                                      regMovimientoDetalle.importe )">Agregar Item</button>
   </mat-card>
 </form>    
 

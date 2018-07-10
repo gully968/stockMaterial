@@ -32,7 +32,8 @@ export class SalidasComponent implements OnInit {
     cantidadEntrada: 0,
     cantidadSalida: 0,
     precioEntrada: 0,
-    precioVenta: 0
+    precioVenta: 0,
+    importe: 0
   };
 
   datosProveedor = [];      /* Creo el array para poner los datos del proveedor luego lo lleno en ngOnInit */
@@ -54,6 +55,7 @@ export class SalidasComponent implements OnInit {
     });
     this.prodserv.getProductosObservable().subscribe(dataprod => {
       this.datosProducto = dataprod;
+      this.itemdetalle.precioVenta = dataprod[0].precioVenta;
     });
   }
   confirmarEncabezado(fec, ref, prov, obs) {
@@ -90,15 +92,24 @@ export class SalidasComponent implements OnInit {
 
     this.itemdetalle.referencia = ref;
     this.itemdetalle.producto = prod;
-    this.itemdetalle.cantidadEntrada = cant;
-    this.itemdetalle.precioVenta = this.salserv.getPrecio(prod);
-    this.itemdetalle.precioEntrada = prec;
+    this.itemdetalle.cantidadSalida = cant;
+    this.itemdetalle.precioVenta = prec;
     this.salserv.agregaDetalle(this.itemdetalle);
     /* RESTA la cantidad entrada a la existente en producto y lo reemplaza en la tabla productos */
     this.salserv.agregaCantidad(prod, cant);
     this.regMovimientoDetalle.producto = '';
-    this.regMovimientoDetalle.cantidadEntrada = 0;
-    this.regMovimientoDetalle.precioEntrada = 0;
+    this.regMovimientoDetalle.cantidadSalida = 0;
+    this.regMovimientoDetalle.precioVenta = 0;
 
   }
+
+  selectedItem(prod){
+    console.log('cambio en select de producto')
+    for (let i = 0; i < this.datosProducto.length; i++){
+      if (this.datosProducto[i].nombre === prod.value) {
+        this.itemdetalle.precioVenta =  this.datosProducto[i].precioVenta;
+      }
+    }
+  }
+
 }

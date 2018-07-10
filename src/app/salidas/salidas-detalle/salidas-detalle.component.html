@@ -1,6 +1,6 @@
 <mat-table #table [dataSource]="dataSource" matSort class="mat-elevation-z8">
   <ng-container matColumnDef="referencia">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>#Referencia</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>#conchitaaaaa</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.referencia}} </mat-cell>
   </ng-container>
   <ng-container matColumnDef="producto">
@@ -8,13 +8,19 @@
       <mat-cell *matCellDef="let element"> {{element.producto}} </mat-cell>
   </ng-container>
   <ng-container matColumnDef="cantidadSalida">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Cantidad Entrada</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Cantidad</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.cantidadSalida}} </mat-cell>
   </ng-container>
   <ng-container matColumnDef="precioVenta">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Precio Venta</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Precio</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.precioVenta}} </mat-cell>
   </ng-container>
+  <ng-container matColumnDef="importe">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Importe</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.importe}} </mat-cell>
+</ng-container>
+
+
   <ng-container matColumnDef="buttons">
           <mat-header-cell *matHeaderCellDef></mat-header-cell>
           <mat-cell *matCellDef="let group" (click)="$event.stopPropagation()">

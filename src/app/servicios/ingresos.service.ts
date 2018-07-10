@@ -88,7 +88,6 @@ export class IngresosService {
     if (precio > 0) {
       this.afs.doc(`productos/${id}`).ref.get().then(function(doc) {
         if (doc.exists) {
-          const reemplazarPrecio = precio;
           doc.ref.update({precioCompra: precio});
         }
       }).catch(function(error){
