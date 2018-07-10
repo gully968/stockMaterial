@@ -49,20 +49,21 @@
           </mat-select>
       </mat-form-field>
       <mat-form-field class="example-full-width">
-          <input matInput type="number" placeholder="Cantidad" name="cantidadEntrada" [(ngModel)]="regMovimientoDetalle.cantidadEntrada">
+          <input matInput type="number" placeholder="Cantidad" name="cantidadSalida" [(ngModel)]="regMovimientoDetalle.cantidadSalida">
       </mat-form-field>
       <mat-form-field class="example-full-width">
            <input matInput type="number" placeholder="Precio Venta" name="precioVenta" [(ngModel)]="regMovimientoDetalle.precioVenta">
       </mat-form-field>
-      
+      <mat-form-field>
+          <input matInput readonly type="number" name="importe" [(ngModel)]="regMovimientoDetalle.precioVenta * regMovimientoDetalle.cantidadSalida">
+      </mat-form-field>
       <button *ngIf="confirmaEnc" mat-raised-button color="primary" (click)="agregarItem( regMovimiento.referencia, 
                                                                       regMovimientoDetalle.producto, 
                                                                       regMovimientoDetalle.cantidadSalida,
-                                                                      regMovimientoDetalle.precioVenta,
-                                                                      regMovimientoDetalle.importe )">Agregar Item</button>
+                                                                      regMovimientoDetalle.precioVenta)">Agregar Item</button>
   </mat-card>
 </form>    
 
-<app-ingresos-detalle [referencia] = "regMovimiento.referencia" [idProducto]="regMovimientoDetalle.producto" >
+<app-salidas-detalle [referencia] = "regMovimiento.referencia" [idProducto]="regMovimientoDetalle.producto" >
 
-</app-ingresos-detalle>
+</app-salidas-detalle>

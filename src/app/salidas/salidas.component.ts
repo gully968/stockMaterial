@@ -94,6 +94,7 @@ export class SalidasComponent implements OnInit {
     this.itemdetalle.producto = prod;
     this.itemdetalle.cantidadSalida = cant;
     this.itemdetalle.precioVenta = prec;
+    this.itemdetalle.importe = cant * prec;
     this.salserv.agregaDetalle(this.itemdetalle);
     /* RESTA la cantidad entrada a la existente en producto y lo reemplaza en la tabla productos */
     this.salserv.agregaCantidad(prod, cant);
@@ -104,7 +105,6 @@ export class SalidasComponent implements OnInit {
   }
 
   selectedItem(prod){
-    console.log('cambio en select de producto')
     for (let i = 0; i < this.datosProducto.length; i++){
       if (this.datosProducto[i].nombre === prod.value) {
         this.itemdetalle.precioVenta =  this.datosProducto[i].precioVenta;
