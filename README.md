@@ -1,4 +1,5 @@
 # StockMaterial Version 1.0
+Si desea comunicarse con el desarrollador:  marcelo.lavandeira@gmail.com
 
 ## Dependencias:
 
@@ -22,13 +23,35 @@ Listados de Clientes, Proveedores, Rubros
         Se comienza el desarrollo y de hecho se pueden agregar productos pero falta dar forma a la vista para poder
         mostrar los datos de forma mas adecuada.
 
-A realizar:         
-    Modulos de ingreso y salida de productos
-    Modulos de Listas de precio con busquedas
-    Modulos de impresion y envio de listas por email
-    Modulos de Actualizacion de precios global
-    Modulos de accesorios.
+10/07/2018
 
+Se encuentran en funciones todos los módulos básicos de administración
+y configuración.  CRUD de productos, clientes, proveedores. 
+Se encuentra funcionando el modulo de ingresos correctamente ()
+Se encuentra realizado el modulo de salidas a confirmar errores y conceptos basicos.
+
+Las primeras pruebas realizadas mediante un deploy basico no arrojan errores 
+aunque se verifica la necesidad de realizar cambios al maquetado esto no implica el desarrollo o mejoras de las funciones principales.   
+
+En etapa de salida falta implementación de impresión de comprobantes como
+así también la verificación de los importes y traer los importes desde los doc de productos/fstore
+
+
+# Notas basicas para implementación
+
+## Servidor Firestore
+
+Este sistema utiliza la implementación de Firestore por lo que se debe tener en cuenta al crear el proyecto,  realizar cambio al environment.ts existente con los datos propios del servidor de firestore.  El agregado al archivo environment.ts es:
+
+~
+  firebaseConfig: {
+    apiKey: 'xxX',
+    authDomain: 'xxx',
+    databaseURL: 'xxxx',
+    projectId: 'xxx',
+    storageBucket: 'xxx',
+    messagingSenderId: 'xxx'
+Las xxx deben reemplazarse por los datos propios generados al crear cuenta en firebase y generar nuevo proyecto.  Cuando se cree el nuevo proyecto ir a la opcion principal y copiar el código.
 
 Este proyecto fue generado mediante [Angular CLI](https://github.com/angular/angular-cli) version 6.0.7.
 
