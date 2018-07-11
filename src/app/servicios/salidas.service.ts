@@ -15,6 +15,7 @@ export class SalidasService {
   movimientosDoc: AngularFirestoreDocument<Movimientos>;
   movDetalle: Observable<MovimientosDetalle[]>;
   movDetalleDoc: AngularFirestoreDocument<MovimientosDetalle>;
+  movDetalleCol: AngularFirestoreCollection<MovimientosDetalle>;
   productoDoc: AngularFirestoreDocument<Productos>;
   productoPrecio: number;
 
@@ -80,5 +81,14 @@ export class SalidasService {
         console.log('Error:', error);
     });
   }
+  devuelveDetalleComprobante(comp: string) {
+   // this.productosCol = this.afs.collection('productos', ref=> ref.where('nombre', '==', item));
+   // return this.productosCol;
+
+   this.movDetalleCol = this.afs.collection('movDetalle', ref => ref.where('referencia', '==', comp));
+   return this.movDetalleCol;
+
+  }
+
 
 }

@@ -68,4 +68,4 @@
 
 </app-salidas-detalle>
 
-<button>Confirmar / imprimir</button>
+<button mat-raised-button color="primary" (click)="imprimirTicket(regMovimiento.fecha, regMovimiento.cliente, regMovimiento.observaciones ,regMovimiento.referencia)" >Confirmar / imprimir</button>

@@ -31,13 +31,13 @@ export class ListadoPreciosComponent implements AfterViewInit {
     this.dataSource.sort = this.sort;
   }
   applyFilter(filterValue: string) {
-    filterValue = filterValue.trim(); 
+    filterValue = filterValue.trim();
     filterValue = filterValue.toLowerCase();
     this.dataSource.filter = filterValue;
    }
 
 
-  imprimirPDF(){
+  imprimirPDF() {
     // Landscape export, 2×4 inches
   const doc = new jsPDF({
     orientation: 'p',
