@@ -53,7 +53,7 @@ export class SalidasService {
   eliminaDetalle(item: MovimientosDetalle){
     /* Primero hay que reemplazar la cantidad en productos (sumar la cantidad de entrada para anularla) */
     this.movDetalleDoc = this.afs.doc(`movDetalle/${item.id}`);
-    const reempCantProd = item.cantidadEntrada;
+    const reempCantProd = item.cantidadSalida;
     const id = item.producto;
     this.afs.doc(`productos/${id}`).ref.get().then(function(doc) {
       if (doc.exists) {
