@@ -15,6 +15,7 @@ export class IngresosService {
   movimientosDoc: AngularFirestoreDocument<Movimientos>;
   movDetalle: Observable<MovimientosDetalle[]>;
   movDetalleDoc: AngularFirestoreDocument<MovimientosDetalle>;
+  movDetalleCol: AngularFirestoreCollection<MovimientosDetalle>;
   productoDoc: AngularFirestoreDocument<Productos>;
 
   /* Constructor define los servicios de terceros a usar y las cosas que se tienen que ejecutar al inicio */

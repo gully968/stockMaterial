@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ProveedoresService } from '../servicios/proveedores.service';
 import { ClientesService } from '../servicios/clientes.service';
 import { ProductosService } from '../servicios/productos.service';
 import { Movimientos } from '../clases/movimientos';
@@ -77,11 +76,11 @@ export class SalidasComponent implements OnInit {
     }
   }
 
-  editarEncabezado(){
+  editarEncabezado() {
     this.confirmaEnc = false;
   }
 
-  blanqueoEncabezado(){
+  blanqueoEncabezado() {
     this.item.fecha = '';
     this.item.cliente = '';
     this.item.referencia = '';
@@ -89,7 +88,7 @@ export class SalidasComponent implements OnInit {
     this.confirmaEnc = false;
   }
 
-  agregarItem(ref, prod, cant, prec){
+  agregarItem(ref, prod, cant, prec) {
       this.itemdetalle.referencia = ref;
       this.itemdetalle.producto = prod;
       this.itemdetalle.cantidadSalida = cant;
@@ -102,8 +101,8 @@ export class SalidasComponent implements OnInit {
       this.regMovimientoDetalle.cantidadSalida = 0;
       this.regMovimientoDetalle.precioVenta = 0;
   }
-  selectedItem(prod){
-    for (let i = 0; i < this.datosProducto.length; i++){
+  selectedItem(prod) {
+    for (let i = 0; i < this.datosProducto.length; i++) {
       if (this.datosProducto[i].nombre === prod.value) {
         this.itemdetalle.precioVenta =  this.datosProducto[i].precioVenta;
       }
@@ -111,7 +110,7 @@ export class SalidasComponent implements OnInit {
   }
 
   imprimirTicket(fec, cli, obs, ref) {
-    
+
     /* Creo el pdf con los parametros iniciales */
     const doc = new jsPDF({
       orientation: 'p', /* P = Portrait  */
@@ -140,7 +139,7 @@ export class SalidasComponent implements OnInit {
     this.salserv.devuelveDetalleComprobante(ref).valueChanges().subscribe(datos => {
        itemsref = datos;
        importeTotal = 0;
-       for (let i = 0; i < itemsref.length; i++){
+       for (let i = 0; i < itemsref.length; i++) {
          doc.text (10, x, datos[i].producto, { width: 400 });
          doc.text (55, x, datos[i].cantidadSalida.toFixed(2).toString(), {align: 'right'});
          doc.text (75, x, datos[i].precioVenta.toFixed(2).toString(), {align: 'right'});

@@ -89,6 +89,25 @@ export class SalidasService {
    return this.movDetalleCol;
 
   }
-
+  getsalidasDetalleObservable() {
+    this.movDetalle = this.afs.collection('movDetalle', ref => ref.where('cantidadSalida', '>', 0)).snapshotChanges().map(changes => {
+      return changes.map(a => {
+        const data = a.payload.doc.data() as MovimientosDetalle;
+        data.id = a.payload.doc.id;
+        return data;
+      });
+    });
+    return this.movDetalle;
+  }
+  getsalidasObservable() {
+    this.movimientos = this.afs.collection('movEncabezado').snapshotChanges().map(changes => {
+      return changes.map(a => {
+        const data = a.payload.doc.data() as Movimientos;
+        data.referencia = a.payload.doc.id;
+        return data;
+      });
+    });
+    return this.movDetalle;
+  }
 
 }

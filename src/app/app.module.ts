@@ -57,6 +57,9 @@ import { ProductosService } from './servicios/productos.service';
 import { RubrosService } from './servicios/rubros.service';
 import { IngresosService } from './servicios/ingresos.service';
 import { SalidasService } from './servicios/salidas.service';
+import { PrintComprobantesComponent } from './print-comprobantes/print-comprobantes.component';
+import { EntradaComponent } from './print-comprobantes/entrada/entrada.component';
+import { SalidaComponent } from './print-comprobantes/salida/salida.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,7 +77,10 @@ import { SalidasService } from './servicios/salidas.service';
     IngresosComponent,
     IngresosDetalleComponent,
     SalidasComponent,
-    SalidasDetalleComponent
+    SalidasDetalleComponent,
+    PrintComprobantesComponent,
+    EntradaComponent,
+    SalidaComponent
     ],
 
   imports: [
