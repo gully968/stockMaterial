@@ -98,5 +98,16 @@ export class IngresosService {
       console.log('no se modifica el precio porque es cero!');
     }
   }
-}
+  /* Retorna el movimiento principal solo los ingresos */
 
+  getIngresos(){
+    this.movimientos = this.afs.collection('movEncabezado').snapshotChanges().map(changes => {
+      return changes.map(a => {
+        const data = a.payload.doc.data() as Movimientos;
+        data.referencia = a.payload.doc.id;
+        return data;
+      });
+    });
+    return this.movimientos;
+  }
+}
