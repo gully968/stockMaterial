@@ -16,7 +16,7 @@ export class DetallesComponent implements AfterViewInit, OnChanges {
 
   datosMovimientoDetalle = [];
   dataSource = this.datosMovimientoDetalle;
-  displayedColumns: string[] = ['producto', 'cantidadEntrada', 'precioEntrada'];
+  displayedColumns: string[] = ['producto', 'cantidadEntrada', 'precioEntrada', 'importe'];
   
   constructor( public ingser: IngresosService) { }
 

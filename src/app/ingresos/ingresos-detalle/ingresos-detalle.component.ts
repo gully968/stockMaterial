@@ -11,7 +11,7 @@ import { AfterViewInit, OnChanges } from '@angular/core/src/metadata/lifecycle_h
 })
 export class IngresosDetalleComponent implements AfterViewInit, OnChanges {
 
-  displayedColumns = [ 'referencia','producto', 'cantidadEntrada', 'precioEntrada', 'buttons']
+  displayedColumns = [ 'referencia','producto', 'cantidadEntrada', 'precioEntrada', 'importe', 'buttons']
   dataSource = new MatTableDataSource<MovimientosDetalle>();
 
   length = 100;

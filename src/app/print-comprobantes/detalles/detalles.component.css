@@ -2,10 +2,14 @@
     width: 350px !important;
 }
 #cantidad {
-    width: 80px !important;
+    width: 100px !important;
     text-align: right !important;
 }
 #precio {
-    width: 80px !important;
+    width: 100px !important;
+    text-align: right !important;
+}
+#importe {
+    width: 100px !important;
     text-align: right !important;
 }

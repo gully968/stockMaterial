@@ -89,12 +89,13 @@ export class IngresosComponent implements OnInit {
     this.confirmaEnc = false;
   }
 
-  agregarItem(ref, prod, cant, prec){
+  agregarItem(ref, prod, cant, prec, imp){
 
     this.itemdetalle.referencia = ref;
     this.itemdetalle.producto = prod;
     this.itemdetalle.cantidadEntrada = cant;
     this.itemdetalle.precioEntrada = prec;
+    this.itemdetalle.importe = imp;
     this.ingserv.agregaDetalle(this.itemdetalle);
     /* Suma la cantidad existente en producto y la entrada y lo reemplaza en la tabla productos */
     this.ingserv.agregaCantidad(prod, cant);
@@ -103,6 +104,7 @@ export class IngresosComponent implements OnInit {
     this.regMovimientoDetalle.producto = '';
     this.regMovimientoDetalle.cantidadEntrada = 0;
     this.regMovimientoDetalle.precioEntrada = 0;
+    this.regMovimientoDetalle.importe = 0; 
 
   }
 

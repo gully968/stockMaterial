@@ -36,6 +36,7 @@ export class IngresosService {
   }
   /* Agrega el detalle en otro doc de firestore aparte */
   agregaDetalle(data){
+    console.log('Se agrega: ', data);
     /* En este caso solamente agrego y el indice lo pone firestore */
     this.afs.collection('movDetalle').add(data);
   }

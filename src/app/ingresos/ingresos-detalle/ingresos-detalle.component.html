@@ -15,6 +15,10 @@
         <mat-header-cell *matHeaderCellDef mat-sort-header>Precio Entrada</mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.precioEntrada}} </mat-cell>
     </ng-container>
+    <ng-container matColumnDef="importe">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Importe</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.importe}} </mat-cell>
+    </ng-container>
     <ng-container matColumnDef="buttons">
             <mat-header-cell *matHeaderCellDef></mat-header-cell>
             <mat-cell *matCellDef="let group" (click)="$event.stopPropagation()">
