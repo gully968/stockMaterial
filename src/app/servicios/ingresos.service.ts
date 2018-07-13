@@ -110,4 +110,15 @@ export class IngresosService {
     });
     return this.movimientos;
   }
+
+  detalleItem(item: string){
+    this.movDetalle = this.afs.collection('movDetalle', ref => ref.where('referencia', '==', item) ).snapshotChanges().map(changes => {
+      return changes.map(a => {
+        const data = a.payload.doc.data() as MovimientosDetalle;
+        data.id = a.payload.doc.id;
+        return data;
+      });
+    });
+    return this.movDetalle;
+  }
 }

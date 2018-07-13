@@ -1,0 +1,11 @@
+#producto {
+    width: 350px !important;
+}
+#cantidad {
+    width: 80px !important;
+    text-align: right !important;
+}
+#precio {
+    width: 80px !important;
+    text-align: right !important;
+}

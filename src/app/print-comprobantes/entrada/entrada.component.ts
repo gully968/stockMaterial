@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, Output, EventEmitter  } from '@angular/core';
 import { IngresosService } from '../../servicios/ingresos.service';
 import { Movimientos } from '../../clases/movimientos';
 import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
@@ -11,15 +11,21 @@ import { MatTableDataSource, MatPaginator, MatSort, PageEvent } from '@angular/m
 })
 export class EntradaComponent implements AfterViewInit {
 
-  displayedColumns = ['tipoMovimiento', 'fecha', 'referencia', 'proveedor', 'observaciones'];
+  displayedColumns = ['tipoMovimiento', 'fecha', 'referencia', 'proveedor', 'observaciones', 'botones'];
   dataSource = new MatTableDataSource<Movimientos>();
   length = 100;
-  pageSize = 5;
-  pageSizeOptions: number[] = [5, 10, 25, 100];
+  pageSize = 1;
+  pageSizeOptions: number[] = [1, 3, 5, 10, 50, 100];
   pageEvent: PageEvent;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+
+  visualizar: boolean;
+  referencia: string;
+  fecha: string;
+  proveedor: string;
+  observaciones: string;
 
   constructor(public ingserv: IngresosService) { }
 
@@ -36,9 +42,17 @@ export class EntradaComponent implements AfterViewInit {
     this.dataSource.filter = filterValue;
    }
 
+   verDetalle(item) {
 
-  
+    this.visualizar = true;
+    this.referencia = item.referencia;
+    this.fecha = item.fecha;
+    this.proveedor = item.proveedor;
+    this.observaciones = item.observaciones;
+    console.log(item);
+   }
 
-
-
+   ocultaDetalle(){
+     this.visualizar = false;
+   }
 }

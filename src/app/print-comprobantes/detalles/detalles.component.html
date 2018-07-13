@@ -1,0 +1,28 @@
+<mat-card>
+  <p>Comprobante: {{referencia}}</p>
+  <p>Fecha: {{fecha}} </p>
+  <p>Proveedor: {{proveedor}}</p>
+  <p>Observaciones: {{observaciones}} </p>
+  <button mat-raised-button color="primary" (click)="verDetalle(referencia)">Mas Detalle</button>
+  <button mat-raised-button color="primary" (click)="cerrarDetalle()">Cerrar Detalle</button>
+</mat-card>
+<mat-card *ngIf="verDetalleItems">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="producto" >
+      <th mat-header-cell *matHeaderCellDef> Detalle </th>
+      <td mat-cell *matCellDef="let element" id="producto"> {{element.producto}} </td>
+    </ng-container>
+    <ng-container matColumnDef="cantidadEntrada">
+      <th mat-header-cell *matHeaderCellDef style="text-align: right !important;"> Cantidad </th>
+      <td mat-cell *matCellDef="let element" id="cantidad"> {{element.cantidadEntrada | number: '0.0-2'}}  </td>
+    </ng-container>
+    <ng-container matColumnDef="precioEntrada">
+      <th mat-header-cell *matHeaderCellDef style="text-align: right !important;"> Precio </th>
+      <td mat-cell *matCellDef="let element" id="precio"> {{element.precioEntrada | number: '0.0-2'}} </td>
+    </ng-container>
+      
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</mat-card>
+

@@ -8,31 +8,42 @@
       </mat-form-field>
     </div>
     <mat-table #table [dataSource]="dataSource" matSort class="mat-elevation-z8">
-      <ng-container matColumnDef="codigo">
+      <ng-container matColumnDef="tipoMovimiento">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Tipo   </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.tipoMovimiento}} </mat-cell>
       </ng-container>
-      <ng-container matColumnDef="nombre">
+      <ng-container matColumnDef="fecha">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.fecha}} </mat-cell>
       </ng-container>
-      <ng-container matColumnDef="rubro">
+      <ng-container matColumnDef="referencia">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Referencia </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.referencia}} </mat-cell>
       </ng-container>
-      <ng-container matColumnDef="precioCompra">
+      <ng-container matColumnDef="proveedor">
         <mat-header-cell *matHeaderCellDef> Proveedor </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.proveedor}} </mat-cell>
       </ng-container>
-      <ng-container matColumnDef="precioVenta">
+      <ng-container matColumnDef="observaciones">
         <mat-header-cell *matHeaderCellDef> Observaciones </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.observaciones}} </mat-cell>
       </ng-container>
+      <ng-container matColumnDef="botones">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let group" (click)="$event.stopPropagation()">
+            <button mat-raised-button color="primary" (click)="verDetalle(group)"><i class="fas fa-eye"></i> Ver</button>
+            <button mat-raised-button color="primary" (click)="ocultaDetalle(group)"><i class="far fa-eye-slash"></i> Ocultar</button>
+        </mat-cell>
+    </ng-container>
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
     <!-- Paginador -->
     <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="pageEvent = $event"></mat-paginator>
-    <button mat-raised-button color="primary" (click)="imprimirPDF()">Guardar PDF</button>
+    <!-- <button mat-raised-button color="primary" (click)="imprimirPDF()">Guardar PDF</button> -->
   </div>
 </mat-card>
+<app-detalles *ngIf="visualizar" [referencia]="referencia"
+                                 [fecha]="fecha"
+                                 [proveedor]="proveedor"
+                                 [observaciones]="observaciones"></app-detalles>
