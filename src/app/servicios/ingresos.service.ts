@@ -122,4 +122,13 @@ export class IngresosService {
     });
     return this.movDetalle;
   }
+
+  devuelveDetalleComprobante(comp: string) {
+    // this.productosCol = this.afs.collection('productos', ref=> ref.where('nombre', '==', item));
+    // return this.productosCol;
+ 
+    this.movDetalleCol = this.afs.collection('movDetalle', ref => ref.where('referencia', '==', comp));
+    return this.movDetalleCol;
+ 
+   }
 }
