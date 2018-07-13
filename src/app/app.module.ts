@@ -48,6 +48,11 @@ import { IngresosComponent } from './ingresos/ingresos.component';
 import { IngresosDetalleComponent } from './ingresos/ingresos-detalle/ingresos-detalle.component';
 import { SalidasComponent } from './salidas/salidas.component';
 import { SalidasDetalleComponent } from './salidas/salidas-detalle/salidas-detalle.component';
+import { PrintComprobantesComponent } from './print-comprobantes/print-comprobantes.component';
+import { EntradaComponent } from './print-comprobantes/entrada/entrada.component';
+import { SalidaComponent } from './print-comprobantes/salida/salida.component';
+import { DetallesComponent } from './print-comprobantes/detalles/detalles.component';
+import { LoginComponent } from './login/login.component';
 import { ConfirmBoxComponent } from './confirm-box.component';
 
 /* Servicios */
@@ -57,10 +62,9 @@ import { ProductosService } from './servicios/productos.service';
 import { RubrosService } from './servicios/rubros.service';
 import { IngresosService } from './servicios/ingresos.service';
 import { SalidasService } from './servicios/salidas.service';
-import { PrintComprobantesComponent } from './print-comprobantes/print-comprobantes.component';
-import { EntradaComponent } from './print-comprobantes/entrada/entrada.component';
-import { SalidaComponent } from './print-comprobantes/salida/salida.component';
-import { DetallesComponent } from './print-comprobantes/detalles/detalles.component';
+import { AuthGuard } from './guards/auth.guard';
+import { AuthService } from './servicios/auth.service';
+import { FlashMessagesService } from 'angular2-flash-messages';
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,7 +86,8 @@ import { DetallesComponent } from './print-comprobantes/detalles/detalles.compon
     PrintComprobantesComponent,
     EntradaComponent,
     SalidaComponent,
-    DetallesComponent
+    DetallesComponent,
+    LoginComponent
     ],
 
   imports: [
@@ -120,7 +125,10 @@ import { DetallesComponent } from './print-comprobantes/detalles/detalles.compon
     ProductosService,
     RubrosService,
     IngresosService,
-    SalidasService
+    SalidasService,
+    AuthGuard,
+    AuthService,
+    FlashMessagesService
   ],
   bootstrap: [AppComponent]
 })

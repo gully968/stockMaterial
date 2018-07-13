@@ -25,6 +25,9 @@
                 <button mat-menu-item routerLink="/salidas">Salida de Mercadería</button>
               </mat-menu>
               <button mat-button routerLink="/comprobantes"><i class="fas fa-print fa-2x"></i> Comprobantes</button>
+              <button mat-button routerLink="/login" *ngIf="!estaLogueado"><i class="far fa-user fa-2x"></i> Ingresar</button>
+              <button mat-button routerLink="/inicio" *ngIf="estaLogueado" (click)="logout()"><i class="far fa-user fa-2x"></i> Salir</button>
+              
         </mat-card>
     </main>
 </div>

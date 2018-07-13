@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 /* MODULOS PARA ROUTING */
+import { AuthGuard } from './guards/auth.guard';
 import { ProveedoresComponent } from './tablas/proveedores/proveedores.component';
 import { ClientesComponent } from './tablas/clientes/clientes.component';
 import { ProductosComponent } from './tablas/productos/productos.component';
@@ -14,20 +15,22 @@ import { ListadoPreciosComponent } from './listados/listado-precios/listado-prec
 import { IngresosComponent } from './ingresos/ingresos.component';
 import { SalidasComponent } from './salidas/salidas.component';
 import { PrintComprobantesComponent } from './print-comprobantes/print-comprobantes.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: 'tabla-proveedores', component: ProveedoresComponent },
-  { path: 'tabla-clientes', component: ClientesComponent },
-  { path: 'tabla-productos', component: ProductosComponent },
-  { path: 'tabla-rubros', component: RubrosComponent},
-  { path: 'listado-proveedores', component: ListadoProveedoresComponent },
-  { path: 'listado-clientes', component: ListadoClientesComponent },
-  { path: 'listado-productos', component: ListadoProductosComponent },
-  { path: 'listado-rubros', component: ListadoRubrosComponent },
-  { path: 'listado-precios', component: ListadoPreciosComponent},
-  { path: 'ingresos', component: IngresosComponent},
-  { path: 'salidas', component: SalidasComponent },
-  { path: 'comprobantes', component: PrintComprobantesComponent},
+  { path: 'tabla-clientes', component: ClientesComponent, canActivate: [AuthGuard]},
+  { path: 'tabla-productos', component: ProductosComponent, canActivate: [AuthGuard]},
+  { path: 'tabla-rubros', component: RubrosComponent, canActivate: [AuthGuard]},
+  { path: 'listado-proveedores', component: ListadoProveedoresComponent, canActivate: [AuthGuard]},
+  { path: 'listado-clientes', component: ListadoClientesComponent, canActivate: [AuthGuard]},
+  { path: 'listado-productos', component: ListadoProductosComponent, canActivate: [AuthGuard]},
+  { path: 'listado-rubros', component: ListadoRubrosComponent, canActivate: [AuthGuard]},
+  { path: 'listado-precios', component: ListadoPreciosComponent, canActivate: [AuthGuard]},
+  { path: 'ingresos', component: IngresosComponent, canActivate: [AuthGuard]},
+  { path: 'salidas', component: SalidasComponent, canActivate: [AuthGuard]},
+  { path: 'comprobantes', component: PrintComprobantesComponent, canActivate: [AuthGuard]},
+  { path: 'login', component: LoginComponent},
   { path: 'inicio', component: AppComponent}
 ];
 

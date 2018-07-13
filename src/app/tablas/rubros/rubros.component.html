@@ -15,15 +15,15 @@
 </div>
 <!-- Tabla de despliegue de datos con posibilidad de editar -->
 <div class="example-container mat-elevation-z8">
-  <mat-table #table [dataSource]="dataSource" matSort>
+  <mat-table #table [dataSource]="dataSource">
       <!-- Código de cliente -->
       <ng-container matColumnDef="codigo">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> Código </mat-header-cell>
+          <mat-header-cell *matHeaderCellDef> Código </mat-header-cell>
           <mat-cell *matCellDef="let element"> {{element.codigo}} </mat-cell>
       </ng-container>
       <!-- Nombre o razon social -->
       <ng-container matColumnDef="nombre">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+          <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
           <mat-cell *matCellDef="let element">
               <mat-form-field floatLabel="never">
                   <input matInput placeholder="Nombre" [value]="element.nombre" [(ngModel)]="element.nombre" (change)="cambioaEditar()" >
