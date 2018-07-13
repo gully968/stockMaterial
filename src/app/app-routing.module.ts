@@ -16,6 +16,7 @@ import { IngresosComponent } from './ingresos/ingresos.component';
 import { SalidasComponent } from './salidas/salidas.component';
 import { PrintComprobantesComponent } from './print-comprobantes/print-comprobantes.component';
 import { LoginComponent } from './login/login.component';
+import { InicioComponent } from './inicio/inicio.component';
 
 const routes: Routes = [
   { path: 'tabla-proveedores', component: ProveedoresComponent },
@@ -31,7 +32,7 @@ const routes: Routes = [
   { path: 'salidas', component: SalidasComponent, canActivate: [AuthGuard]},
   { path: 'comprobantes', component: PrintComprobantesComponent, canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent},
-  { path: 'inicio', component: AppComponent}
+  { path: 'inicio', component: InicioComponent}
 ];
 
 @NgModule({

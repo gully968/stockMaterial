@@ -67,6 +67,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './servicios/auth.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { MenuNavComponent } from './menu-nav/menu-nav.component';
+import { InicioComponent } from './inicio/inicio.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -90,7 +91,8 @@ import { MenuNavComponent } from './menu-nav/menu-nav.component';
     SalidaComponent,
     DetallesComponent,
     LoginComponent,
-    MenuNavComponent
+    MenuNavComponent,
+    InicioComponent
     ],
 
   imports: [

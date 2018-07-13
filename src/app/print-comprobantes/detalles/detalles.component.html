@@ -22,7 +22,7 @@
     </ng-container>
     <ng-container matColumnDef="importe">
       <th mat-header-cell *matHeaderCellDef style="text-align: right !important;"> Importe </th>
-      <td mat-cell *matCellDef="let element" id="importe"> {{element.importe | number: '0.0-2'}} </td>
+      <td mat-cell *matCellDef="let element" id="importe"> {{element.importe | number: '0.2-2'}} </td>
     </ng-container>      
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
