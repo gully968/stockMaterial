@@ -1,34 +1,6 @@
-<div >
-    <main>
-        <mat-card style="background-color: lightblue;">
-            <span style="font-family: Arial; font-size: 20px;">
-                <i class="fab fa-servicestack fa-3x"></i> InventarioAPP
-            </span>
-            <button mat-button [matMenuTriggerFor]="menutablas"><i class="fas fa-cog fa-2x"></i> Configurar</button>
-              <mat-menu #menutablas="matMenu">
-                  <button mat-menu-item routerLink="/tabla-proveedores"><i class="fas fa-people-carry"></i> Tabla Proveedores</button>
-                  <button mat-menu-item routerLink="/tabla-clientes"><i class="fas fa-hand-holding-usd"></i> Tabla Clientes</button>
-                  <button mat-menu-item routerLink="/tabla-productos"><i class="fab fa-product-hunt"></i> Tabla Productos</button>
-                  <button mat-menu-item routerLink="/tabla-rubros"><i class="far fa-folder-open"></i> Tabla Rubros</button>
-              </mat-menu>
-              <button mat-button [matMenuTriggerFor]="menulistados"><i class="fas fa-search-plus fa-2x"></i> Listados</button>
-              <mat-menu #menulistados="matMenu">
-                <button mat-menu-item routerLink="/listado-proveedores"> Listado de Proveedores</button>  
-                <button mat-menu-item routerLink="/listado-clientes"> Listado de Clientes</button>
-                <button mat-menu-item routerLink="/listado-productos"> Listado de Productos</button>
-                <button mat-menu-item routerLink="/listado-rubros"> Listado de Rubros</button>
-              </mat-menu>
-              <button mat-button routerLink="/listado-precios"><i class="fas fa-dollar-sign fa-2x"></i> Precios</button>
-              <button mat-button [matMenuTriggerFor]="menuStock"><i class="fas fa-exchange-alt fa-2x"></i> Stock</button>
-              <mat-menu #menuStock="matMenu">
-                <button mat-menu-item routerLink="/ingresos">Ingreso de Mercadería</button>  
-                <button mat-menu-item routerLink="/salidas">Salida de Mercadería</button>
-              </mat-menu>
-              <button mat-button routerLink="/comprobantes"><i class="fas fa-print fa-2x"></i> Comprobantes</button>
-              <button mat-button routerLink="/login" *ngIf="!estaLogueado"><i class="far fa-user fa-2x"></i> Ingresar</button>
-              <button mat-button routerLink="/inicio" *ngIf="estaLogueado" (click)="logout()"><i class="far fa-user fa-2x"></i> Salir</button>
-              
-        </mat-card>
-    </main>
+<div class="container">
+    <app-menu-nav></app-menu-nav>
+    <flash-messages></flash-messages>
+    <router-outlet></router-outlet>
 </div>
-<router-outlet></router-outlet>
+    

@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 /* Angular Material y Animations */
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -65,6 +66,7 @@ import { SalidasService } from './servicios/salidas.service';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './servicios/auth.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { MenuNavComponent } from './menu-nav/menu-nav.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -87,7 +89,8 @@ import { FlashMessagesService } from 'angular2-flash-messages';
     EntradaComponent,
     SalidaComponent,
     DetallesComponent,
-    LoginComponent
+    LoginComponent,
+    MenuNavComponent
     ],
 
   imports: [
@@ -111,6 +114,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
     AppRoutingModule,
     /* Angular Firestore */
     AngularFireAuthModule,
+    FlashMessagesModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     FormsModule,
