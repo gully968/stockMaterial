@@ -1,18 +1,20 @@
 const { app, BrowserWindow } = require('electron')
 
+require('electron-debug')({showDevTools: true});
+
 let win;
 
 function createWindow () {
   // Create the browser window.
   win = new BrowserWindow({
-    width: 600, 
-    height: 600,
+    width: 1200, 
+    height: 700,
     backgroundColor: '#ffffff',
-    icon: `file://${__dirname}/dist/assets/logo.png`
+    icon: `file://${__dirname}/dist/stockMaterial/favicon.ico`
   })
 
 
-  win.loadURL(`file://${__dirname}/dist/index.html`)
+  win.loadURL(`file://${__dirname}/dist/stockMaterial/index.html`)
 
   // Event when the window is closed.
   win.on('closed', function () {
