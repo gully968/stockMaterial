@@ -13,11 +13,13 @@ export class DetallesComponent implements AfterViewInit, OnChanges {
   @Input () fecha: string;
   @Input () proveedor: string;
   @Input () observaciones: string;
+  @Input () cliente: string;
+  
   verDetalleItems: boolean;
 
   datosMovimientoDetalle = [];
   dataSource = this.datosMovimientoDetalle;
-  displayedColumns: string[] = ['producto', 'cantidadEntrada', 'precioEntrada', 'importe'];
+  displayedColumns: string[] = ['producto', 'cantidadEntrada', 'precioEntrada','cantidadSalida', 'precioVenta', 'importe'];
   
   constructor( public ingser: IngresosService) { }
 
@@ -44,6 +46,7 @@ export class DetallesComponent implements AfterViewInit, OnChanges {
           format: 'a4', /* Tamaño de hoja */
           hotfixes: [] /* Ni idea ??? */
           });
+          
         doc.setFontSize(8);
         let x = 50;
         doc.text(50, 10, 'Comprobante no válido como Factura', 'center');
@@ -62,13 +65,21 @@ export class DetallesComponent implements AfterViewInit, OnChanges {
         doc.line(10, 40, 100, 40); // horizontal line
         let itemsref: any[];
         let importeTotal: number;
+        let tipoMov: string;
         this.ingser.devuelveDetalleComprobante(ref).valueChanges().subscribe(datos => {
            itemsref = datos;
            importeTotal = 0;
            for (let i = 0; i < itemsref.length; i++) {
              doc.text (10, x, datos[i].producto, { width: 400 });
-             doc.text (55, x, datos[i].cantidadEntrada.toFixed(2).toString(), {align: 'right'});
-             doc.text (75, x, datos[i].precioEntrada.toFixed(2).toString(), {align: 'right'});
+             if (datos[i].cantidadEntrada > 0) {
+               doc.text (55, x, datos[i].cantidadEntrada.toFixed(2).toString(), {align: 'right'});
+               doc.text (75, x, datos[i].precioEntrada.toFixed(2).toString(), {align: 'right'});
+               tipoMov = 'INGRESO';
+              } else {
+               doc.text (55, x, datos[i].cantidadSalida.toFixed(2).toString(), {align: 'right'});
+               doc.text (75, x, datos[i].precioVenta.toFixed(2).toString(), {align: 'right'});
+               tipoMov = 'SALIDA / VENTA';
+             }
              doc.text (95, x, datos[i].importe.toFixed(2).toString(), {align: 'right'});
              console.log(datos[i].producto);
              console.log(datos[i].precioEntrada);
@@ -81,7 +92,9 @@ export class DetallesComponent implements AfterViewInit, OnChanges {
            doc.line(10, x, 100, x); // horizontal line
            doc.text (10, x + 5,  'TOTAL:');
            doc.text (85, x + 5, importeTotal.toFixed(2).toString());
-           doc.save('prueba.pdf');
+           doc.text (10, x + 10, 'Notas: ' + obs)
+           doc.text (10, x + 15, 'Tipo de Movimiento: ' + tipoMov)
+           doc.save(ref);
         });
 
   }

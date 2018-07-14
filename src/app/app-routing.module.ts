@@ -19,6 +19,7 @@ import { LoginComponent } from './login/login.component';
 import { InicioComponent } from './inicio/inicio.component';
 
 const routes: Routes = [
+  { path: '', component: InicioComponent},
   { path: 'tabla-proveedores', component: ProveedoresComponent },
   { path: 'tabla-clientes', component: ClientesComponent, canActivate: [AuthGuard]},
   { path: 'tabla-productos', component: ProductosComponent, canActivate: [AuthGuard]},

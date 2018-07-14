@@ -11,11 +11,11 @@ import { MatTableDataSource, MatPaginator, MatSort, PageEvent } from '@angular/m
 })
 export class EntradaComponent implements AfterViewInit {
 
-  displayedColumns = ['tipoMovimiento', 'fecha', 'referencia', 'proveedor', 'observaciones', 'botones'];
+  displayedColumns = ['tipoMovimiento', 'fecha', 'referencia', 'proveedor', 'cliente', 'observaciones', 'botones'];
   dataSource = new MatTableDataSource<Movimientos>();
   length = 100;
-  pageSize = 1;
-  pageSizeOptions: number[] = [1, 3, 5, 10, 50, 100];
+  pageSize = 5;
+  pageSizeOptions: number[] = [ 5, 10, 50, 100];
   pageEvent: PageEvent;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -25,6 +25,7 @@ export class EntradaComponent implements AfterViewInit {
   referencia: string;
   fecha: string;
   proveedor: string;
+  cliente: string;
   observaciones: string;
 
   constructor(public ingserv: IngresosService) { }
@@ -48,6 +49,7 @@ export class EntradaComponent implements AfterViewInit {
     this.referencia = item.referencia;
     this.fecha = item.fecha;
     this.proveedor = item.proveedor;
+    this.cliente = item.cliente;
     this.observaciones = item.observaciones;
     console.log(item);
    }

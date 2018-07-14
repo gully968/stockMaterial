@@ -1,5 +1,5 @@
 <mat-card>
-  <h3>Comprobantes Ingresos</h3>  
+  
   <div class="example-container mat-elevation-z8">
     <div class="example-header">
       <mat-form-field style="width:400px !important; margin-left: 40px !important;">
@@ -24,6 +24,10 @@
         <mat-header-cell *matHeaderCellDef> Proveedor </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.proveedor}} </mat-cell>
       </ng-container>
+      <ng-container matColumnDef="cliente">
+        <mat-header-cell *matHeaderCellDef> Cliente </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.cliente}} </mat-cell>
+      </ng-container>
       <ng-container matColumnDef="observaciones">
         <mat-header-cell *matHeaderCellDef> Observaciones </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.observaciones}} </mat-cell>
@@ -31,8 +35,8 @@
       <ng-container matColumnDef="botones">
         <mat-header-cell *matHeaderCellDef></mat-header-cell>
         <mat-cell *matCellDef="let group" (click)="$event.stopPropagation()">
-            <button mat-raised-button color="primary" (click)="verDetalle(group)"><i class="fas fa-eye"></i> Ver</button>
-            <button mat-raised-button color="primary" (click)="ocultaDetalle(group)"><i class="far fa-eye-slash"></i> Ocultar</button>
+            <button mat-button color="primary" (click)="verDetalle(group)"><i class="fas fa-eye"></i></button>
+            <button mat-button color="primary" (click)="ocultaDetalle(group)"><i class="far fa-eye-slash"></i></button>
         </mat-cell>
     </ng-container>
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
@@ -46,4 +50,5 @@
 <app-detalles *ngIf="visualizar" [referencia]="referencia"
                                  [fecha]="fecha"
                                  [proveedor]="proveedor"
-                                 [observaciones]="observaciones"></app-detalles>
+                                 [observaciones]="observaciones"
+                                 [cliente]="cliente"></app-detalles>

@@ -1,7 +1,8 @@
 <mat-card>
   <p>Comprobante: {{referencia}}</p>
   <p>Fecha: {{fecha}} </p>
-  <p>Proveedor: {{proveedor}}</p>
+  <p *ngIf="proveedor">Proveedor: {{proveedor}}  </p>
+  <p *ngIf="cliente">Cliente: {{cliente}}</p>
   <p>Observaciones: {{observaciones}} </p>
   <button mat-raised-button color="primary" (click)="verDetalle(referencia)">Mas Detalle</button>
   <button mat-raised-button color="primary" (click)="cerrarDetalle()">Cerrar Detalle</button>
@@ -13,12 +14,20 @@
       <td mat-cell *matCellDef="let element" id="producto"> {{element.producto}} </td>
     </ng-container>
     <ng-container matColumnDef="cantidadEntrada">
-      <th mat-header-cell *matHeaderCellDef style="text-align: right !important;"> Cantidad </th>
+      <th mat-header-cell *matHeaderCellDef style="text-align: right !important;"> Ingreso </th>
       <td mat-cell *matCellDef="let element" id="cantidad"> {{element.cantidadEntrada | number: '0.0-2'}}  </td>
     </ng-container>
     <ng-container matColumnDef="precioEntrada">
       <th mat-header-cell *matHeaderCellDef style="text-align: right !important;"> P.Unit. </th>
       <td mat-cell *matCellDef="let element" id="precio"> {{element.precioEntrada | number: '0.0-2'}} </td>
+    </ng-container>
+    <ng-container matColumnDef="cantidadSalida">
+      <th mat-header-cell *matHeaderCellDef style="text-align: right !important;"> Salida </th>
+      <td mat-cell *matCellDef="let element" id="cantidad"> {{element.cantidadSalida | number: '0.0-2'}}  </td>
+    </ng-container>
+    <ng-container matColumnDef="precioVenta">
+      <th mat-header-cell *matHeaderCellDef style="text-align: right !important;"> P.Unit. </th>
+      <td mat-cell *matCellDef="let element" id="precio"> {{element.precioVenta | number: '0.0-2'}} </td>
     </ng-container>
     <ng-container matColumnDef="importe">
       <th mat-header-cell *matHeaderCellDef style="text-align: right !important;"> Importe </th>
