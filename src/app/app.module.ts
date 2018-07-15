@@ -51,9 +51,10 @@ import { SalidasComponent } from './salidas/salidas.component';
 import { SalidasDetalleComponent } from './salidas/salidas-detalle/salidas-detalle.component';
 import { PrintComprobantesComponent } from './print-comprobantes/print-comprobantes.component';
 import { EntradaComponent } from './print-comprobantes/entrada/entrada.component';
-import { SalidaComponent } from './print-comprobantes/salida/salida.component';
 import { DetallesComponent } from './print-comprobantes/detalles/detalles.component';
 import { LoginComponent } from './login/login.component';
+import { MenuNavComponent } from './menu-nav/menu-nav.component';
+import { InicioComponent } from './inicio/inicio.component';
 import { ConfirmBoxComponent } from './confirm-box.component';
 
 /* Servicios */
@@ -65,9 +66,8 @@ import { IngresosService } from './servicios/ingresos.service';
 import { SalidasService } from './servicios/salidas.service';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './servicios/auth.service';
+import { EmpresaService } from './servicios/empresa.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
-import { MenuNavComponent } from './menu-nav/menu-nav.component';
-import { InicioComponent } from './inicio/inicio.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -88,7 +88,6 @@ import { InicioComponent } from './inicio/inicio.component';
     SalidasDetalleComponent,
     PrintComprobantesComponent,
     EntradaComponent,
-    SalidaComponent,
     DetallesComponent,
     LoginComponent,
     MenuNavComponent,
@@ -134,6 +133,7 @@ import { InicioComponent } from './inicio/inicio.component';
     SalidasService,
     AuthGuard,
     AuthService,
+    EmpresaService,
     FlashMessagesService
   ],
   bootstrap: [AppComponent]

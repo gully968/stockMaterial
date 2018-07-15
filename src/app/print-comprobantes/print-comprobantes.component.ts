@@ -5,6 +5,7 @@ import { ProductosService } from '../servicios/productos.service';
 import { RubrosService } from '../servicios/rubros.service';
 import { ProveedoresService } from '../servicios/proveedores.service';
 import { ClientesService } from '../servicios/clientes.service';
+import { EmpresaService } from '../servicios/empresa.service';
 
 @Component({
   selector: 'app-print-comprobantes',
@@ -21,13 +22,15 @@ export class PrintComprobantesComponent implements OnInit {
   productos = [];
   proveedores = [];
   clientes = [];
-
+  
+  
   constructor(public ingserv: IngresosService,
               public salserv: SalidasService,
               public prodserv: ProductosService,
               public rubserv: RubrosService,
               public provserv: ProveedoresService,
-              public cliserv: ClientesService) { }
+              public cliserv: ClientesService,
+              public emp: EmpresaService) { }
 
   ngOnInit() {
     /* Creo los observables para cada cosa por separado */
@@ -37,6 +40,7 @@ export class PrintComprobantesComponent implements OnInit {
     this.prodserv.getProductosObservable().subscribe(dataprod => {
       this.productos = dataprod;
     });
+    
   }
   
 }
