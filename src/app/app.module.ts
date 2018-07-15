@@ -55,6 +55,7 @@ import { DetallesComponent } from './print-comprobantes/detalles/detalles.compon
 import { LoginComponent } from './login/login.component';
 import { MenuNavComponent } from './menu-nav/menu-nav.component';
 import { InicioComponent } from './inicio/inicio.component';
+import { StecComponent } from './stec/stec.component';
 import { ConfirmBoxComponent } from './confirm-box.component';
 
 /* Servicios */
@@ -67,6 +68,7 @@ import { SalidasService } from './servicios/salidas.service';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './servicios/auth.service';
 import { EmpresaService } from './servicios/empresa.service';
+import { StecService } from './servicios/stec.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 @NgModule({
   declarations: [
@@ -91,7 +93,8 @@ import { FlashMessagesService } from 'angular2-flash-messages';
     DetallesComponent,
     LoginComponent,
     MenuNavComponent,
-    InicioComponent
+    InicioComponent,
+    StecComponent
     ],
 
   imports: [
@@ -134,6 +137,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
     AuthGuard,
     AuthService,
     EmpresaService,
+    StecService,
     FlashMessagesService
   ],
   bootstrap: [AppComponent]
