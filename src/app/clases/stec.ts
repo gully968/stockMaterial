@@ -2,6 +2,9 @@ export class Stec {
     id?: string;
     fechaIngreso: string;
     fechaRevision: string;
+    fechaEgreso: string;
+    cliente: string;
+    equipo: string;
     tecnico: string;
     fallaDeclarada: string;
     fallaDetectada: string;
@@ -9,7 +12,7 @@ export class Stec {
     costoReparacion: number;
     importeReparacion: number;
     estaReparado: boolean;
-    fechaRetirado: string;
+    garantia: string;
     observaciones: string;
     };
 

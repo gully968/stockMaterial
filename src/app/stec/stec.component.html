@@ -1,3 +1,39 @@
-<p>
-  stec works!
-</p>
+<div class="col-md-6 mx-auto mt-3">
+<mat-card>
+  <mat-card-title>Ingreso de Reparación </mat-card-title>
+    <mat-form-field>
+      <input matInput [matDatepicker]="fechaIngreso" placeholder="Ingreso" name="fechaIngreso" id="fechaIngreso" [(ngModel)]="item.fechaIngreso" >
+      <mat-datepicker-toggle matSuffix [for]="fechaIngreso"></mat-datepicker-toggle>
+      <mat-datepicker #fechaIngreso></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [matDatepicker]="fechaRevision" placeholder="Revision" name="fechaRevision" id="fechaRevision" [(ngModel)]="item.fechaRevision" >
+      <mat-datepicker-toggle matSuffix [for]="fechaRevision"></mat-datepicker-toggle>
+      <mat-datepicker #fechaRevision></mat-datepicker>
+    </mat-form-field>
+    <div>
+      <mat-form-field class="example-full-width" style="width: 480px !important">
+        <input matInput placeholder="Cliente" name="cliente" [(ngModel)]="item.cliente" autocomplete="off" >
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="example-full-width" style="width: 480px !important">
+        <input matInput placeholder="Equipo a Reparar" name="equipo" [(ngModel)]="item.equipo" autocomplete="off" >
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="example-full-width" style="width: 480px !important">
+        <input matInput placeholder="Técnico Asignado" name="tecnico" [(ngModel)]="item.tecnico" autocomplete="off" >
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="example-full-width" style="width: 480px !important;height: 50px !important;">
+        <textarea matInput placeholder="Falla Declarada por el Cliente" [(ngModel)]="item.fallaDeclarada"></textarea>
+      </mat-form-field>
+    </div>
+    <div class="col-md-6 mx-auto mt-3">
+        <button class="btn btn-lg btn-primary" (click)="altaServicio()"> Alta Servicio</button>
+    </div>
+</mat-card>
+
+</div>

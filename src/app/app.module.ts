@@ -6,7 +6,7 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule,
          MatCheckboxModule,
-         MatCard,
+       /*   MatCard, */
          MatInputModule,
          MatTableModule,
          MatPaginatorModule,
@@ -14,7 +14,8 @@ import { MatButtonModule,
          MatTabsModule,
          MatDividerModule,
          MatSortModule,
-         MatNativeDateModule } from '@angular/material';
+         MatNativeDateModule, 
+         MatCardModule} from '@angular/material';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 
@@ -73,7 +74,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 @NgModule({
   declarations: [
     AppComponent,
-    MatCard,
+   /*  MatCard, */
     ProveedoresComponent,
     ConfirmBoxComponent,
     ClientesComponent,
@@ -100,6 +101,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    MatCardModule,
     MatButtonModule,
     MatCheckboxModule,
     MatInputModule,
