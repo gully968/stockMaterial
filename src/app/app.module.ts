@@ -71,6 +71,7 @@ import { AuthService } from './servicios/auth.service';
 import { EmpresaService } from './servicios/empresa.service';
 import { StecService } from './servicios/stec.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { StecConsultaComponent } from './stec-consulta/stec-consulta.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -95,7 +96,8 @@ import { FlashMessagesService } from 'angular2-flash-messages';
     LoginComponent,
     MenuNavComponent,
     InicioComponent,
-    StecComponent
+    StecComponent,
+    StecConsultaComponent
     ],
 
   imports: [

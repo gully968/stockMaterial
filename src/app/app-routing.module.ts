@@ -18,6 +18,7 @@ import { PrintComprobantesComponent } from './print-comprobantes/print-comproban
 import { LoginComponent } from './login/login.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { StecComponent } from './stec/stec.component';
+import { StecConsultaComponent } from './stec-consulta/stec-consulta.component';
 
 const routes: Routes = [
   { path: '', component: InicioComponent},
@@ -33,7 +34,8 @@ const routes: Routes = [
   { path: 'ingresos', component: IngresosComponent, canActivate: [AuthGuard]},
   { path: 'salidas', component: SalidasComponent, canActivate: [AuthGuard]},
   { path: 'comprobantes', component: PrintComprobantesComponent, canActivate: [AuthGuard]},
-  { path: 'serviciotecnico', component: StecComponent, canActivate: [AuthGuard]},
+  { path: 'serviciotecnicoalta', component: StecComponent, canActivate: [AuthGuard]},
+  { path: 'serviciotecnicoconsulta', component: StecConsultaComponent, canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent},
   { path: 'inicio', component: InicioComponent}
 ];

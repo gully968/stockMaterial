@@ -38,8 +38,13 @@
               <a class="dropdown-item" routerLink="/salidas">Salida de Productos</a>
             </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/serviciotecnico">Servicio Técnico</a>
+          <!-- Menu de Servicio Tecnico -->
+          <li class="nav-item dropdown show" *ngIf="estaLogueado">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Servicio Tecnico</a>
+            <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 48px, 0px); top: 0px; left: 0px; will-change: transform;">
+              <a class="dropdown-item" routerLink="/serviciotecnicoalta">Alta de Servicio</a>
+              <a class="dropdown-item" routerLink="/serviciotecnicoconsulta">Consulta de Servicios</a>
+            </div>
           </li>
       </ul>
       

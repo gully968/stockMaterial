@@ -15,5 +15,3 @@ export class Stec {
     garantia: string;
     observaciones: string;
     };
-
-}
