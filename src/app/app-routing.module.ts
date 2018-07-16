@@ -3,22 +3,22 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 /* MODULOS PARA ROUTING */
 import { AuthGuard } from './guards/auth.guard';
-import { ProveedoresComponent } from './tablas/proveedores/proveedores.component';
-import { ClientesComponent } from './tablas/clientes/clientes.component';
-import { ProductosComponent } from './tablas/productos/productos.component';
-import { RubrosComponent } from './tablas/rubros/rubros.component';
-import { ListadoRubrosComponent } from './listados/listado-rubros/listado-rubros.component';
-import { ListadoClientesComponent } from './listados/listado-clientes/listado-clientes.component';
-import { ListadoProveedoresComponent } from './listados/listado-proveedores/listado-proveedores.component';
-import { ListadoProductosComponent } from './listados/listado-productos/listado-productos.component';
-import { ListadoPreciosComponent } from './listados/listado-precios/listado-precios.component';
-import { IngresosComponent } from './ingresos/ingresos.component';
-import { SalidasComponent } from './salidas/salidas.component';
-import { PrintComprobantesComponent } from './print-comprobantes/print-comprobantes.component';
-import { LoginComponent } from './login/login.component';
-import { InicioComponent } from './inicio/inicio.component';
-import { StecComponent } from './stec/stec.component';
-import { StecConsultaComponent } from './stec-consulta/stec-consulta.component';
+import { ProveedoresComponent } from './componentes/tablas/proveedores/proveedores.component';
+import { ClientesComponent } from './componentes/tablas/clientes/clientes.component';
+import { ProductosComponent } from './componentes/tablas/productos/productos.component';
+import { RubrosComponent } from './componentes/tablas/rubros/rubros.component';
+import { ListadoRubrosComponent } from './componentes/listados/listado-rubros/listado-rubros.component';
+import { ListadoClientesComponent } from './componentes/listados/listado-clientes/listado-clientes.component';
+import { ListadoProveedoresComponent } from './componentes/listados/listado-proveedores/listado-proveedores.component';
+import { ListadoProductosComponent } from './componentes/listados/listado-productos/listado-productos.component';
+import { ListadoPreciosComponent } from './componentes/listados/listado-precios/listado-precios.component';
+import { IngresosComponent } from './componentes/ingresos/ingresos.component';
+import { SalidasComponent } from './componentes/salidas/salidas.component';
+import { PrintComprobantesComponent } from './componentes/print-comprobantes/print-comprobantes.component';
+import { LoginComponent } from './componentes/login/login.component';
+import { InicioComponent } from './componentes/inicio/inicio.component';
+import { StecComponent } from './componentes/stec/stec.component';
+import { StecConsultaComponent } from './componentes/stec-consulta/stec-consulta.component';
 
 const routes: Routes = [
   { path: '', component: InicioComponent},

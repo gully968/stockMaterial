@@ -37,26 +37,26 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 /* Componentes */
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ProveedoresComponent } from './tablas/proveedores/proveedores.component';
-import { RubrosComponent } from './tablas/rubros/rubros.component';
-import { ClientesComponent } from './tablas/clientes/clientes.component';
-import { ListadoRubrosComponent } from './listados/listado-rubros/listado-rubros.component';
-import { ListadoClientesComponent } from './listados/listado-clientes/listado-clientes.component';
-import { ListadoProveedoresComponent } from './listados/listado-proveedores/listado-proveedores.component';
-import { ProductosComponent } from './tablas/productos/productos.component';
-import { ListadoProductosComponent } from './listados/listado-productos/listado-productos.component';
-import { ListadoPreciosComponent } from './listados/listado-precios/listado-precios.component';
-import { IngresosComponent } from './ingresos/ingresos.component';
-import { IngresosDetalleComponent } from './ingresos/ingresos-detalle/ingresos-detalle.component';
-import { SalidasComponent } from './salidas/salidas.component';
-import { SalidasDetalleComponent } from './salidas/salidas-detalle/salidas-detalle.component';
-import { PrintComprobantesComponent } from './print-comprobantes/print-comprobantes.component';
-import { EntradaComponent } from './print-comprobantes/entrada/entrada.component';
-import { DetallesComponent } from './print-comprobantes/detalles/detalles.component';
-import { LoginComponent } from './login/login.component';
-import { MenuNavComponent } from './menu-nav/menu-nav.component';
-import { InicioComponent } from './inicio/inicio.component';
-import { StecComponent } from './stec/stec.component';
+import { ProveedoresComponent } from './componentes/tablas/proveedores/proveedores.component';
+import { RubrosComponent } from './componentes/tablas/rubros/rubros.component';
+import { ClientesComponent } from './componentes/tablas/clientes/clientes.component';
+import { ListadoRubrosComponent } from './componentes/listados/listado-rubros/listado-rubros.component';
+import { ListadoClientesComponent } from './componentes/listados/listado-clientes/listado-clientes.component';
+import { ListadoProveedoresComponent } from './componentes/listados/listado-proveedores/listado-proveedores.component';
+import { ProductosComponent } from './componentes/tablas/productos/productos.component';
+import { ListadoProductosComponent } from './componentes/listados/listado-productos/listado-productos.component';
+import { ListadoPreciosComponent } from './componentes/listados/listado-precios/listado-precios.component';
+import { IngresosComponent } from './componentes/ingresos/ingresos.component';
+import { IngresosDetalleComponent } from './componentes/ingresos/ingresos-detalle/ingresos-detalle.component';
+import { SalidasComponent } from './componentes/salidas/salidas.component';
+import { SalidasDetalleComponent } from './componentes/salidas/salidas-detalle/salidas-detalle.component';
+import { PrintComprobantesComponent } from './componentes/print-comprobantes/print-comprobantes.component';
+import { EntradaComponent } from './componentes/print-comprobantes/entrada/entrada.component';
+import { DetallesComponent } from './componentes/print-comprobantes/detalles/detalles.component';
+import { LoginComponent } from './componentes/login/login.component';
+import { MenuNavComponent } from './componentes/menu-nav/menu-nav.component';
+import { InicioComponent } from './componentes/inicio/inicio.component';
+import { StecComponent } from './componentes/stec/stec.component';
 import { ConfirmBoxComponent } from './confirm-box.component';
 
 /* Servicios */
@@ -71,7 +71,7 @@ import { AuthService } from './servicios/auth.service';
 import { EmpresaService } from './servicios/empresa.service';
 import { StecService } from './servicios/stec.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
-import { StecConsultaComponent } from './stec-consulta/stec-consulta.component';
+import { StecConsultaComponent } from './componentes/stec-consulta/stec-consulta.component';
 @NgModule({
   declarations: [
     AppComponent,
