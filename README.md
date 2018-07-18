@@ -78,10 +78,7 @@ Listados de Clientes, Proveedores, Rubros consultas por pantalla basicas.
 
 
 
-# Agradecimientos (regards)
-
 ## Google Firebase 
-
 
 Es1te sistema utiliza la implementación de Firestore por lo que se debe tener en cuenta al crear el proyecto,  realizar cambio al environment.ts existente con los datos propios del servidor de firestore.  
 
