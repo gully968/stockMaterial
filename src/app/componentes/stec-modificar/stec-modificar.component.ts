@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StecService } from '../../servicios/stec.service';
+import { Observable } from '../../../../node_modules/rxjs';
+import { Stec } from '../../clases/stec';
 
 @Component({
   selector: 'app-stec-modificar',
@@ -8,12 +10,19 @@ import { StecService } from '../../servicios/stec.service';
 })
 export class StecModificarComponent implements OnInit {
 
-  servicioTecnico = [];
+  servTec = [];
 
-  constructor(public st: StecService) { }
+  constructor(public st: StecService) {
+    this.st.getServiciosObservable().subscribe(dataservice => {
+      this.servTec = dataservice;
+    })
+  }
 
   ngOnInit() {
   }
 
+  verDetalle(item) {
+    console.log(item);
+  }
 
 }

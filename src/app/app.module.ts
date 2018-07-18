@@ -74,6 +74,7 @@ import { EmpresaService } from './servicios/empresa.service';
 import { StecService } from './servicios/stec.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { RegistroComponent } from './componentes/registro/registro.component';
+import { DetalleComponent } from './componentes/stec-modificar/detalle/detalle.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -101,7 +102,8 @@ import { RegistroComponent } from './componentes/registro/registro.component';
     StecComponent,
     StecConsultaComponent,
     StecModificarComponent,
-    RegistroComponent
+    RegistroComponent,
+    DetalleComponent
     ],
 
   imports: [

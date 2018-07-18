@@ -1,3 +1,16 @@
-<p>
-  stec-modificar works!
-</p>
+<mat-card>
+  <h3>Modificación de Servicio Técnico</h3>
+</mat-card>
+<mat-card>
+    <mat-form-field style="width:350px !important">
+        <mat-select [(ngModel)]="servTec.id" >
+            <mat-option *ngFor="let item of servTec" [value]="item.id" >
+             {{item.equipo}} 
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</mat-card>
+<mat-card>
+  <!-- Llamo al modulo detalle con el id de parametro -->
+    <app-service-detalle [idReparacion]="servTec.id"></app-service-detalle>
+</mat-card>

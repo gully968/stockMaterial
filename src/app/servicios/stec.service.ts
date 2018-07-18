@@ -16,7 +16,7 @@ export class StecService {
     this.sTecCollection = this.afs.collection('servicioTecnico');
    }
 
-   getServiciosObservable(){
+   getServiciosObservable() {
     this.sTecObservable = this.sTecCollection.snapshotChanges().map(changes => {
       return changes.map(a => {
         const data = a.payload.doc.data() as Stec;
