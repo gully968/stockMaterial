@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { StecService } from '../../../servicios/stec.service';
 
 @Component({
   selector: 'app-service-detalle',
@@ -10,12 +11,12 @@ export class DetalleComponent implements OnInit {
   @Input() idReparacion: string;
 
   titulo = '';
-  constructor() { }
-
+  registro: any ;
+  constructor(public sts: StecService) { }
+  
   ngOnInit() {
     if (this.idReparacion) {
       this.titulo = this.idReparacion;
-      /* Deberia inicializar las variables desde servicio o mandar el doc??? mmmm */
     }
   }
 
