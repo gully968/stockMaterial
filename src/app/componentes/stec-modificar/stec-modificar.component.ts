@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StecService } from '../../servicios/stec.service';
 
 @Component({
   selector: 'app-stec-modificar',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StecModificarComponent implements OnInit {
 
-  constructor() { }
+  servicioTecnico = [];
+
+  constructor(public st: StecService) { }
 
   ngOnInit() {
   }
+
 
 }

@@ -14,6 +14,9 @@ export class StecService {
 
   constructor(public afs: AngularFirestore) {
     this.sTecCollection = this.afs.collection('servicioTecnico');
+   }
+
+   getServiciosObservable(){
     this.sTecObservable = this.sTecCollection.snapshotChanges().map(changes => {
       return changes.map(a => {
         const data = a.payload.doc.data() as Stec;
@@ -21,10 +24,7 @@ export class StecService {
         return data;
       });
     });
-   }
-
-   getServiciosObservable(){
-     return this.sTecObservable;
+    return this.sTecObservable;
    }
 
    agregaServicio(datos: Stec) {

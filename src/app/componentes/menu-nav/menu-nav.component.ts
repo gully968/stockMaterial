@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../../servicios/auth.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class MenuNavComponent implements OnInit {
   public nombreUsuario: string;
   public emailUsuario: string;
   public fotoUsuario: string;
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.authService.getAuth().subscribe( auth => {
@@ -31,6 +32,7 @@ export class MenuNavComponent implements OnInit {
   }
   logout() {
     this.authService.logout();
+    this.router.navigate(['/inicio']);
   }
 
 }
