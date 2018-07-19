@@ -11,6 +11,7 @@ export class StecService {
   sTecObservable: Observable<Stec[]>;
   sTecCollection: AngularFirestoreCollection<Stec>;
   sTecDocument: AngularFirestoreDocument<Stec>;
+  sTecArray: Stec[];
 
   constructor(public afs: AngularFirestore) {
     this.sTecCollection = this.afs.collection('servicioTecnico');
@@ -40,15 +41,14 @@ export class StecService {
      this.sTecDocument.update(servicio);
    }
    devuelveDetalleServicio (id: string){
-     this.sTecCollection = this.afs.collection('servicioTecnico', ref => ref.where('id', '==', id));
-     console.log('SERVICIO: ',this.sTecCollection);
-    return this.sTecCollection;
+
    }
    devuelveDocServicio (id: string) {
     return this.afs.collection('servicioTecnico')
                 .doc(id)
                 .ref
-                .get().then(function(doc) {
+                .get()
+                .then(function(doc) {
                   if (doc.exists) {
                     console.log('Datos:', doc.data());
                     return Promise.resolve(doc.data());
