@@ -39,5 +39,25 @@ export class StecService {
      this.sTecDocument = this.afs.doc(`servicioTecnico/${servicio.id}`);
      this.sTecDocument.update(servicio);
    }
-
+   devuelveDetalleServicio (id: string){
+     this.sTecCollection = this.afs.collection('servicioTecnico', ref => ref.where('id', '==', id));
+     console.log('SERVICIO: ',this.sTecCollection);
+    return this.sTecCollection;
+   }
+   devuelveDocServicio (id: string) {
+    return this.afs.collection('servicioTecnico')
+                .doc(id)
+                .ref
+                .get().then(function(doc) {
+                  if (doc.exists) {
+                    console.log('Datos:', doc.data());
+                    return Promise.resolve( JSON.stringify(doc.data()));
+                  } else {
+                    console.log('No Existe Documento!');
+                  }
+                })
+                .catch(function(error) {
+                  console.log('Error obteniendo Documento:', error);
+                });
+   }
 }

@@ -13,6 +13,7 @@ export class StecComponent implements OnInit {
 
   dataSource = new MatTableDataSource<Stec>();
   displayedColumns = [
+        'id',
         'fechaIngreso',
         'fechaRevision',
         'fechaEgreso',
@@ -27,6 +28,7 @@ export class StecComponent implements OnInit {
   ];
 
   item: Stec = {
+    id: '',
     fechaIngreso: '',
     fechaRevision: '',
     fechaEgreso: '',

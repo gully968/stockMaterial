@@ -44,7 +44,7 @@ export class ProductosService {
     return this.productosObs;
   }
   getProducto(item) {
-    this.productosCol = this.afs.collection('productos', ref=> ref.where('nombre', '==', item));
+    this.productosCol = this.afs.collection('productos', ref => ref.where('nombre', '==', item));
     return this.productosCol;
   }
  
