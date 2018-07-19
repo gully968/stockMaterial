@@ -13,7 +13,7 @@ export class DetalleComponent implements OnInit, OnChanges {
   @Input() idReparacion: string;
 
   dataServicio: any;
-  cliente: '';
+  cliente: [];
   constructor(public sts: StecService) {  }
 
   ngOnInit() {
@@ -22,9 +22,12 @@ export class DetalleComponent implements OnInit, OnChanges {
   }
   ngOnChanges() {
     if (this.idReparacion) {
-      this.dataServicio = this.sts.devuelveDocServicio(this.idReparacion);
-      console.log(this.dataServicio);
+      /* Objeto json con el resultado del doc  */
+      this.sts.devuelveDocServicio(this.idReparacion)
+          .then(datos => {this.dataServicio = datos; });
+      console.log('tipo:', typeof(this.dataServicio));
+      console.log('valor: ', this.dataServicio);
     }
-    
+
   }
 }

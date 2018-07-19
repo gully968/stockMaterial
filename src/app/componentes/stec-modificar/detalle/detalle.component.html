@@ -2,9 +2,6 @@
   {{idReparacion}}
 </mat-card>
 <mat-card>
-  {{dataServicio | async}}
+  <p>Aqui el cliente: </p>
+  <h4>{{ (dataServicio | json)?.cliente }}</h4> 
 </mat-card>
-<mat-card>
-  {{cliente }}
-</mat-card>
-

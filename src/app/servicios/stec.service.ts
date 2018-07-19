@@ -51,7 +51,7 @@ export class StecService {
                 .get().then(function(doc) {
                   if (doc.exists) {
                     console.log('Datos:', doc.data());
-                    return Promise.resolve( JSON.stringify(doc.data()));
+                    return Promise.resolve(doc.data());
                   } else {
                     console.log('No Existe Documento!');
                   }
