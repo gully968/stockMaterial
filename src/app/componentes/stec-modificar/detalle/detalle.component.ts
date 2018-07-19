@@ -13,6 +13,7 @@ export class DetalleComponent implements OnInit, OnChanges {
   @Input() idReparacion: string;
 
   dataServicio: any;
+  cliente: string;
 
   constructor(public sts: StecService) {  }
 
@@ -24,8 +25,10 @@ export class DetalleComponent implements OnInit, OnChanges {
     if (this.idReparacion) {
       this.sts.devuelveDocServicio(this.idReparacion).then(datos => {
         this.dataServicio = datos;
+        this.cliente = datos[0].cliente;
       });
       console.log(this.dataServicio);
+      console.log(this.cliente);
     }
 
   }
