@@ -1,7 +1,25 @@
 <mat-card>
   {{idReparacion}}
 </mat-card>
-<mat-card>
-  <p>Aqui el cliente: </p>
-  <h4>{{ cliente }}</h4> 
-</mat-card>
+<form class="example-form">
+  <mat-card>
+    <mat-form-field style="width:100px !important">
+      <input readonly="true" placeholder="Fecha de Ingreso" matInput value="{{fechaIngreso}}">
+    </mat-form-field>
+    <mat-form-field style="width:300px !important">
+      <input readonly="true" placeholder="Cliente" matInput value="{{cliente}}">
+    </mat-form-field>
+    <mat-form-field style="width:600px !important">
+      <input readonly="true" matInput placeholder="Falla Declarada" value="{{fallaDeclarada}}">
+    </mat-form-field>
+  </mat-card>
+  <mat-card>
+    <mat-form-field style="width:100px !important">
+      <input matInput placeholder="Revisión" name="fechaRevision" value="{{fechaRev}}">
+    </mat-form-field>
+    <mat-form-field style="width:800px !important">
+      <input matInput placeholder="Falla Detectada">
+    </mat-form-field>
+  </mat-card>
+
+  </form>

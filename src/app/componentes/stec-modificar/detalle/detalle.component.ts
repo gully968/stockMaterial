@@ -1,8 +1,6 @@
 import { Component, OnInit, OnChanges, Input } from '@angular/core';
 import { StecService } from '../../../servicios/stec.service';
-import { Observable } from '../../../../../node_modules/rxjs';
-import { Stec } from '../../../clases/stec';
-
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-service-detalle',
   templateUrl: './detalle.component.html',
@@ -13,7 +11,13 @@ export class DetalleComponent implements OnInit, OnChanges {
   @Input() idReparacion: string;
 
   dataServicio: any;
+
+  fechaIngreso: string;
   cliente: string;
+  equipo: string;
+  estaReparado: boolean;
+  fallaDeclarada: string;
+  fechaRev: string;
 
   constructor(public sts: StecService) {  }
 
@@ -23,12 +27,16 @@ export class DetalleComponent implements OnInit, OnChanges {
   }
   ngOnChanges() {
     if (this.idReparacion) {
-      this.sts.devuelveDocServicio(this.idReparacion).then(datos => {
+      this.sts.devuelveDocServicio(this.idReparacion)
+              .then(datos => {
         this.dataServicio = datos;
-        this.cliente = datos[0].cliente;
+        this.fechaIngreso = this.dataServicio['fechaIngreso']
+        this.cliente = this.dataServicio['cliente'];
+        this.equipo = this.dataServicio['equipo'];
+        this.estaReparado = this.dataServicio['estaReparado'];
+        this.fallaDeclarada = this.dataServicio['fallaDeclarada'];
+        this.fechaRev = this.dataServicio['fechaRevision'];
       });
-      console.log(this.dataServicio);
-      console.log(this.cliente);
     }
 
   }
