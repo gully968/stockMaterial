@@ -13,31 +13,52 @@ export class DetalleComponent implements OnInit, OnChanges {
   dataServicio: any;
 
   fechaIngreso: string;
+  fechaRevision: string;
+  fechaEgreso: string;
   cliente: string;
   equipo: string;
-  estaReparado: boolean;
+  tecnico: string;
   fallaDeclarada: string;
-  fechaRev: string;
+  fallaDetectada: string;
+  repuestos: string;
+  costoReparacion: number;
+  importeReparacion: number;
+  estaReparado: boolean;
+  garantia: string;
+  observaciones: string;
+
+  mostrarDatos: boolean;
 
   constructor(public sts: StecService) {  }
 
   ngOnInit() {
+    this.mostrarDatos = false;
     if (this.idReparacion) {
+      this.mostrarDatos = true;
     }
   }
   ngOnChanges() {
     if (this.idReparacion) {
+      this.mostrarDatos = true;
       this.sts.devuelveDocServicio(this.idReparacion)
               .then(datos => {
-        this.dataServicio = datos;
-        this.fechaIngreso = this.dataServicio['fechaIngreso']
-        this.cliente = this.dataServicio['cliente'];
-        this.equipo = this.dataServicio['equipo'];
-        this.estaReparado = this.dataServicio['estaReparado'];
-        this.fallaDeclarada = this.dataServicio['fallaDeclarada'];
-        this.fechaRev = this.dataServicio['fechaRevision'];
-      });
+                    this.dataServicio = datos;
+                    this.fechaIngreso = this.dataServicio['fechaIngreso'];
+                    this.fechaRevision = this.dataServicio['fechaRevision'];
+                    this.cliente = this.dataServicio['cliente'];
+                    this.equipo = this.dataServicio['equipo'];
+                    this.tecnico = this.dataServicio['tecnico'];
+                    this.fallaDeclarada = this.dataServicio['fallaDeclarada'];
+                    this.fallaDetectada = this.dataServicio['fallaDetectada'];
+                    this.repuestos = this.dataServicio['repuestos'];
+                    this.costoReparacion = this.dataServicio['costoReparacion'];
+                    this.importeReparacion = this.dataServicio['importeReparacion'];
+                    this.estaReparado = this.dataServicio['estaReparado'];
+                    this.garantia = this.dataServicio['garantia'];
+                    this.observaciones = this.dataServicio['observaciones'];
+              });
+    } else {
+      this.mostrarDatos = false;
     }
-
   }
 }

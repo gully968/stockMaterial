@@ -1,25 +1,43 @@
-<mat-card>
-  {{idReparacion}}
-</mat-card>
 <form class="example-form">
-  <mat-card>
-    <mat-form-field id="fechaIngreso">
-      <input readonly="true" placeholder="Fecha de Ingreso" matInput value="{{fechaIngreso}}">
-    </mat-form-field>
-    <mat-form-field style="width:300px !important">
-      <input readonly="true" placeholder="Cliente" matInput value="{{cliente}}">
-    </mat-form-field>
-    <mat-form-field style="width:600px !important">
-      <input readonly="true" matInput placeholder="Falla Declarada" value="{{fallaDeclarada}}">
-    </mat-form-field>
-  </mat-card>
-  <mat-card>
+  <mat-card  *ngIf="mostrarDatos">
+    <mat-card style="margin-bottom: 20px !important;text-align: center !important;"><p><strong>ID:</strong> {{idReparacion}} </p></mat-card>
     <mat-form-field style="width:100px !important">
-      <input matInput placeholder="Revisión" name="fechaRevision" value="{{fechaRev}}">
+      <input matInput readonly="true" placeholder="Fecha de Ingreso" value="{{fechaIngreso}}">
+    </mat-form-field>
+    <mat-form-field style="width:100px !important">
+      <input matInput placeholder="Revisión" name="fechaRevision" value="{{fechaRevision}}">
+    </mat-form-field>
+    <mat-form-field style="width:400px !important">
+      <input matInput readonly="true" placeholder="Cliente" value="{{cliente}}">
+    </mat-form-field>
+    <mat-form-field style="width:400px !important">
+      <input matInput readonly="true" placeholder="Equipo" value="{{equipo}}">
+    </mat-form-field>
+    <mat-form-field style="width:500px !important">
+      <input matInput placeholder="Técnico Asignado" value="{{tecnico}}">
+    </mat-form-field>
+    <mat-form-field style="width:500px !important">
+      <input matInput readonly="true" placeholder="Falla Declarada" value="{{fallaDeclarada}}">
     </mat-form-field>
     <mat-form-field style="width:800px !important">
-      <input matInput placeholder="Falla Detectada">
+      <input matInput placeholder="Falla Detectada" value="{{fallaDetectada}}">
     </mat-form-field>
+    <mat-form-field style="width:800px !important">
+      <input matInput placeholder="Repuestos" value="{{repuestos}}">
+    </mat-form-field>
+    <mat-form-field style="width:800px !important">
+      <input matInput type="number" placeholder="Costo Reparación" value="{{costoReparacion}}">
+    </mat-form-field>
+    <mat-form-field style="width:800px !important">
+      <input matInput type="number" placeholder="Importe a Pagar" value="{{importeReparacion}}">
+    </mat-form-field>
+    <mat-form-field style="width:800px !important">
+      <input matInput placeholder="Garantia" value="{{garantia}}">
+    </mat-form-field>
+    <mat-form-field style="width:800px !important">
+      <input matInput placeholder="Observaciones" value="{{observaciones}}">
+    </mat-form-field>
+      
   </mat-card>
 
   </form>
