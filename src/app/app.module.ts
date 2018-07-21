@@ -19,7 +19,7 @@ import { MatButtonModule,
 import {MatIconModule} from '@angular/material/icon';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 
-
+import {MatGridListModule} from '@angular/material/grid-list';
 
 /* import { } from '@angular/cdk'; */
 import { MatDialogModule } from '@angular/material/dialog';
@@ -123,7 +123,8 @@ import { DetalleComponent } from './componentes/stec-modificar/detalle/detalle.c
     MatDividerModule,
     MatIconModule,
     MatDatepickerModule,
-    MatNativeDateModule ,
+    MatNativeDateModule,
+    MatGridListModule,
     /* Routings */
     AppRoutingModule,
     /* Angular Firestore */

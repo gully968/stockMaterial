@@ -1,43 +1,51 @@
-<form class="example-form">
-  <mat-card  *ngIf="mostrarDatos">
+<form (ngSubmit)="onSubmit(serviciosForm);" #serviciosForm="ngForm">
+  <mat-card *ngIf="estaReparado" style="margin-bottom: 20px !important;text-align: center !important;">
+    <p>
+      <strong>
+        EQUIPO YA REPARADO <br>
+      </strong> 
+    </p>
+  </mat-card>
+  <mat-card *ngIf="mostrarDatos && !estaReparado">
     <mat-card style="margin-bottom: 20px !important;text-align: center !important;"><p><strong>ID:</strong> {{idReparacion}} </p></mat-card>
     <mat-form-field style="width:100px !important">
-      <input matInput readonly="true" placeholder="Fecha de Ingreso" value="{{fechaIngreso}}">
+      <input matInput readonly="true" placeholder="Fecha de Ingreso" value="{{fechaIngreso}}" name="fechaIngreso" [(ngModel)]="regServicio.fechaIngreso">
     </mat-form-field>
     <mat-form-field style="width:100px !important">
-      <input matInput placeholder="Revisión" name="fechaRevision" value="{{fechaRevision}}">
+      <input matInput placeholder="Revisión" name="fechaRevision" value="{{fechaRevision}}" name="fechaRevision" [(ngModel)]="regServicio.fechaRevision">
     </mat-form-field>
     <mat-form-field style="width:400px !important">
-      <input matInput readonly="true" placeholder="Cliente" value="{{cliente}}">
+      <input matInput readonly="true" placeholder="Cliente" value="{{cliente}}" name="cliente" [(ngModel)]="regServicio.cliente">
     </mat-form-field>
     <mat-form-field style="width:400px !important">
-      <input matInput readonly="true" placeholder="Equipo" value="{{equipo}}">
+      <input matInput readonly="true" placeholder="Equipo" value="{{equipo}}" name="equipo" [(ngModel)]="regServicio.equipo">
     </mat-form-field>
     <mat-form-field style="width:500px !important">
-      <input matInput placeholder="Técnico Asignado" value="{{tecnico}}">
+      <input matInput placeholder="Técnico Asignado" value="{{tecnico}}" name="tecnico" [(ngModel)]="regServicio.tecnico">
     </mat-form-field>
     <mat-form-field style="width:500px !important">
-      <input matInput readonly="true" placeholder="Falla Declarada" value="{{fallaDeclarada}}">
+      <input matInput readonly="true" placeholder="Falla Declarada" value="{{fallaDeclarada}}" name="fallaDeclarada" [(ngModel)]="regServicio.fallaDeclarada">
     </mat-form-field>
     <mat-form-field style="width:800px !important">
-      <input matInput placeholder="Falla Detectada" value="{{fallaDetectada}}">
+      <input matInput placeholder="Falla Detectada" value="{{fallaDetectada}}" name="fallaDetectada" [(ngModel)]="regServicio.fallaDetectada">
     </mat-form-field>
     <mat-form-field style="width:800px !important">
-      <input matInput placeholder="Repuestos" value="{{repuestos}}">
+      <input matInput placeholder="Repuestos" value="{{repuestos}}" name="repuestos" [(ngModel)]="regServicio.repuestos">
     </mat-form-field>
     <mat-form-field style="width:800px !important">
-      <input matInput type="number" placeholder="Costo Reparación" value="{{costoReparacion}}">
+      <input matInput type="number" placeholder="Costo Reparación" value="{{costoReparacion}}" name="costoReparacion" [(ngModel)]="regServicio.costoReparacion">
     </mat-form-field>
     <mat-form-field style="width:800px !important">
-      <input matInput type="number" placeholder="Importe a Pagar" value="{{importeReparacion}}">
+      <input matInput type="number" placeholder="Importe a Pagar" value="{{importeReparacion}}" name="importeReparacion" [(ngModel)]="regServicio.importeReparacion">
     </mat-form-field>
     <mat-form-field style="width:800px !important">
-      <input matInput placeholder="Garantia" value="{{garantia}}">
+      <input matInput placeholder="Garantia" value="{{garantia}}" name="garantia" [(ngModel)]="regServicio.garantia">
     </mat-form-field>
     <mat-form-field style="width:800px !important">
-      <input matInput placeholder="Observaciones" value="{{observaciones}}">
+      <input matInput placeholder="Observaciones" value="{{observaciones}}" name="observaciones" [(ngModel)]="regServicio.observaciones">
     </mat-form-field>
-      
   </mat-card>
-
-  </form>
+  <mat-card id="centrarMatCard">
+      <button *ngIf="!estaReparado" mat-raised-button color="primary" (click)="onSubmit()">Guardar Registro</button>
+  </mat-card>    
+</form>

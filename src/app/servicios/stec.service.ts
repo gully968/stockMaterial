@@ -36,9 +36,9 @@ export class StecService {
     this.sTecDocument = this.afs.doc(`servicioTecnico/${item.id}`);
     this.sTecDocument.delete();
    }
-   modificaServicio(servicio: Stec){
-     this.sTecDocument = this.afs.doc(`servicioTecnico/${servicio.id}`);
-     this.sTecDocument.update(servicio);
+   modificaServicio(idReparacion, datos){
+     this.sTecDocument = this.afs.doc(`servicioTecnico/${idReparacion}`);
+     this.sTecDocument.update(datos);
    }
    devuelveDetalleServicio (id: string){
 
@@ -50,7 +50,6 @@ export class StecService {
                 .get()
                 .then(function(doc) {
                   if (doc.exists) {
-                    console.log('Datos:', doc.data());
                     return Promise.resolve(doc.data());
                   } else {
                     console.log('No Existe Documento!');
