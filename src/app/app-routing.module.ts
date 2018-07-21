@@ -21,6 +21,7 @@ import { StecComponent } from './componentes/stec/stec.component';
 import { StecConsultaComponent } from './componentes/stec-consulta/stec-consulta.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
 import { StecModificarComponent } from './componentes/stec-modificar/stec-modificar.component';
+import { StecCerrarComponent } from './componentes/stec-cerrar/stec-cerrar.component';
 
 const routes: Routes = [
   { path: '', component: InicioComponent},
@@ -39,6 +40,7 @@ const routes: Routes = [
   { path: 'serviciotecnicoalta', component: StecComponent, canActivate: [AuthGuard]},
   { path: 'serviciotecnicoconsulta', component: StecConsultaComponent, canActivate: [AuthGuard]},
   { path: 'serviciotecnicomodifica', component: StecModificarComponent, canActivate: [AuthGuard]},
+  { path: 'serviciotecnicocierra', component: StecCerrarComponent, canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent},
   { path: 'registro', component: RegistroComponent},
   { path: 'inicio', component: InicioComponent}

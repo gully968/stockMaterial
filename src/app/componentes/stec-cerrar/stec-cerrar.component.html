@@ -1,0 +1,60 @@
+<mat-card>
+    <h3>Cierre de Servicios Técnicos</h3>
+  </mat-card>
+  <div class="example-container mat-elevation-z8">
+    <!-- Campo para hacer los filtros a la tabla -->
+    <div class="example-header">
+      <mat-form-field style="width:400px !important; margin-left: 40px !important;">
+        <mat-label><i class="fab fa-searchengin"> Buscar</i></mat-label>
+        <input matInput (keyup)="applyFilter($event.target.value)">
+      </mat-form-field>
+    </div>
+    <!-- Tabla de servicios tecnicos en si -->
+    <mat-table #table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+      <ng-container matColumnDef="idReparacion">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.idReparacion}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="fechaIngreso">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Ingreso</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.fechaIngreso}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="fechaRevision">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Revisado</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.fechaRevision}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="cliente">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Cliente</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.cliente}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="equipo">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Equipo   </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.equipo}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="fallaDeclarada">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Falla Declarada   </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.fallaDeclarada}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="estaReparado">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Estado </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <mat-icon *ngIf="element.estaReparado;else notactive;">done</mat-icon>
+        </mat-cell>
+        <ng-template #notactive> 
+          <mat-icon>build</mat-icon>
+        </ng-template>
+      </ng-container>
+      <ng-container matColumnDef="boton">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let group" (click)="$event.stopPropagation()">
+              <button *ngIf="!group.estaReparado" mat-raised-button color="warn" (click)="cambioReparado(group)">Cerrar</button>
+          </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  
+    </mat-table>
+    <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="pageEvent = $event"></mat-paginator>
+  </div>

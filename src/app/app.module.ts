@@ -59,6 +59,9 @@ import { InicioComponent } from './componentes/inicio/inicio.component';
 import { StecComponent } from './componentes/stec/stec.component';
 import { StecConsultaComponent } from './componentes/stec-consulta/stec-consulta.component';
 import { StecModificarComponent } from './componentes/stec-modificar/stec-modificar.component';
+import { RegistroComponent } from './componentes/registro/registro.component';
+import { DetalleComponent } from './componentes/stec-modificar/detalle/detalle.component';
+import { StecCerrarComponent } from './componentes/stec-cerrar/stec-cerrar.component';
 import { ConfirmBoxComponent } from './confirm-box.component';
 
 /* Servicios */
@@ -73,8 +76,7 @@ import { AuthService } from './servicios/auth.service';
 import { EmpresaService } from './servicios/empresa.service';
 import { StecService } from './servicios/stec.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
-import { RegistroComponent } from './componentes/registro/registro.component';
-import { DetalleComponent } from './componentes/stec-modificar/detalle/detalle.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -103,7 +105,8 @@ import { DetalleComponent } from './componentes/stec-modificar/detalle/detalle.c
     StecConsultaComponent,
     StecModificarComponent,
     RegistroComponent,
-    DetalleComponent
+    DetalleComponent,
+    StecCerrarComponent
     ],
 
   imports: [
