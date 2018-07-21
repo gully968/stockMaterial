@@ -62,6 +62,7 @@ import { StecModificarComponent } from './componentes/stec-modificar/stec-modifi
 import { RegistroComponent } from './componentes/registro/registro.component';
 import { DetalleComponent } from './componentes/stec-modificar/detalle/detalle.component';
 import { StecCerrarComponent } from './componentes/stec-cerrar/stec-cerrar.component';
+import { MyDashboardComponent } from './componentes/my-dashboard/my-dashboard.component';
 import { ConfirmBoxComponent } from './confirm-box.component';
 
 /* Servicios */
@@ -76,6 +77,9 @@ import { AuthService } from './servicios/auth.service';
 import { EmpresaService } from './servicios/empresa.service';
 import { StecService } from './servicios/stec.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ClarityModule } from '@clr/angular';
 
 @NgModule({
   declarations: [
@@ -106,7 +110,8 @@ import { FlashMessagesService } from 'angular2-flash-messages';
     StecModificarComponent,
     RegistroComponent,
     DetalleComponent,
-    StecCerrarComponent
+    StecCerrarComponent,
+    MyDashboardComponent
     ],
 
   imports: [
@@ -136,7 +141,10 @@ import { FlashMessagesService } from 'angular2-flash-messages';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     FormsModule,
-    AngularFirestoreModule.enablePersistence()
+    AngularFirestoreModule.enablePersistence(),
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
+    NgbModule.forRoot(),
+    ClarityModule
   ],
   entryComponents: [
     ConfirmBoxComponent

@@ -22,6 +22,8 @@ import { StecConsultaComponent } from './componentes/stec-consulta/stec-consulta
 import { RegistroComponent } from './componentes/registro/registro.component';
 import { StecModificarComponent } from './componentes/stec-modificar/stec-modificar.component';
 import { StecCerrarComponent } from './componentes/stec-cerrar/stec-cerrar.component';
+import { MyDashboardComponent } from './componentes/my-dashboard/my-dashboard.component';
+
 
 const routes: Routes = [
   { path: '', component: InicioComponent},
@@ -41,6 +43,7 @@ const routes: Routes = [
   { path: 'serviciotecnicoconsulta', component: StecConsultaComponent, canActivate: [AuthGuard]},
   { path: 'serviciotecnicomodifica', component: StecModificarComponent, canActivate: [AuthGuard]},
   { path: 'serviciotecnicocierra', component: StecCerrarComponent, canActivate: [AuthGuard]},
+  { path: 'dashboard', component: MyDashboardComponent, canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent},
   { path: 'registro', component: RegistroComponent},
   { path: 'inicio', component: InicioComponent}

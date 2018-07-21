@@ -36,6 +36,14 @@
               <a class="dropdown-item" routerLink="/salidas">Salida de Productos</a>
             </div>
           </li>
+          <!-- Dashboard -->
+          <li class="nav-item dropdown" *ngIf="estaLogueado">
+            <button class="nav-link dropdown-toggle btn btn-outline-primary" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Panel de Control</button>
+            <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 48px, 0px); top: 0px; left: 0px; will-change: transform;">
+              <a class="dropdown-item" routerLink="/dashboard">Panel 1</a>
+
+            </div>
+          </li>
           <!-- Menu de Servicio Tecnico -->
           <li class="nav-item dropdown" *ngIf="estaLogueado">
             <button class="nav-link dropdown-toggle btn btn-outline-primary" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Servicios</button>
@@ -47,6 +55,7 @@
               <a class="dropdown-item" routerLink="/serviciotecnicocierra">Cierre Ordenes de Servicios</a>
             </div>
           </li>
+          
       </ul>
       
       <ul class="navbar-nav ml-auto">
