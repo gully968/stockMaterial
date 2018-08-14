@@ -1,4 +1,4 @@
-# StockMaterial Version 1.0
+# Pruebas con angular material y firestore
 
 Ejemplo de aplicativo realizado mediante Angular con aditamentos de CSS MATERIAL 
 
