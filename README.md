@@ -7,3 +7,5 @@ Si quiere revisar la versión mas actual de esto,  dirigirse a:
 https://github.com/marcelolav/stock-angular-bootstrap
 
 Actualmente no se estan realizando actualizaciones en este repositorio.
+
+ok de andres,
